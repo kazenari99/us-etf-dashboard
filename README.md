@@ -1,4 +1,4 @@
-# 美股 ETF 动量雷达
+# ORBIT PULSE
 
 现有 Hermes 美股 ETF Momentum Radar 的独立 GitHub Pages 发布仓库。保留原20/60/120日评分、动量地图、机会卡片、搜索筛选及详情。A股配套：[JADE PULSE · A股ETF](https://kazenari99.github.io/a-etf-dashboard/reports/etf_dashboard.html)。
 
