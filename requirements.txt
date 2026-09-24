@@ -1,0 +1,4 @@
+numpy==2.4.6
+pandas==3.0.6
+yfinance==1.7.0
+pandas-market-calendars==5.4.0

@@ -176,3 +176,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .opp-top { align-items: flex-start; gap: 12px; }
 .opp-price { flex-shrink: 0; padding-top: 4px; }
 .opp-name { min-height: 32px; }
+:root { --snapshot-status-color: #94a3b8; }
+.snapshot-status { color: var(--snapshot-status-color); font-size: 12px; line-height: 1.8; margin: 0 0 18px; }
+.snapshot-status.stale { color: #fbbf24; }

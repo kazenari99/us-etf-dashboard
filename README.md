@@ -4,20 +4,26 @@
 
 ## 数据更新
 
-数据来自本地已生成的OpenD快照；本仓库只发布静态结果，不在云端请求OpenD，也不新增额度消耗。原私有Site保留。网页始终显示真实行情日；部署时间不代表行情已刷新。
+云端使用Yahoo Finance复权日线，通过yfinance获取，无需API key、OpenD或付费行情额度。同花顺公开API目前不提供美股行情。原本地OpenD项目和私有Site保留独立运行。
 
-最新本地快照生成后，在本仓库执行：
+GitHub Actions每周一至周五23:37 UTC自动运行，即北京时间次日07:37（周二至周六），冬夏令时均在美股收盘之后，调度可能延迟。推送main、手动运行也会刷新行情并发布。
+
+本地刷新：
 
 ```sh
-python scripts/sync_snapshot.py ../etf-dashboard/dist
-# 检查数据日期后提交并推送
-
-git add dist
-git commit -m 'Update US ETF snapshot'
-git push
+pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python scripts/refresh_snapshot.py
+python scripts/validate_snapshot.py
 ```
 
-推送main后自动发布；也可手动运行 `Publish US ETF dashboard`。没有设置只会重复发布旧数据的每日定时任务。此仓库不包含密钥、OpenD连接配置、持仓或账户信息。
+通过NYSE日历处理休市、提前收盘和夏令时，收盘后留出一小时才使用当日日线。全量71只必须具有相同交易日和完整窗口（320自然日、至少121个交易日）。缺失、非数值、异常OHLC或日期不齐时重试，仍失败则停止部署，线上保留上一份完整快照。不会拼接OpenD与Yahoo行情或不同复权批次。免费数据源可能限流或不可用，不保证每日刷新成功。
+
+网页显示真实行情日期、生成时间、来源和完整数量；超过4天未生成新快照会提示。CSV与元信息通过SHA-256核对。运行状态见[Actions](https://github.com/kazenari99/us-etf-dashboard/actions/workflows/pages.yml)。成功运行的复权日线、评分CSV及元信息以Actions artifact保留90天。
+
+Yahoo `auto_adjust=True`按分红和拆股调整OHLC。评分代码从原Hermes美股模型中独立提取，通过固定合成行情验证数值一致。由于来源和复权口径变化，数值可能与原OpenD快照不同；历史归档保留各自来源，不能视为同一时点回测。
+
+`scripts/sync_snapshot.py ../etf-dashboard/dist`仅供明确需要时导入本地OpenD快照预览，不覆盖UI。云端发布始终重新获取Yahoo Finance数据。此仓库不包含密钥、OpenD连接配置、持仓或账户信息。
 
 ## 本地查看
 

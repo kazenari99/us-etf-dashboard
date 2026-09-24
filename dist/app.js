@@ -192,9 +192,19 @@ function bind(){
 
 async function init(){
   try{
-    const res=await fetch('./etf_momentum_latest.csv'); if(!res.ok)throw new Error(`HTTP ${res.status}`);
-    state.data=parseCSV(await res.text()); state.filtered=[...state.data];
-    $('#asOf').textContent=`数据截止 ${state.data[0].date} · OpenD 日线`;
+    const metaRes=await fetch('./snapshot_meta.json',{cache:'no-store'}); if(!metaRes.ok)throw new Error(`快照信息 HTTP ${metaRes.status}`);
+    const meta=await metaRes.json();
+    const res=await fetch(`./etf_momentum_latest.csv?v=${meta.sha256}`,{cache:'no-store'}); if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const csv=await res.text();
+    const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(csv)))).map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(digest!==meta.sha256)throw new Error('页面正在更新，请刷新后重试');
+    state.data=parseCSV(csv); state.filtered=[...state.data];
+    if(state.data.length!==meta.count||state.data.some(r=>r.date!==meta.asof))throw new Error('快照日期或数量不一致');
+    $('#asOf').textContent=`数据截止 ${meta.asof} · ${meta.source} 日线`;
+    const generated=new Date(meta.generated_at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false});
+    const stale=Date.now()-Date.parse(meta.generated_at)>4*86400000;
+    $('#dataQuality').textContent=`${meta.count}/${meta.expected_count} 只完整 · 更新 ${generated} 北京时间 · ${meta.source==='Yahoo Finance'?'分红/拆股复权 · 云端自动刷新':'本地快照'}${stale?' · 已超过4天未更新，请查看运行记录':''}`;
+    $('#dataQuality').classList.toggle('stale',stale);
     const groups=[...new Set(state.data.map(x=>x.group))];$('#groupSelect').innerHTML+=[...groups].map(g=>`<option value="${g}">${groupNames[g]||g}</option>`).join('');
     renderKPIs();renderOpportunities();bind();applyFilters();
   }catch(err){document.querySelector('main').innerHTML=`<div class="error-state"><h2>数据载入失败</h2><p>${err.message}</p></div>`;}
