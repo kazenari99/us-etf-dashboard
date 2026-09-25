@@ -25,6 +25,10 @@ Yahoo `auto_adjust=True`按分红和拆股调整OHLC。评分代码从原Hermes�
 
 `scripts/sync_snapshot.py ../etf-dashboard/dist`可导入完整本地OpenD快照，不覆盖UI。提交CSV和元信息后，手动运行工作流并选中 `use_committed_snapshot` 可发布该快照；发布前核验最新完整交易日、71只标的和校验和。页面按元信息显示真实来源。定时及普通推送仍重新获取Yahoo Finance数据，不拼接两种来源。此仓库不包含密钥、OpenD连接配置、持仓或账户信息。
 
+## 基金详情
+
+详情框展示基金策略、管理机构、最多10项主要持仓及其占基金权重，另提供成交额与历史波动率。`scripts/refresh_funds.py` 单独更新公开资料：ARKK 优先使用 ARK 官方日持仓 CSV，其余使用 Yahoo 基金资料。来源未给出持仓日期时明确显示未知，不将获取时间当作披露日期。股票表缺失不代表零持仓，尤其是实物、期货及债券基金。失败时保留原资料及原获取日期并标记状态。持仓数据不参与动量评分，原始资料归档在 `archive/fund_profiles/`。
+
 ## 本地查看
 
 ```sh

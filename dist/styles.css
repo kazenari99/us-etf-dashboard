@@ -179,3 +179,26 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 :root { --snapshot-status-color: #94a3b8; }
 .snapshot-status { color: var(--snapshot-status-color); font-size: 12px; line-height: 1.8; margin: 0 0 18px; }
 .snapshot-status.stale { color: #fbbf24; }
+.fund-section { margin-top: 28px; padding-top: 24px; border-top: 1px solid #26364b; line-height: 1.7; }
+.fund-section h3 { margin: 22px 0 10px; font-size: 17px; }
+.fund-section h3 small { color: #9aabc0; font-size: 11px; font-weight: 400; }
+.fund-section p { color: #cbd5e1; font-size: 14px; }
+.fund-section .fund-note { color: #9aabc0; font-size: 12px; }
+.fund-section a { color: #66dfbd; text-decoration: underline; text-underline-offset: 3px; }
+.fund-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.fund-tag { font-size: 11px; padding: 3px 8px; background: #152538; border-radius: 6px; color: #9aabc0; }
+.fund-description { background: #101d2c; border-radius: 10px; padding: 12px; }
+.fund-description summary { cursor: pointer; font-size: 13px; color: #9aabc0; }
+.fund-description p { font-size: 12px; }
+.fund-concentration { display: flex; justify-content: space-between; padding: 12px; background: #12332f; border-radius: 8px; color: #6ce7c4; font-size: 13px; }
+.fund-holdings { list-style: none; padding: 0; margin: 12px 0; }
+.fund-holdings li { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 3px 12px; padding: 10px 0; border-bottom: 1px solid #1d2c3d; }
+.fund-holdings b,.fund-holdings strong { font-size: 13px; }
+.fund-holdings span { display: block; font-size: 11px; color: #9aabc0; overflow-wrap: anywhere; }
+.holding-track { grid-column: 1/-1; background: #182438; height: 3px; border-radius: 3px; }
+.holding-track i { display: block; height: 100%; background: #54d4b0; }
+.fund-risk { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fund-risk div { padding: 12px; border: 1px solid #26364b; border-radius: 8px; }
+.fund-risk span { display: block; color: #9aabc0; font-size: 12px; }
+.fund-warning { color: #fbbf24 !important; }
+.fund-empty { padding: 14px; background: #15202e; border-radius: 8px; }

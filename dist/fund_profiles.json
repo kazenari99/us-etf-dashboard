@@ -1,0 +1,4088 @@
+{
+  "generated_at": "2026-09-25T10:49:21.433764+00:00",
+  "funds": {
+    "ARKK": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund is an actively-managed exchange-traded fund (\"ETF\") that will invest under normal circumstances primarily (at least 65% of its assets) in domestic and foreign equity securities of companies that are relevant to the fund's investment theme of disruptive innovation. Its investments in foreign equity securities will be in both developed and emerging markets. The fund may invest in foreign securities listed on foreign exchanges as well as American Depositary Receipts (“ADRs”) and Global Depositary Receipts (“GDRs”). The fund is non-diversified.",
+      "family": "ARK ETF Trust",
+      "category": "Mid-Cap Growth",
+      "profile_source": "https://finance.yahoo.com/quote/ARKK/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "TSLA",
+          "name": "TESLA INC",
+          "weight": 0.0917
+        },
+        {
+          "symbol": "SPCX",
+          "name": "SPACE EXPLORATION TECHN-CL A",
+          "weight": 0.059000000000000004
+        },
+        {
+          "symbol": "TEM",
+          "name": "TEMPUS AI INC-CL A",
+          "weight": 0.058899999999999994
+        },
+        {
+          "symbol": "CRCL",
+          "name": "CIRCLE INTERNET GROUP INC",
+          "weight": 0.050300000000000004
+        },
+        {
+          "symbol": "COIN",
+          "name": "COINBASE GLOBAL INC -CLASS A",
+          "weight": 0.045700000000000005
+        },
+        {
+          "symbol": "CRSP",
+          "name": "CRISPR THERAPEUTICS AG",
+          "weight": 0.0436
+        },
+        {
+          "symbol": "TWST",
+          "name": "TWIST BIOSCIENCE CORP",
+          "weight": 0.0416
+        },
+        {
+          "symbol": "HOOD",
+          "name": "ROBINHOOD MARKETS INC - A",
+          "weight": 0.0403
+        },
+        {
+          "symbol": "TXG",
+          "name": "10X GENOMICS INC-CLASS A",
+          "weight": 0.0355
+        },
+        {
+          "symbol": "SHOP",
+          "name": "SHOPIFY INC - CLASS A",
+          "weight": 0.0308
+        }
+      ],
+      "holdings_asof": "2026-09-25",
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv",
+      "holdings_provider": "ARK 官方",
+      "holdings_status": "dated",
+      "summary_zh": "主动管理的创新主题股票ETF，关注颠覆性技术相关公司。持仓可跨行业及国家，组合集中，收益对成长股估值与经理选股较敏感。",
+      "summary_source": "https://www.ark-funds.com/funds/arkk"
+    },
+    "BOTZ": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund invests at least 80% of its total assets in the securities of the underlying index. The underlying index is designed to provide exposure to exchange-listed companies in developed markets that are involved in the development of robotics and/or artificial intelligence as defined by Indxx, the provider of the underlying index. The fund is non-diversified.",
+      "family": "Global X Funds",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/BOTZ/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "6861.T",
+          "name": "Keyence Corp",
+          "weight": 0.1077435
+        },
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.0963611
+        },
+        {
+          "symbol": "ABBN.SW",
+          "name": "ABB Ltd",
+          "weight": 0.0918791
+        },
+        {
+          "symbol": "6954.T",
+          "name": "Fanuc Corp",
+          "weight": 0.076472305
+        },
+        {
+          "symbol": "ISRG",
+          "name": "Intuitive Surgical Inc",
+          "weight": 0.060706
+        },
+        {
+          "symbol": "6273.T",
+          "name": "SMC Corp",
+          "weight": 0.045571197
+        },
+        {
+          "symbol": "300124.SZ",
+          "name": "Shenzhen Inovance Technology Co Ltd Class A",
+          "weight": 0.0406993
+        },
+        {
+          "symbol": "6383.T",
+          "name": "Daifuku Co Ltd",
+          "weight": 0.03097
+        },
+        {
+          "symbol": "300757.SZ",
+          "name": "RoboTechnik Intelligent Technology Co Ltd Class A",
+          "weight": 0.0272735
+        },
+        {
+          "symbol": "CGNX",
+          "name": "Cognex Corp",
+          "weight": 0.022655498
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/BOTZ/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "CIBR": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund will normally invest at least 90% of its net assets (including investment borrowings) in the common stocks and depositary receipts that comprise the index. The index includes securities of companies classified as \"cyber security\" companies by CTA. The fund is non-diversified.",
+      "family": "First Trust",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/CIBR/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "PANW",
+          "name": "Palo Alto Networks Inc",
+          "weight": 0.0967912
+        },
+        {
+          "symbol": "CRWD",
+          "name": "CrowdStrike Holdings Inc Class A",
+          "weight": 0.0901859
+        },
+        {
+          "symbol": "FTNT",
+          "name": "Fortinet Inc",
+          "weight": 0.0883939
+        },
+        {
+          "symbol": "CSCO",
+          "name": "Cisco Systems Inc",
+          "weight": 0.065465696
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.059144903
+        },
+        {
+          "symbol": "NET",
+          "name": "Cloudflare Inc",
+          "weight": 0.0450124
+        },
+        {
+          "symbol": "OKTA",
+          "name": "Okta Inc Class A",
+          "weight": 0.040051498
+        },
+        {
+          "symbol": "ZS",
+          "name": "Zscaler Inc",
+          "weight": 0.036460802
+        },
+        {
+          "symbol": "FFIV",
+          "name": "F5 Inc",
+          "weight": 0.029954
+        },
+        {
+          "symbol": "RBRK",
+          "name": "Rubrik Inc Class A Shares",
+          "weight": 0.0277546
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/CIBR/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "COPX": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund invests at least 80% of its total assets in the securities of the underlying index and in American Depositary Receipts (\"ADRs\") and Global Depositary Receipts (\"GDRs\") based on the securities in the underlying index. The underlying index is designed to measure broad-based equity market performance of global companies involved in the copper mining industry. The fund is non-diversified.",
+      "family": "Global X Funds",
+      "category": "Natural Resources",
+      "profile_source": "https://finance.yahoo.com/quote/COPX/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "HBM.TO",
+          "name": "Hudbay Minerals Inc",
+          "weight": 0.056230698
+        },
+        {
+          "symbol": "BHP.AX",
+          "name": "BHP Group Ltd",
+          "weight": 0.0520627
+        },
+        {
+          "symbol": "TECK-B.TO",
+          "name": "Teck Resources Ltd Class B (Sub Voting)",
+          "weight": 0.0517944
+        },
+        {
+          "symbol": "FM.TO",
+          "name": "First Quantum Minerals Ltd",
+          "weight": 0.0512979
+        },
+        {
+          "symbol": "SCCO",
+          "name": "Southern Copper Corp",
+          "weight": 0.0498243
+        },
+        {
+          "symbol": "FCX",
+          "name": "Freeport-McMoRan Inc",
+          "weight": 0.0487347
+        },
+        {
+          "symbol": "ANTO.L",
+          "name": "Antofagasta PLC",
+          "weight": 0.047193598
+        },
+        {
+          "symbol": "KGH.WA",
+          "name": "KGHM Polska Miedz SA",
+          "weight": 0.0470024
+        },
+        {
+          "symbol": "GLEN.L",
+          "name": "Glencore PLC",
+          "weight": 0.0469499
+        },
+        {
+          "symbol": "5713.T",
+          "name": "Sumitomo Metal Mining Co Ltd",
+          "weight": 0.0441932
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/COPX/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "DBA": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund invests in a portfolio of exchange-traded futures on the index Commodities (“Index Contracts”), which consist of Corn, Soybeans, Wheat, Kansas City Wheat, Sugar, Cocoa, Coffee, Cotton, Live Cattle, Feeder Cattle, and Lean Hogs. The index is composed of notional amounts of each Index Commodity. The sponsor of the index is Deutsche Bank Securities, Inc. (the “Index Sponsor” or “DBSI”).",
+      "family": "Invesco",
+      "category": "Commodities Focused",
+      "profile_source": "https://finance.yahoo.com/quote/DBA/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "AGPXX",
+          "name": "Invesco Shrt-Trm Inv Gov&Agcy Instl",
+          "weight": 0.43079188
+        },
+        {
+          "symbol": "TBLL",
+          "name": "Invesco Short Term Treasury ETF",
+          "weight": 0.0444762
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/DBA/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "DBC": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund pursues its investment objective by investing in a portfolio of exchange-traded futures on Light Sweet Crude Oil (WTI), Heating Oil, RBOB Gasoline, Natural Gas, Brent Crude, Gold, Silver, Aluminum, Zinc, Copper Grade A, Corn, Wheat, Soybeans, and Sugar. The index is composed of notional amounts of each of these commodities.",
+      "family": "Invesco",
+      "category": "Commodities Broad Basket",
+      "profile_source": "https://finance.yahoo.com/quote/DBC/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "AGPXX",
+          "name": "Invesco Shrt-Trm Inv Gov&Agcy Instl",
+          "weight": 0.40797088
+        },
+        {
+          "symbol": "BRNF6",
+          "name": "Brent Crude Future Nov 26",
+          "weight": 0.0886457
+        },
+        {
+          "symbol": "TBLL",
+          "name": "Invesco Short Term Treasury ETF",
+          "weight": 0.061708104
+        },
+        {
+          "symbol": "WINZ26",
+          "name": "Mini Ibovespa Future Dec 26",
+          "weight": 0.0186034
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/DBC/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "DIA": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The Trust’s Portfolio consists of substantially all of the component common stocks that comprise the DJIA, which are weighted in accordance with the terms of the Trust Agreement.",
+      "family": "State Street Investment Management",
+      "category": "Large Value",
+      "profile_source": "https://finance.yahoo.com/quote/DIA/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "GS",
+          "name": "The Goldman Sachs Group Inc",
+          "weight": 0.1145279
+        },
+        {
+          "symbol": "CAT",
+          "name": "Caterpillar Inc",
+          "weight": 0.0890268
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.056632098
+        },
+        {
+          "symbol": "AMGN",
+          "name": "Amgen Inc",
+          "weight": 0.0479903
+        },
+        {
+          "symbol": "UNH",
+          "name": "UnitedHealth Group Inc",
+          "weight": 0.043472398
+        },
+        {
+          "symbol": "V",
+          "name": "Visa Inc Class A",
+          "weight": 0.0423515
+        },
+        {
+          "symbol": "TRV",
+          "name": "The Travelers Companies Inc",
+          "weight": 0.0408511
+        },
+        {
+          "symbol": "JPM",
+          "name": "JPMorgan Chase & Co",
+          "weight": 0.039744798
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.0378838
+        },
+        {
+          "symbol": "SHW",
+          "name": "Sherwin-Williams Co",
+          "weight": 0.037823603
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/DIA/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "EEM": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index is designed to measure equity market performance in the global emerging markets. The underlying index includes large- and mid-capitalization companies and may change over time.",
+      "family": "iShares",
+      "category": "Diversified Emerging Mkts",
+      "profile_source": "https://finance.yahoo.com/quote/EEM/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "2330.TW",
+          "name": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "weight": 0.1507323
+        },
+        {
+          "symbol": "005930.KQ",
+          "name": "Samsung Electronics Co Ltd",
+          "weight": 0.0716229
+        },
+        {
+          "symbol": "000660.KQ",
+          "name": "SK hynix Inc",
+          "weight": 0.054468397
+        },
+        {
+          "symbol": "0700.HK",
+          "name": "Tencent Holdings Ltd",
+          "weight": 0.028602099
+        },
+        {
+          "symbol": "9988.HK",
+          "name": "Alibaba Group Holding Ltd Ordinary Shares",
+          "weight": 0.019710701
+        },
+        {
+          "symbol": "2454.TW",
+          "name": "MediaTek Inc",
+          "weight": 0.0143982
+        },
+        {
+          "symbol": "2308.TW",
+          "name": "Delta Electronics Inc",
+          "weight": 0.0091166
+        },
+        {
+          "symbol": "005935",
+          "name": "Samsung Electronics Co Ltd Participating Preferred",
+          "weight": 0.0088303
+        },
+        {
+          "symbol": "00939",
+          "name": "China Construction Bank Corp Class H",
+          "weight": 0.0082246
+        },
+        {
+          "symbol": "2317.TW",
+          "name": "Hon Hai Precision Industry Co Ltd",
+          "weight": 0.0077818
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/EEM/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "EFA": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index is a free float-adjusted, market capitalization-weighted index designed to measure large- and mid-capitalization equity market performance of developed markets outside of the U.S. and Canada.",
+      "family": "iShares",
+      "category": "Foreign Large Blend",
+      "profile_source": "https://finance.yahoo.com/quote/EFA/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "ASML.AS",
+          "name": "ASML Holding NV",
+          "weight": 0.0293016
+        },
+        {
+          "symbol": "HSBA.L",
+          "name": "HSBC Holdings PLC",
+          "weight": 0.0159396
+        },
+        {
+          "symbol": "ROP.SW",
+          "name": "Roche Holding AG Ordinary Shares new",
+          "weight": 0.013732899
+        },
+        {
+          "symbol": "NOVN.SW",
+          "name": "Novartis AG Registered Shares",
+          "weight": 0.0125066
+        },
+        {
+          "symbol": "SHEL.L",
+          "name": "Shell PLC",
+          "weight": 0.0113151
+        },
+        {
+          "symbol": "NESN.SW",
+          "name": "Nestle SA",
+          "weight": 0.0112517
+        },
+        {
+          "symbol": "8306.T",
+          "name": "Mitsubishi UFJ Financial Group Inc",
+          "weight": 0.0110179
+        },
+        {
+          "symbol": "AZN.L",
+          "name": "AstraZeneca PLC",
+          "weight": 0.010986101
+        },
+        {
+          "symbol": "BHP.AX",
+          "name": "BHP Group Ltd",
+          "weight": 0.0107963
+        },
+        {
+          "symbol": "SIE.DE",
+          "name": "Siemens AG",
+          "weight": 0.0107422
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/EFA/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "EWJ": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The underlying index is designed to measure the performance of the large- and mid-capitalization segments of the Japanese equity market.",
+      "family": "iShares",
+      "category": "Japan Stock",
+      "profile_source": "https://finance.yahoo.com/quote/EWJ/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "8306.T",
+          "name": "Mitsubishi UFJ Financial Group Inc",
+          "weight": 0.0462976
+        },
+        {
+          "symbol": "7203.T",
+          "name": "Toyota Motor Corp",
+          "weight": 0.035266098
+        },
+        {
+          "symbol": "8316.T",
+          "name": "Sumitomo Mitsui Financial Group Inc",
+          "weight": 0.0298736
+        },
+        {
+          "symbol": "8035.T",
+          "name": "Tokyo Electron Ltd",
+          "weight": 0.029559901
+        },
+        {
+          "symbol": "6857.T",
+          "name": "Advantest Corp",
+          "weight": 0.029048
+        },
+        {
+          "symbol": "6098.T",
+          "name": "Recruit Holdings Co Ltd",
+          "weight": 0.0284337
+        },
+        {
+          "symbol": "6501.T",
+          "name": "Hitachi Ltd",
+          "weight": 0.0283253
+        },
+        {
+          "symbol": "6758.T",
+          "name": "Sony Group Corp",
+          "weight": 0.0275123
+        },
+        {
+          "symbol": "8411.T",
+          "name": "Mizuho Financial Group Inc",
+          "weight": 0.0235696
+        },
+        {
+          "symbol": "9984.T",
+          "name": "SoftBank Group Corp",
+          "weight": 0.022739898
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/EWJ/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "EWT": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index is a free float-adjusted market capitalization-weighted index that is designed to measure the performance of the large- and mid-capitalization segments of the equity market in Taiwan. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Greater China Region",
+      "profile_source": "https://finance.yahoo.com/quote/EWT/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "2330.TW",
+          "name": "Taiwan Semiconductor Manufacturing Co Ltd",
+          "weight": 0.2212773
+        },
+        {
+          "symbol": "2454.TW",
+          "name": "MediaTek Inc",
+          "weight": 0.0597199
+        },
+        {
+          "symbol": "2308.TW",
+          "name": "Delta Electronics Inc",
+          "weight": 0.0395911
+        },
+        {
+          "symbol": "2317.TW",
+          "name": "Hon Hai Precision Industry Co Ltd",
+          "weight": 0.0334033
+        },
+        {
+          "symbol": "3711.TW",
+          "name": "ASE Technology Holding Co Ltd",
+          "weight": 0.0256288
+        },
+        {
+          "symbol": "2383.TW",
+          "name": "Elite Material Co Ltd",
+          "weight": 0.0216779
+        },
+        {
+          "symbol": "1303.TW",
+          "name": "Nan Ya Plastics Corp",
+          "weight": 0.020673001
+        },
+        {
+          "symbol": "3037.TW",
+          "name": "Unimicron Technology Corp",
+          "weight": 0.019860601
+        },
+        {
+          "symbol": "2303.TW",
+          "name": "United Microelectronics Corp",
+          "weight": 0.0193245
+        },
+        {
+          "symbol": "3017.TW",
+          "name": "Asia Vital Components Co Ltd",
+          "weight": 0.018806
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/EWT/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "EWY": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index is a free float-adjusted market capitalization-weighted index that is designed to measure the performance of the large- and mid-capitalization segments of the equity market in Korea. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Focused Region",
+      "profile_source": "https://finance.yahoo.com/quote/EWY/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "000660.KQ",
+          "name": "SK hynix Inc",
+          "weight": 0.23692751
+        },
+        {
+          "symbol": "005930.KQ",
+          "name": "Samsung Electronics Co Ltd",
+          "weight": 0.222434
+        },
+        {
+          "symbol": "402340.KQ",
+          "name": "SK Square",
+          "weight": 0.0286159
+        },
+        {
+          "symbol": "009150.KQ",
+          "name": "Samsung Electro-Mechanics Co Ltd",
+          "weight": 0.0265836
+        },
+        {
+          "symbol": "105560.KQ",
+          "name": "KB Financial Group Inc",
+          "weight": 0.0199499
+        },
+        {
+          "symbol": "005380.KQ",
+          "name": "Hyundai Motor Co",
+          "weight": 0.0172373
+        },
+        {
+          "symbol": "055550.KQ",
+          "name": "Shinhan Financial Group Co Ltd",
+          "weight": 0.0161633
+        },
+        {
+          "symbol": "086790.KQ",
+          "name": "Hana Financial Group Inc",
+          "weight": 0.0137994
+        },
+        {
+          "symbol": "012450.KQ",
+          "name": "Hanwha Aerospace Co Ltd",
+          "weight": 0.0130944
+        },
+        {
+          "symbol": "006400.KQ",
+          "name": "Samsung SDI Co Ltd",
+          "weight": 0.012882
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/EWY/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "EWZ": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index is a free float-adjusted market capitalization-weighted index designed to measure the performance of the large- and mid- capitalization segments of the equity market in Brazil. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Focused Region",
+      "profile_source": "https://finance.yahoo.com/quote/EWZ/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "VALE3.SA",
+          "name": "Vale SA",
+          "weight": 0.1012421
+        },
+        {
+          "symbol": "NU",
+          "name": "Nu Holdings Ltd Ordinary Shares Class A",
+          "weight": 0.094522
+        },
+        {
+          "symbol": "ITUB4",
+          "name": "Itau Unibanco Holding SA Participating Preferred",
+          "weight": 0.0765002
+        },
+        {
+          "symbol": "PETR4",
+          "name": "Petroleo Brasileiro SA Petrobras Participating Preferred",
+          "weight": 0.070121996
+        },
+        {
+          "symbol": "PETR3.SA",
+          "name": "Petroleo Brasileiro SA Petrobras",
+          "weight": 0.0662121
+        },
+        {
+          "symbol": "BBDC4",
+          "name": "Bank Bradesco SA Participating Preferred",
+          "weight": 0.0360526
+        },
+        {
+          "symbol": "B3SA3.SA",
+          "name": "B3 SA - Brasil Bolsa Balcao",
+          "weight": 0.0335053
+        },
+        {
+          "symbol": "WEGE3.SA",
+          "name": "Weg SA",
+          "weight": 0.0330472
+        },
+        {
+          "symbol": "AXIA3.SA",
+          "name": "Axia Energia",
+          "weight": 0.0320317
+        },
+        {
+          "symbol": "ABEV3.SA",
+          "name": "Ambev SA",
+          "weight": 0.0280725
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/EWZ/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "FXI": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index designed to measure the performance of the largest companies in the Chinese equity market that trade on the Stock Exchange of Hong Kong and are available to international investors. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Greater China Region",
+      "profile_source": "https://finance.yahoo.com/quote/FXI/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "9988.HK",
+          "name": "Alibaba Group Holding Ltd Ordinary Shares",
+          "weight": 0.095185004
+        },
+        {
+          "symbol": "00939",
+          "name": "China Construction Bank Corp Class H",
+          "weight": 0.093703404
+        },
+        {
+          "symbol": "0700.HK",
+          "name": "Tencent Holdings Ltd",
+          "weight": 0.086549
+        },
+        {
+          "symbol": "01398",
+          "name": "Industrial And Commercial Bank Of China Ltd Class H",
+          "weight": 0.0636951
+        },
+        {
+          "symbol": "1810.HK",
+          "name": "Xiaomi Corp Class B",
+          "weight": 0.050082
+        },
+        {
+          "symbol": "3690.HK",
+          "name": "Meituan Class B",
+          "weight": 0.0448558
+        },
+        {
+          "symbol": "03988",
+          "name": "Bank Of China Ltd Class H",
+          "weight": 0.0415496
+        },
+        {
+          "symbol": "02318",
+          "name": "Ping An Insurance (Group) Co. of China Ltd Class H",
+          "weight": 0.0381308
+        },
+        {
+          "symbol": "9999.HK",
+          "name": "NetEase Inc Ordinary Shares",
+          "weight": 0.0364199
+        },
+        {
+          "symbol": "01211",
+          "name": "BYD Co Ltd Class H",
+          "weight": 0.033523902
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/FXI/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "GDX": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund normally invests at least 80% of its total assets in securities that comprise the fund’s benchmark index. The index is a modified capitalization weighted, float-adjusted index comprised of publicly traded companies primarily involved in the gold and silver mining industry. The fund is non-diversified.",
+      "family": "VanEck",
+      "category": "Equity Precious Metals",
+      "profile_source": "https://finance.yahoo.com/quote/GDX/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NEM",
+          "name": "Newmont Corp",
+          "weight": 0.107201
+        },
+        {
+          "symbol": "AEM.TO",
+          "name": "Agnico Eagle Mines Ltd",
+          "weight": 0.106572
+        },
+        {
+          "symbol": "ABX.TO",
+          "name": "Barrick Mining Corp",
+          "weight": 0.0742281
+        },
+        {
+          "symbol": "WPM.TO",
+          "name": "Wheaton Precious Metals Corp",
+          "weight": 0.0575105
+        },
+        {
+          "symbol": "AU",
+          "name": "Anglogold Ashanti PLC",
+          "weight": 0.0530199
+        },
+        {
+          "symbol": "FNV.TO",
+          "name": "Franco-Nevada Corp",
+          "weight": 0.04693
+        },
+        {
+          "symbol": "K.TO",
+          "name": "Kinross Gold Corp",
+          "weight": 0.043720998
+        },
+        {
+          "symbol": "GFI",
+          "name": "Gold Fields Ltd ADR",
+          "weight": 0.041827597
+        },
+        {
+          "symbol": "PAAS.TO",
+          "name": "Pan American Silver Corp",
+          "weight": 0.0263764
+        },
+        {
+          "symbol": "NST.AX",
+          "name": "Northern Star Resources Ltd",
+          "weight": 0.025639901
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/GDX/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "GDXJ": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund normally invests at least 80% of its total assets in securities that comprise the index. The index includes companies that generate at least 50% of their revenues from gold and/or silver mining/royalties/streaming or have mining projects with the potential to generate at least 50% of their revenues from gold and/or silver when developed. It is non-diversified.",
+      "family": "VanEck",
+      "category": "Equity Precious Metals",
+      "profile_source": "https://finance.yahoo.com/quote/GDXJ/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "EQX.TO",
+          "name": "Equinox Gold Corp Ordinary Shares Class A",
+          "weight": 0.071078
+        },
+        {
+          "symbol": "EVN.AX",
+          "name": "Evolution Mining Ltd",
+          "weight": 0.0635301
+        },
+        {
+          "symbol": "AGI.TO",
+          "name": "Alamos Gold Inc Class A",
+          "weight": 0.0568763
+        },
+        {
+          "symbol": "EDV.L",
+          "name": "Endeavour Mining PLC",
+          "weight": 0.0513619
+        },
+        {
+          "symbol": "CDE",
+          "name": "Coeur Mining Inc",
+          "weight": 0.0502067
+        },
+        {
+          "symbol": "ELD.TO",
+          "name": "Eldorado Gold Corp",
+          "weight": 0.0274912
+        },
+        {
+          "symbol": "PE&OLES.MX",
+          "name": "Industrias Penoles SAB de CV",
+          "weight": 0.0264553
+        },
+        {
+          "symbol": "HL",
+          "name": "Hecla Mining Co",
+          "weight": 0.026198002
+        },
+        {
+          "symbol": "IMG.TO",
+          "name": "Iamgold Corp",
+          "weight": 0.025674
+        },
+        {
+          "symbol": "AG.TO",
+          "name": "First Majestic Silver Corp",
+          "weight": 0.025088798
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/GDXJ/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "GLD": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The Trust holds gold bars and from time to time, issues Baskets in exchange for deposits of gold and distributes gold in connection with redemptions of Baskets. The investment objective of the Trust is for the Shares to reflect the performance of the price of gold bullion, less the Trust’s expenses. The Sponsor believes that, for many investors, the Shares represent a cost-effective investment in gold.",
+      "family": "State Street Investment Management",
+      "category": "Commodities Focused",
+      "profile_source": "https://finance.yahoo.com/quote/GLD/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "HYG": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The underlying index is a rules-based index consisting of U.S. dollar-denominated, high yield corporate bonds for sale in the U.S. The fund will invest at least 80% of its assets in the component securities of the underlying index, and the fund will invest at least 90% of its assets in fixed income securities of the types included in the underlying index that the advisor believes will help the fund track the underlying index.",
+      "family": "iShares",
+      "category": "High Yield Bond",
+      "profile_source": "https://finance.yahoo.com/quote/HYG/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "XTSLA",
+          "name": "BlackRock Cash Funds Treasury SL Agency",
+          "weight": 0.0134615
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/HYG/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "IBB": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and may invest up to 20% of its assets in certain futures, options and swap contracts, cash and cash equivalents. It is non-diversified.",
+      "family": "iShares",
+      "category": "Health",
+      "profile_source": "https://finance.yahoo.com/quote/IBB/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "AMGN",
+          "name": "Amgen Inc",
+          "weight": 0.08450499
+        },
+        {
+          "symbol": "VRTX",
+          "name": "Vertex Pharmaceuticals Inc",
+          "weight": 0.0805519
+        },
+        {
+          "symbol": "GILD",
+          "name": "Gilead Sciences Inc",
+          "weight": 0.0720712
+        },
+        {
+          "symbol": "REGN",
+          "name": "Regeneron Pharmaceuticals Inc",
+          "weight": 0.057178304
+        },
+        {
+          "symbol": "ARGX",
+          "name": "argenx SE ADR",
+          "weight": 0.0380097
+        },
+        {
+          "symbol": "MRNA",
+          "name": "Moderna Inc",
+          "weight": 0.0361583
+        },
+        {
+          "symbol": "NTRA",
+          "name": "Natera Inc",
+          "weight": 0.031177102
+        },
+        {
+          "symbol": "RVMD",
+          "name": "Revolution Medicines Inc Ordinary Shares",
+          "weight": 0.027753001
+        },
+        {
+          "symbol": "ILMN",
+          "name": "Illumina Inc",
+          "weight": 0.0228603
+        },
+        {
+          "symbol": "ALNY",
+          "name": "Alnylam Pharmaceuticals Inc",
+          "weight": 0.022692598
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/IBB/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "ICLN": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The index is designed to track the performance of approximately 100 clean energy-related companies. The fund generally invests at least 80% of its assets in the component securities of the index and in investments that have economic characteristics that are substantially identical to the component securities of the index and may invest up to 20% of its assets in certain futures, options and swap contracts, cash and cash equivalents, as well as in securities not included in the index. It is non-diversified.",
+      "family": "iShares",
+      "category": "Miscellaneous Sector",
+      "profile_source": "https://finance.yahoo.com/quote/ICLN/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "FSLR",
+          "name": "First Solar Inc",
+          "weight": 0.0786747
+        },
+        {
+          "symbol": "600900.SS",
+          "name": "China Yangtze Power Co Ltd Class A",
+          "weight": 0.077507704
+        },
+        {
+          "symbol": "BE",
+          "name": "Bloom Energy Corp Class A",
+          "weight": 0.0709088
+        },
+        {
+          "symbol": "NXT",
+          "name": "Nextpower Inc Class A",
+          "weight": 0.065333396
+        },
+        {
+          "symbol": "VWS.CO",
+          "name": "Vestas Wind Systems AS",
+          "weight": 0.045665797
+        },
+        {
+          "symbol": "ENPH",
+          "name": "Enphase Energy Inc",
+          "weight": 0.0454568
+        },
+        {
+          "symbol": "EQTL3.SA",
+          "name": "Equatorial SA",
+          "weight": 0.0312736
+        },
+        {
+          "symbol": "EDP.LS",
+          "name": "EDP-Energias De Portugal SA",
+          "weight": 0.029101301
+        },
+        {
+          "symbol": "PLUG",
+          "name": "Plug Power Inc",
+          "weight": 0.0285381
+        },
+        {
+          "symbol": "9502.T",
+          "name": "Chubu Electric Power Co Inc",
+          "weight": 0.0266734
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/ICLN/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "IEF": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The underlying index consists of publicly-issued U.S. Treasury securities that have a remaining maturity of greater than or equal to seven years and less than ten years and have $300 million or more of outstanding face value, excluding amounts held by the Federal Reserve System (the “Fed”). The fund will invest at least 80% of its assets in the component securities of the underlying index, and the fund will invest at least 90% of its assets in U.S. Treasury securities that BFA believes will help the fund track the underlying index.",
+      "family": "iShares",
+      "category": "Long Government",
+      "profile_source": "https://finance.yahoo.com/quote/IEF/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "IGV": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index measures the performance of U.S.-traded stocks from the software industry and select companies from the interactive home entertainment and interactive media and services sub-industries in the U.S. and Canada. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/IGV/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "PLTR",
+          "name": "Palantir Technologies Inc Ordinary Shares - Class A",
+          "weight": 0.1028956
+        },
+        {
+          "symbol": "PANW",
+          "name": "Palo Alto Networks Inc",
+          "weight": 0.097155
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.0917726
+        },
+        {
+          "symbol": "CRWD",
+          "name": "CrowdStrike Holdings Inc Class A",
+          "weight": 0.0737318
+        },
+        {
+          "symbol": "CRM",
+          "name": "Salesforce Inc",
+          "weight": 0.0660481
+        },
+        {
+          "symbol": "ORCL",
+          "name": "Oracle Corp",
+          "weight": 0.053262502
+        },
+        {
+          "symbol": "NOW",
+          "name": "ServiceNow Inc",
+          "weight": 0.048242602
+        },
+        {
+          "symbol": "ADBE",
+          "name": "Adobe Inc",
+          "weight": 0.0374076
+        },
+        {
+          "symbol": "FTNT",
+          "name": "Fortinet Inc",
+          "weight": 0.0336468
+        },
+        {
+          "symbol": "INTU",
+          "name": "Intuit Inc",
+          "weight": 0.0314079
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/IGV/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "INDA": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will collectively invest at least 80% of the fund's assets in the component securities of the underlying index and in investments that have economic characteristics that are substantially identical to the component securities of the underlying index. The index measures the performance of equity securities of companies whose market capitalization, as calculated by the index provider, represents the large- and mid-capitalization segments of the Indian securities market. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "India Equity",
+      "profile_source": "https://finance.yahoo.com/quote/INDA/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "HDFCBANK.NS",
+          "name": "HDFC Bank Ltd",
+          "weight": 0.064191
+        },
+        {
+          "symbol": "RELIANCE.NS",
+          "name": "Reliance Industries Ltd",
+          "weight": 0.0599048
+        },
+        {
+          "symbol": "ICICIBANK.NS",
+          "name": "ICICI Bank Ltd",
+          "weight": 0.056779698
+        },
+        {
+          "symbol": "BHARTIARTL.NS",
+          "name": "Bharti Airtel Ltd",
+          "weight": 0.0406721
+        },
+        {
+          "symbol": "INFY.NS",
+          "name": "Infosys Ltd",
+          "weight": 0.0258567
+        },
+        {
+          "symbol": "XTSLA",
+          "name": "BlackRock Cash Funds Treasury SL Agency",
+          "weight": 0.024398899
+        },
+        {
+          "symbol": "M&M.NS",
+          "name": "Mahindra & Mahindra Ltd",
+          "weight": 0.0222474
+        },
+        {
+          "symbol": "AXISBANK.BO",
+          "name": "Axis Bank Ltd",
+          "weight": 0.0214591
+        },
+        {
+          "symbol": "500034",
+          "name": "Bajaj Finance Ltd",
+          "weight": 0.021397
+        },
+        {
+          "symbol": "LT.NS",
+          "name": "Larsen & Toubro Ltd",
+          "weight": 0.0199717
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/INDA/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "ITA": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The index measures the performance of the aerospace and defense sector of the U.S. equity market, as defined by SPDJI. The fund generally will invest at least 80% of its assets in the component securities of its index and in investments that have economic characteristics that are substantially identical to the component securities of its index and may invest up to 20% of its assets in certain futures, options and swap contracts, cash and cash equivalents. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Industrials",
+      "profile_source": "https://finance.yahoo.com/quote/ITA/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "GE",
+          "name": "GE Aerospace",
+          "weight": 0.2159062
+        },
+        {
+          "symbol": "RTX",
+          "name": "RTX Corp",
+          "weight": 0.172441
+        },
+        {
+          "symbol": "BA",
+          "name": "Boeing Co",
+          "weight": 0.090761006
+        },
+        {
+          "symbol": "GD",
+          "name": "General Dynamics Corp",
+          "weight": 0.0482916
+        },
+        {
+          "symbol": "LMT",
+          "name": "Lockheed Martin Corp",
+          "weight": 0.047121502
+        },
+        {
+          "symbol": "NOC",
+          "name": "Northrop Grumman Corp",
+          "weight": 0.0441542
+        },
+        {
+          "symbol": "HWM",
+          "name": "Howmet Aerospace Inc",
+          "weight": 0.0435468
+        },
+        {
+          "symbol": "TDG",
+          "name": "TransDigm Group Inc",
+          "weight": 0.0428678
+        },
+        {
+          "symbol": "LHX",
+          "name": "L3Harris Technologies Inc",
+          "weight": 0.0369788
+        },
+        {
+          "symbol": "AXON",
+          "name": "Axon Enterprise Inc",
+          "weight": 0.0340451
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/ITA/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "IWD": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The underlying index is a subset of the Russell 1000® Index, which measures the performance of the large- and mid-capitalization sector of the U.S. equity market, as defined by Russell. BFA uses a representative sampling indexing strategy to manage the fund. The fund may use derivatives to gain or reduce exposure to the components of the underlying index or exposure to one or more market risk factors associated with such components.",
+      "family": "iShares",
+      "category": "Large Value",
+      "profile_source": "https://finance.yahoo.com/quote/IWD/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 0.0612885
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.0557125
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.0500122
+        },
+        {
+          "symbol": "JPM",
+          "name": "JPMorgan Chase & Co",
+          "weight": 0.0252639
+        },
+        {
+          "symbol": "BRK-B",
+          "name": "Berkshire Hathaway Inc Class B",
+          "weight": 0.0249111
+        },
+        {
+          "symbol": "XOM",
+          "name": "ExxonMobil Holdings Corp",
+          "weight": 0.0177769
+        },
+        {
+          "symbol": "JNJ",
+          "name": "Johnson & Johnson",
+          "weight": 0.0170011
+        },
+        {
+          "symbol": "CSCO",
+          "name": "Cisco Systems Inc",
+          "weight": 0.011585601
+        },
+        {
+          "symbol": "WMT",
+          "name": "Walmart Inc",
+          "weight": 0.0111677
+        },
+        {
+          "symbol": "ABBV",
+          "name": "AbbVie Inc",
+          "weight": 0.0110874
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/IWD/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "IWF": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The underlying index is a subset of the Russell 1000® Index, which measures the performance of the large- and mid-capitalization sector of the U.S. equity market, as defined by Russell. BFA uses a representative sampling indexing strategy to manage the fund. It is non-diversified.",
+      "family": "iShares",
+      "category": "Large Growth",
+      "profile_source": "https://finance.yahoo.com/quote/IWF/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.1545114
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.0744561
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.059321098
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.0565341
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.051687296
+        },
+        {
+          "symbol": "GOOG",
+          "name": "Alphabet Inc Class C",
+          "weight": 0.0478447
+        },
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.0324229
+        },
+        {
+          "symbol": "TSLA",
+          "name": "Tesla Inc",
+          "weight": 0.0322468
+        },
+        {
+          "symbol": "META",
+          "name": "Meta Platforms Inc Class A",
+          "weight": 0.0308795
+        },
+        {
+          "symbol": "LLY",
+          "name": "Eli Lilly and Co",
+          "weight": 0.0277053
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/IWF/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "IWM": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The underlying index is a float-adjusted capitalization-weighted index of equity securities issued by the approximately 1,933 smallest issuers in the Russell 3000 Index. The fund may use derivatives to gain or reduce exposure to the components of the underlying index or exposure to one or more market risk factors associated with such components.",
+      "family": "iShares",
+      "category": "Small Blend",
+      "profile_source": "https://finance.yahoo.com/quote/IWM/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "FROG",
+          "name": "JFrog Ltd Ordinary Shares",
+          "weight": 0.0034871
+        },
+        {
+          "symbol": "MOG-A",
+          "name": "Moog Inc Class A",
+          "weight": 0.0033969
+        },
+        {
+          "symbol": "XTSLA",
+          "name": "BlackRock Cash Funds Treasury SL Agency",
+          "weight": 0.0033926002
+        },
+        {
+          "symbol": "UMBF",
+          "name": "UMB Financial Corp",
+          "weight": 0.0033773
+        },
+        {
+          "symbol": "GKOS",
+          "name": "Glaukos Corp",
+          "weight": 0.0032978998
+        },
+        {
+          "symbol": "EAT",
+          "name": "Brinker International Inc",
+          "weight": 0.0031637
+        },
+        {
+          "symbol": "BTSG",
+          "name": "BrightSpring Health Services Inc",
+          "weight": 0.0030467
+        },
+        {
+          "symbol": "KRYS",
+          "name": "Krystal Biotech Inc",
+          "weight": 0.0029865
+        },
+        {
+          "symbol": "CYTK",
+          "name": "Cytokinetics Inc",
+          "weight": 0.0029846998
+        },
+        {
+          "symbol": "ONB",
+          "name": "Old National Bancorp",
+          "weight": 0.0028974
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/IWM/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "IYT": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index. The underlying index measures the performance of companies within the transportation sector of the U.S. equity market as determined by S&P Dow Jones Indices LLC. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Industrials",
+      "profile_source": "https://finance.yahoo.com/quote/IYT/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "UNP",
+          "name": "Union Pacific Corp",
+          "weight": 0.17845131
+        },
+        {
+          "symbol": "UBER",
+          "name": "Uber Technologies Inc",
+          "weight": 0.153941
+        },
+        {
+          "symbol": "CSX",
+          "name": "CSX Corp",
+          "weight": 0.0938229
+        },
+        {
+          "symbol": "UPS",
+          "name": "United Parcel Service Inc Class B",
+          "weight": 0.0562261
+        },
+        {
+          "symbol": "NSC",
+          "name": "Norfolk Southern Corp",
+          "weight": 0.0488238
+        },
+        {
+          "symbol": "FDX",
+          "name": "FedEx Corp",
+          "weight": 0.045124203
+        },
+        {
+          "symbol": "DAL",
+          "name": "Delta Air Lines Inc",
+          "weight": 0.044893097
+        },
+        {
+          "symbol": "UAL",
+          "name": "United Airlines Holdings Inc",
+          "weight": 0.044664003
+        },
+        {
+          "symbol": "ODFL",
+          "name": "Old Dominion Freight Line Inc Ordinary Shares",
+          "weight": 0.0372894
+        },
+        {
+          "symbol": "EXPD",
+          "name": "Expeditors International of Washington Inc",
+          "weight": 0.0315999
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/IYT/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "JETS": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund uses a \"passive management\" (or indexing) approach to track the performance, before fees and expenses, of the index. The index is composed of the exchange-listed common stock (or depositary receipts) of U.S. and international passenger airlines, aircraft manufacturers, airports, terminal services companies, and airline-related internet media and services companies, each as determined by independent industry listings (collectively, “Airline Companies”). The fund is non-diversified.",
+      "family": "U.S. Global Investors",
+      "category": "Industrials",
+      "profile_source": "https://finance.yahoo.com/quote/JETS/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "UAL",
+          "name": "United Airlines Holdings Inc",
+          "weight": 0.1044347
+        },
+        {
+          "symbol": "DAL",
+          "name": "Delta Air Lines Inc",
+          "weight": 0.1020031
+        },
+        {
+          "symbol": "AAL",
+          "name": "American Airlines Group Inc",
+          "weight": 0.1011341
+        },
+        {
+          "symbol": "LUV",
+          "name": "Southwest Airlines Co",
+          "weight": 0.093069
+        },
+        {
+          "symbol": "AC.TO",
+          "name": "Air Canada Ordinary Shares (Voting and Variable Voting)",
+          "weight": 0.0459365
+        },
+        {
+          "symbol": "SKYW",
+          "name": "SkyWest Inc",
+          "weight": 0.0383568
+        },
+        {
+          "symbol": "JBLU",
+          "name": "JetBlue Airways Corp",
+          "weight": 0.0335536
+        },
+        {
+          "symbol": "ALK",
+          "name": "Alaska Air Group Inc",
+          "weight": 0.032164298
+        },
+        {
+          "symbol": "ALGT",
+          "name": "Allegiant Travel Co",
+          "weight": 0.032127902
+        },
+        {
+          "symbol": "ULCC",
+          "name": "Frontier Group Holdings Inc",
+          "weight": 0.0317071
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/JETS/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "KBE": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally invests substantially all, but at least 80%, of its total assets in the securities comprising the index. The index represents the banks segment of the S&P Total Market Index (“S&P TMI”). The S&P TMI is designed to track the broad U.S. equity market. It may invest in equity securities that are not included in the index, cash and cash equivalents or money market instruments, such as repurchase agreements and money market funds.",
+      "family": "State Street Investment Management",
+      "category": "Financial",
+      "profile_source": "https://finance.yahoo.com/quote/KBE/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "JXN",
+          "name": "Jackson Financial Inc",
+          "weight": 0.0119043
+        },
+        {
+          "symbol": "NMIH",
+          "name": "NMI Holdings Inc",
+          "weight": 0.0113917
+        },
+        {
+          "symbol": "CRBG",
+          "name": "Corebridge Financial Inc",
+          "weight": 0.0113903
+        },
+        {
+          "symbol": "EQH",
+          "name": "Equitable Holdings Inc",
+          "weight": 0.011380101
+        },
+        {
+          "symbol": "MTG",
+          "name": "MGIC Investment Corp",
+          "weight": 0.0113377
+        },
+        {
+          "symbol": "TBBK",
+          "name": "The Bancorp Inc",
+          "weight": 0.011254099
+        },
+        {
+          "symbol": "NIC",
+          "name": "Nicolet Bankshares Inc",
+          "weight": 0.011124199
+        },
+        {
+          "symbol": "BNY",
+          "name": "Bank of New York Mellon Corp",
+          "weight": 0.0109798005
+        },
+        {
+          "symbol": "JPM",
+          "name": "JPMorgan Chase & Co",
+          "weight": 0.0109567
+        },
+        {
+          "symbol": "ESNT",
+          "name": "Essent Group Ltd",
+          "weight": 0.0109296
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/KBE/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "KRE": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the S&P Regional Banks Select Industry Index (the \"index\"), the fund employs a sampling strategy. It generally invests substantially all, but at least 80%, of its total assets in the securities comprising the index. The index represents the regional banks segment of the S&P Total Market Index (\"S&P TMI\").",
+      "family": "State Street Investment Management",
+      "category": "Financial",
+      "profile_source": "https://finance.yahoo.com/quote/KRE/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "CFR",
+          "name": "Cullen/Frost Bankers Inc",
+          "weight": 0.0146414
+        },
+        {
+          "symbol": "SSB",
+          "name": "SouthState Bank Corp",
+          "weight": 0.014268599
+        },
+        {
+          "symbol": "BPOP",
+          "name": "Popular Inc",
+          "weight": 0.0141653
+        },
+        {
+          "symbol": "PNFP",
+          "name": "Pinnacle Financial Partners Inc",
+          "weight": 0.0141188
+        },
+        {
+          "symbol": "UMBF",
+          "name": "UMB Financial Corp",
+          "weight": 0.014113899
+        },
+        {
+          "symbol": "ASB",
+          "name": "Associated Banc-Corp",
+          "weight": 0.0140652
+        },
+        {
+          "symbol": "HOMB",
+          "name": "Home BancShares Inc",
+          "weight": 0.0140325
+        },
+        {
+          "symbol": "CFG",
+          "name": "Citizens Financial Group Inc",
+          "weight": 0.0139431
+        },
+        {
+          "symbol": "CBSH",
+          "name": "Commerce Bancshares Inc",
+          "weight": 0.013910299
+        },
+        {
+          "symbol": "HWC",
+          "name": "Hancock Whitney Corp",
+          "weight": 0.0138286995
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/KRE/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "LQD": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund will invest at least 80% of its assets in the component securities of the underlying index, and it will invest at least 90% of its assets in fixed income securities of the types included in the underlying index that the advisor believes will help the fund track the underlying index. The underlying index is designed to provide a broad representation of the U.S. dollar-denominated liquid investment-grade corporate bond market.",
+      "family": "iShares",
+      "category": "Corporate Bond",
+      "profile_source": "https://finance.yahoo.com/quote/LQD/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "XTSLA",
+          "name": "BlackRock Cash Funds Treasury SL Agency",
+          "weight": 0.0102399
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/LQD/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "MCHI": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of the underlying index and in investments that have economic characteristics that are substantially identical to the component securities of the underlying index. The index is a free float-adjusted market capitalization-weighted index that is designed to measure the performance of equity securities in the top 85% in market capitalization of the Chinese equity securities markets, as represented by the H-shares and B-shares markets. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Greater China Region",
+      "profile_source": "https://finance.yahoo.com/quote/MCHI/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "0700.HK",
+          "name": "Tencent Holdings Ltd",
+          "weight": 0.1387313
+        },
+        {
+          "symbol": "9988.HK",
+          "name": "Alibaba Group Holding Ltd Ordinary Shares",
+          "weight": 0.0955989
+        },
+        {
+          "symbol": "00939",
+          "name": "China Construction Bank Corp Class H",
+          "weight": 0.0399048
+        },
+        {
+          "symbol": "01398",
+          "name": "Industrial And Commercial Bank Of China Ltd Class H",
+          "weight": 0.024605801
+        },
+        {
+          "symbol": "1810.HK",
+          "name": "Xiaomi Corp Class B",
+          "weight": 0.0235312
+        },
+        {
+          "symbol": "3690.HK",
+          "name": "Meituan Class B",
+          "weight": 0.0198268
+        },
+        {
+          "symbol": "03988",
+          "name": "Bank Of China Ltd Class H",
+          "weight": 0.0196983
+        },
+        {
+          "symbol": "02318",
+          "name": "Ping An Insurance (Group) Co. of China Ltd Class H",
+          "weight": 0.017392
+        },
+        {
+          "symbol": "PDD",
+          "name": "PDD Holdings Inc ADR",
+          "weight": 0.0169382
+        },
+        {
+          "symbol": "9999.HK",
+          "name": "NetEase Inc Ordinary Shares",
+          "weight": 0.0168821
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/MCHI/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "MDY": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The Trust seeks to achieve its investment objective by holding a portfolio of the common stocks that are included in the index (the “Portfolio”), with the weight of each stock in the Portfolio substantially corresponding to the weight of such stock in the index.",
+      "family": "State Street Investment Management",
+      "category": "Mid-Cap Blend",
+      "profile_source": "https://finance.yahoo.com/quote/MDY/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "TWLO",
+          "name": "Twilio Inc Class A",
+          "weight": 0.0100358995
+        },
+        {
+          "symbol": "ILMN",
+          "name": "Illumina Inc",
+          "weight": 0.0090704
+        },
+        {
+          "symbol": "FTI",
+          "name": "TechnipFMC PLC",
+          "weight": 0.0087439
+        },
+        {
+          "symbol": "P",
+          "name": "Everpure Inc Class A",
+          "weight": 0.0082307
+        },
+        {
+          "symbol": "OKTA",
+          "name": "Okta Inc Class A",
+          "weight": 0.0081414
+        },
+        {
+          "symbol": "ATI",
+          "name": "ATI Inc",
+          "weight": 0.0078202
+        },
+        {
+          "symbol": "NVT",
+          "name": "nVent Electric PLC",
+          "weight": 0.0068414
+        },
+        {
+          "symbol": "CRS",
+          "name": "Carpenter Technology Corp",
+          "weight": 0.0066428
+        },
+        {
+          "symbol": "USFD",
+          "name": "US Foods Holding Corp",
+          "weight": 0.0064791
+        },
+        {
+          "symbol": "THC",
+          "name": "Tenet Healthcare Corp",
+          "weight": 0.0064275996
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/MDY/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "MTUM": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index consists of stocks exhibiting relatively higher momentum characteristics than the traditional market capitalization-weighted parent index, the MSCI USA Index.",
+      "family": "iShares",
+      "category": "Large Blend",
+      "profile_source": "https://finance.yahoo.com/quote/MTUM/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.0515002
+        },
+        {
+          "symbol": "AMD",
+          "name": "Advanced Micro Devices Inc",
+          "weight": 0.0508026
+        },
+        {
+          "symbol": "INTC",
+          "name": "Intel Corp",
+          "weight": 0.0373048
+        },
+        {
+          "symbol": "CSCO",
+          "name": "Cisco Systems Inc",
+          "weight": 0.0360622
+        },
+        {
+          "symbol": "JNJ",
+          "name": "Johnson & Johnson",
+          "weight": 0.0340399
+        },
+        {
+          "symbol": "AMAT",
+          "name": "Applied Materials Inc",
+          "weight": 0.029231701
+        },
+        {
+          "symbol": "SNDK",
+          "name": "SanDisk Corp Ordinary Shares",
+          "weight": 0.0285424
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.0276796
+        },
+        {
+          "symbol": "PANW",
+          "name": "Palo Alto Networks Inc",
+          "weight": 0.027352
+        },
+        {
+          "symbol": "XOM",
+          "name": "ExxonMobil Holdings Corp",
+          "weight": 0.0264019
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/MTUM/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "PPA": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 90% of its total assets in securities that comprise the underlying index. The underlying index is composed of common stocks of companies that are systematically important to the defense sector and are involved with the development, manufacture, operation and support of U.S. defense, military, national/homeland security, and government space operations. The fund is non-diversified.",
+      "family": "Invesco",
+      "category": "Industrials",
+      "profile_source": "https://finance.yahoo.com/quote/PPA/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "RTX",
+          "name": "RTX Corp",
+          "weight": 0.0837745
+        },
+        {
+          "symbol": "GE",
+          "name": "GE Aerospace",
+          "weight": 0.069411606
+        },
+        {
+          "symbol": "BA",
+          "name": "Boeing Co",
+          "weight": 0.0683632
+        },
+        {
+          "symbol": "LMT",
+          "name": "Lockheed Martin Corp",
+          "weight": 0.0658993
+        },
+        {
+          "symbol": "GD",
+          "name": "General Dynamics Corp",
+          "weight": 0.0503654
+        },
+        {
+          "symbol": "NOC",
+          "name": "Northrop Grumman Corp",
+          "weight": 0.0490274
+        },
+        {
+          "symbol": "HWM",
+          "name": "Howmet Aerospace Inc",
+          "weight": 0.043069102
+        },
+        {
+          "symbol": "PH",
+          "name": "Parker Hannifin Corp",
+          "weight": 0.0385851
+        },
+        {
+          "symbol": "AXON",
+          "name": "Axon Enterprise Inc",
+          "weight": 0.0373322
+        },
+        {
+          "symbol": "LHX",
+          "name": "L3Harris Technologies Inc",
+          "weight": 0.0372618
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/PPA/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "QQQ": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "To maintain the correspondence between the composition and weights of the securities in the trust (the \"securities\") and the stocks in the NASDAQ-100 Index®, the adviser adjusts the securities from time to time to conform to periodic changes in the identity and/or relative weights of index securities. The composition and weighting of the securities portion of a portfolio deposit are also adjusted to conform to changes in the index.",
+      "family": "Invesco",
+      "category": "Large Growth",
+      "profile_source": "https://finance.yahoo.com/quote/QQQ/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.0850652
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.0740928
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.059995297
+        },
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.047521602
+        },
+        {
+          "symbol": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 0.044489898
+        },
+        {
+          "symbol": "AMD",
+          "name": "Advanced Micro Devices Inc",
+          "weight": 0.033736803
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.0314663
+        },
+        {
+          "symbol": "TSLA",
+          "name": "Tesla Inc",
+          "weight": 0.029264601
+        },
+        {
+          "symbol": "GOOG",
+          "name": "Alphabet Inc Class C",
+          "weight": 0.029135698
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.0279556
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/QQQ/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "QUAL": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of the underlying index and may invest up to 20% of its assets in certain futures, options and swap contracts, cash and cash equivalents. The index is based on a traditional market capitalization-weighted parent index, the MSCI USA Index.",
+      "family": "iShares",
+      "category": "Large Blend",
+      "profile_source": "https://finance.yahoo.com/quote/QUAL/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.0775431
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.0676217
+        },
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.063855
+        },
+        {
+          "symbol": "META",
+          "name": "Meta Platforms Inc Class A",
+          "weight": 0.0376128
+        },
+        {
+          "symbol": "LLY",
+          "name": "Eli Lilly and Co",
+          "weight": 0.0365899
+        },
+        {
+          "symbol": "LRCX",
+          "name": "Lam Research Corp",
+          "weight": 0.0356475
+        },
+        {
+          "symbol": "TJX",
+          "name": "TJX Companies Inc",
+          "weight": 0.0335851
+        },
+        {
+          "symbol": "V",
+          "name": "Visa Inc Class A",
+          "weight": 0.0325508
+        },
+        {
+          "symbol": "AMAT",
+          "name": "Applied Materials Inc",
+          "weight": 0.0278126
+        },
+        {
+          "symbol": "KLAC",
+          "name": "KLA Corp",
+          "weight": 0.023515798
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/QUAL/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "ROBO": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund will normally invest at least 80% of its total assets in securities of the index or in depositary receipts representing securities of the index. The index is designed to measure the performance of robotics-related and/or automation-related companies. The fund may invest up to 20% of its assets in investments that are not included in the index, but which the Adviser and Sub-Adviser believe will help it track the index. It is non-diversified.",
+      "family": "Robo Global",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/ROBO/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "ILMN",
+          "name": "Illumina Inc",
+          "weight": 0.019716801
+        },
+        {
+          "symbol": "AUTO.OL",
+          "name": "AutoStore Holdings Ltd Ordinary Shares",
+          "weight": 0.019454401
+        },
+        {
+          "symbol": "G1A.DE",
+          "name": "GEA Group AG",
+          "weight": 0.018644
+        },
+        {
+          "symbol": "ZBRA",
+          "name": "Zebra Technologies Corp Ordinary Shares - Class A",
+          "weight": 0.0185008
+        },
+        {
+          "symbol": "2395.TW",
+          "name": "Advantech Co Ltd",
+          "weight": 0.0178426
+        },
+        {
+          "symbol": "IOT",
+          "name": "Samsara Inc Ordinary Shares - Class A",
+          "weight": 0.0169449
+        },
+        {
+          "symbol": "1590.TW",
+          "name": "Airtac International Group",
+          "weight": 0.0167572
+        },
+        {
+          "symbol": "NDSN",
+          "name": "Nordson Corp",
+          "weight": 0.0167365
+        },
+        {
+          "symbol": "EMR",
+          "name": "Emerson Electric Co",
+          "weight": 0.016734801
+        },
+        {
+          "symbol": "AMBA",
+          "name": "Ambarella Inc",
+          "weight": 0.0166646
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/ROBO/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "RSP": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 90% of its total assets in securities that comprise the underlying index. Strictly in accordance with its guidelines and mandated procedures, the index provider compiles, maintains and calculates the underlying index, which consists of all of the of the S&P 500® Index.",
+      "family": "Invesco",
+      "category": "Large Blend",
+      "profile_source": "https://finance.yahoo.com/quote/RSP/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "MRNA",
+          "name": "Moderna Inc",
+          "weight": 0.0057504
+        },
+        {
+          "symbol": "VEEV",
+          "name": "Veeva Systems Inc Class A",
+          "weight": 0.0032868
+        },
+        {
+          "symbol": "ZBRA",
+          "name": "Zebra Technologies Corp Ordinary Shares - Class A",
+          "weight": 0.0030728998
+        },
+        {
+          "symbol": "CRL",
+          "name": "Charles River Laboratories International Inc",
+          "weight": 0.002915
+        },
+        {
+          "symbol": "DASH",
+          "name": "DoorDash Inc Ordinary Shares - Class A",
+          "weight": 0.0028917
+        },
+        {
+          "symbol": "CRM",
+          "name": "Salesforce Inc",
+          "weight": 0.0028378002
+        },
+        {
+          "symbol": "GPN",
+          "name": "Global Payments Inc",
+          "weight": 0.0027462
+        },
+        {
+          "symbol": "PANW",
+          "name": "Palo Alto Networks Inc",
+          "weight": 0.0027353999
+        },
+        {
+          "symbol": "EXPE",
+          "name": "Expedia Group Inc",
+          "weight": 0.0027285998
+        },
+        {
+          "symbol": "WDAY",
+          "name": "Workday Inc Class A",
+          "weight": 0.0027074998
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/RSP/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "SHY": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The underlying index consists of publicly-issued U.S. Treasury securities that have a remaining maturity of greater than or equal to one year and less than three years and have $300 million or more of outstanding face value, excluding amounts held by the Federal Reserve System. The fund will invest at least 80% of its assets in the component securities of the underlying index, and the fund will invest at least 90% of its assets in U.S. Treasury securities that BFA believes will help the fund track the underlying index.",
+      "family": "iShares",
+      "category": "Short Government",
+      "profile_source": "https://finance.yahoo.com/quote/SHY/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "SKYY": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund will normally invest at least 90% of its net assets (including investment borrowings) in the common stocks and depositary receipts that comprise the index. The index is designed to track the performance of companies involved in the cloud computing industry.",
+      "family": "First Trust",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/SKYY/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NTNX",
+          "name": "Nutanix Inc Class A",
+          "weight": 0.0420436
+        },
+        {
+          "symbol": "ANET",
+          "name": "Arista Networks Inc",
+          "weight": 0.0391781
+        },
+        {
+          "symbol": "P",
+          "name": "Everpure Inc Class A",
+          "weight": 0.0373234
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.0359717
+        },
+        {
+          "symbol": "MDB",
+          "name": "MongoDB Inc Class A",
+          "weight": 0.035947002
+        },
+        {
+          "symbol": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 0.0306443
+        },
+        {
+          "symbol": "TEAM",
+          "name": "Atlassian Corp Class A",
+          "weight": 0.028803999
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.028485999
+        },
+        {
+          "symbol": "NET",
+          "name": "Cloudflare Inc",
+          "weight": 0.0268546
+        },
+        {
+          "symbol": "IBM",
+          "name": "International Business Machines Corp",
+          "weight": 0.025072701
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/SKYY/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "SLV": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The Trust seeks to reflect such performance before payment of the Trust's expenses and liabilities. It is not actively managed. The Trust does not engage in any activities designed to obtain a profit from, or to ameliorate losses caused by, changes in the price of silver.",
+      "family": "iShares",
+      "category": "Commodities Focused",
+      "profile_source": "https://finance.yahoo.com/quote/SLV/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "SMH": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund normally invests at least 80% of its total assets in securities that comprise the fund's benchmark index. The index includes common stocks and depositary receipts of U.S. exchange-listed companies in the semiconductor industry. Such companies may include medium-capitalization companies and foreign companies that are listed on a U.S. exchange. The fund is non-diversified.",
+      "family": "VanEck",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/SMH/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.2262537
+        },
+        {
+          "symbol": "TSM",
+          "name": "Taiwan Semiconductor Manufacturing Co Ltd ADR",
+          "weight": 0.096530505
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.061076898
+        },
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.054503698
+        },
+        {
+          "symbol": "AMD",
+          "name": "Advanced Micro Devices Inc",
+          "weight": 0.0536277
+        },
+        {
+          "symbol": "ASML",
+          "name": "ASML Holding NV ADR",
+          "weight": 0.0509663
+        },
+        {
+          "symbol": "LRCX",
+          "name": "Lam Research Corp",
+          "weight": 0.04399
+        },
+        {
+          "symbol": "AMAT",
+          "name": "Applied Materials Inc",
+          "weight": 0.0435639
+        },
+        {
+          "symbol": "ADI",
+          "name": "Analog Devices Inc",
+          "weight": 0.0432092
+        },
+        {
+          "symbol": "TXN",
+          "name": "Texas Instruments Inc",
+          "weight": 0.043012198
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/SMH/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "SOXX": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of its index and in investments that have economic characteristics that are substantially identical to the component securities of its index and may invest up to 20% of its assets in certain futures, options and swap contracts, cash and cash equivalents. The fund is non-diversified.",
+      "family": "iShares",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/SOXX/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.094308205
+        },
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.0890507
+        },
+        {
+          "symbol": "AMD",
+          "name": "Advanced Micro Devices Inc",
+          "weight": 0.0822601
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.0747613
+        },
+        {
+          "symbol": "INTC",
+          "name": "Intel Corp",
+          "weight": 0.050920602
+        },
+        {
+          "symbol": "MRVL",
+          "name": "Marvell Technology Inc",
+          "weight": 0.0465602
+        },
+        {
+          "symbol": "TSM",
+          "name": "Taiwan Semiconductor Manufacturing Co Ltd ADR",
+          "weight": 0.0465258
+        },
+        {
+          "symbol": "AMAT",
+          "name": "Applied Materials Inc",
+          "weight": 0.0459298
+        },
+        {
+          "symbol": "LRCX",
+          "name": "Lam Research Corp",
+          "weight": 0.0427297
+        },
+        {
+          "symbol": "KLAC",
+          "name": "KLA Corp",
+          "weight": 0.041171398
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/SOXX/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "SPY": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The trust seeks to achieve its investment objective by holding a portfolio of the common stocks that are included in the index (the “Portfolio”), with the weight of each stock in the Portfolio substantially corresponding to the weight of such stock in the index.",
+      "family": "State Street Investment Management",
+      "category": "Large Blend",
+      "profile_source": "https://finance.yahoo.com/quote/SPY/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.08078709
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.0703063
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.0569307
+        },
+        {
+          "symbol": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 0.0384188
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.0300627
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.026491001
+        },
+        {
+          "symbol": "GOOG",
+          "name": "Alphabet Inc Class C",
+          "weight": 0.0239504
+        },
+        {
+          "symbol": "META",
+          "name": "Meta Platforms Inc Class A",
+          "weight": 0.0189886
+        },
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.0163338
+        },
+        {
+          "symbol": "TSLA",
+          "name": "Tesla Inc",
+          "weight": 0.0156492
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/SPY/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "TAN": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund will generally invest at least 90% of its total assets in the securities that comprise the underlying index. Strictly in accordance with its guidelines and mandated procedures, MAC Indexing LLC, has contracted with S&P DJI Netherlands B.V. to calculate and administer the underlying index, which seeks to track the performance of companies in global solar energy businesses. The fund is non-diversified.",
+      "family": "Invesco",
+      "category": "Miscellaneous Sector",
+      "profile_source": "https://finance.yahoo.com/quote/TAN/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "FSLR",
+          "name": "First Solar Inc",
+          "weight": 0.0988735
+        },
+        {
+          "symbol": "NXT",
+          "name": "Nextpower Inc",
+          "weight": 0.0881048
+        },
+        {
+          "symbol": "ENLT.TA",
+          "name": "Enlight Renewable Energy Ltd",
+          "weight": 0.0721896
+        },
+        {
+          "symbol": "ENPH",
+          "name": "Enphase Energy Inc",
+          "weight": 0.065517806
+        },
+        {
+          "symbol": "DORL.TA",
+          "name": "Doral Group Renewable Eneryy Resources Ltd Ordinary Shares",
+          "weight": 0.0468123
+        },
+        {
+          "symbol": "HASI",
+          "name": "HA Sustainable Infrastructure Capital Inc",
+          "weight": 0.0462287
+        },
+        {
+          "symbol": "3800.HK",
+          "name": "GCL Technology Holdings Ltd",
+          "weight": 0.040525697
+        },
+        {
+          "symbol": "RUN",
+          "name": "Sunrun Inc",
+          "weight": 0.0379575
+        },
+        {
+          "symbol": "CWEN",
+          "name": "Clearway Energy Inc Class C",
+          "weight": 0.0366387
+        },
+        {
+          "symbol": "SEDG",
+          "name": "SolarEdge Technologies Inc",
+          "weight": 0.035036698
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/TAN/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "TIP": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The index tracks the performance of inflation-protected public obligations of the U.S. Treasury, commonly known as “TIPS,” that have a remaining maturity of more than one year. The fund will invest at least 80% of its assets in the component securities of the index, and it will invest at least 90% of its assets in U.S. Treasury securities that BFA believes will help the fund track the index.",
+      "family": "iShares",
+      "category": "Inflation-Protected Bond",
+      "profile_source": "https://finance.yahoo.com/quote/TIP/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "TLT": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The underlying index consists of publicly-issued U.S. Treasury securities that have a remaining maturity greater than twenty years and have $300 million or more of outstanding face value, excluding amounts held by the Federal Reserve System (the “Fed”). The fund will invest at least 80% of its assets in the component securities of the underlying index, and the fund will invest at least 90% of its assets in U.S. Treasury securities that manager believes will help the fund track the underlying index.",
+      "family": "iShares",
+      "category": "Long Government",
+      "profile_source": "https://finance.yahoo.com/quote/TLT/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "UNG": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund invests primarily in futures contracts for natural gas that are traded on the NYMEX, ICE Futures Europe and ICE Futures U.S. (together, “ICE Futures”) or other U.S. and foreign exchanges. The Benchmark Futures Contract is the futures contract on natural gas as traded on the New York Mercantile Exchange that is the near month contract to expire, except when the near month contract is within two weeks of expiration.",
+      "family": "USCF Investments",
+      "category": "Commodities Focused",
+      "profile_source": "https://finance.yahoo.com/quote/UNG/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "URA": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund invests at least 80% of its total assets in the securities of the underlying index and in American Depositary Receipts (\"ADRs\") and Global Depositary Receipts (\"GDRs\") based on the securities in the underlying index. The underlying index is designed to measure broad based equity market performance of global companies involved in the uranium industry. The fund is non-diversified.",
+      "family": "Global X Funds",
+      "category": "Natural Resources",
+      "profile_source": "https://finance.yahoo.com/quote/URA/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "CCO.TO",
+          "name": "Cameco Corp",
+          "weight": 0.21949539
+        },
+        {
+          "symbol": "NXE.TO",
+          "name": "NexGen Energy Ltd",
+          "weight": 0.0600664
+        },
+        {
+          "symbol": "OKLO",
+          "name": "Oklo Inc Class A Shares",
+          "weight": 0.055033997
+        },
+        {
+          "symbol": "UEC",
+          "name": "Uranium Energy Corp",
+          "weight": 0.053001698
+        },
+        {
+          "symbol": "KAP",
+          "name": "National Atomic Co Kazatomprom JSC GDR - Regulation S",
+          "weight": 0.0447907
+        },
+        {
+          "symbol": "PDN.AX",
+          "name": "Paladin Energy Ltd",
+          "weight": 0.0341517
+        },
+        {
+          "symbol": "EFR.TO",
+          "name": "Energy Fuels Inc",
+          "weight": 0.033683
+        },
+        {
+          "symbol": "XE",
+          "name": "X-Energy Inc Class A",
+          "weight": 0.0296416
+        },
+        {
+          "symbol": "LEU",
+          "name": "Centrus Energy Corp Class A",
+          "weight": 0.0289476
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/URA/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "USMV": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index measures the performance of large and mid-capitalization equity securities listed on stock exchanges in the U.S. that, in the aggregate, have lower volatility relative to the large- and mid-cap U.S. equity market.",
+      "family": "iShares",
+      "category": "Large Blend",
+      "profile_source": "https://finance.yahoo.com/quote/USMV/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.015649
+        },
+        {
+          "symbol": "APH",
+          "name": "Amphenol Corp Class A",
+          "weight": 0.0151798995
+        },
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.0151613
+        },
+        {
+          "symbol": "MSI",
+          "name": "Motorola Solutions Inc",
+          "weight": 0.015078699
+        },
+        {
+          "symbol": "WELL",
+          "name": "Welltower Inc",
+          "weight": 0.0149725
+        },
+        {
+          "symbol": "VZ",
+          "name": "Verizon Communications Inc",
+          "weight": 0.0145412
+        },
+        {
+          "symbol": "JNJ",
+          "name": "Johnson & Johnson",
+          "weight": 0.0145270005
+        },
+        {
+          "symbol": "CB",
+          "name": "Chubb Ltd",
+          "weight": 0.0145119
+        },
+        {
+          "symbol": "MRK",
+          "name": "Merck & Co Inc",
+          "weight": 0.0145043
+        },
+        {
+          "symbol": "VRTX",
+          "name": "Vertex Pharmaceuticals Inc",
+          "weight": 0.0142836
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/USMV/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "USO": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "USO seeks to achieve its investment objective by investing primarily in futures contracts for light, sweet crude oil, other types of crude oil, diesel-heating oil, gasoline, natural gas, and other petroleum-based fuels.",
+      "family": "USCF Investments",
+      "category": "Commodities Focused",
+      "profile_source": "https://finance.yahoo.com/quote/USO/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [],
+      "holdings_status": "unavailable"
+    },
+    "VGK": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund employs an indexing investment approach designed to track the performance of the FTSE Developed Europe All Cap Index, a market-capitalization weighted index that is made up of common stocks of companies located in European countries. Under normal circumstances, the fund invests at least 80% of its net assets, plus the amount of any borrowings for investment purposes, in the stocks that make up the target Index.",
+      "family": "Vanguard",
+      "category": "Europe Stock",
+      "profile_source": "https://finance.yahoo.com/quote/VGK/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "ASML.AS",
+          "name": "ASML Holding NV",
+          "weight": 0.040219404
+        },
+        {
+          "symbol": "HSBA.L",
+          "name": "HSBC Holdings PLC",
+          "weight": 0.0215989
+        },
+        {
+          "symbol": "ROP.SW",
+          "name": "Roche Holding AG Ordinary Shares new",
+          "weight": 0.0188423
+        },
+        {
+          "symbol": "NOVN.SW",
+          "name": "Novartis AG Registered Shares",
+          "weight": 0.0174366
+        },
+        {
+          "symbol": "SHEL.L",
+          "name": "Shell PLC",
+          "weight": 0.0158087
+        },
+        {
+          "symbol": "NESN.SW",
+          "name": "Nestle SA",
+          "weight": 0.0153851
+        },
+        {
+          "symbol": "SIE.DE",
+          "name": "Siemens AG",
+          "weight": 0.0149472
+        },
+        {
+          "symbol": "AZN.L",
+          "name": "AstraZeneca PLC",
+          "weight": 0.0148586
+        },
+        {
+          "symbol": "SAP.DE",
+          "name": "SAP SE",
+          "weight": 0.0139239
+        },
+        {
+          "symbol": "SAN.MC",
+          "name": "Banco Santander SA",
+          "weight": 0.0133071
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/VGK/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "VLUE": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally will invest at least 80% of its assets in the component securities of the underlying index and may invest up to 20% of its assets in certain futures, options and swap contracts, cash and cash equivalents. The index is based on a traditional market capitalization-weighted parent index, the MSCI USA Index (the \"parent index\"). The parent index includes U.S. large- and mid- capitalization stocks.",
+      "family": "iShares",
+      "category": "Large Value",
+      "profile_source": "https://finance.yahoo.com/quote/VLUE/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.21132031
+        },
+        {
+          "symbol": "CSCO",
+          "name": "Cisco Systems Inc",
+          "weight": 0.0423686
+        },
+        {
+          "symbol": "GM",
+          "name": "General Motors Co",
+          "weight": 0.037058
+        },
+        {
+          "symbol": "VZ",
+          "name": "Verizon Communications Inc",
+          "weight": 0.0303277
+        },
+        {
+          "symbol": "T",
+          "name": "AT&T Inc",
+          "weight": 0.027107999
+        },
+        {
+          "symbol": "BAC",
+          "name": "Bank of America Corp",
+          "weight": 0.0211477
+        },
+        {
+          "symbol": "F",
+          "name": "Ford Motor Co",
+          "weight": 0.0193846
+        },
+        {
+          "symbol": "CMCSA",
+          "name": "Comcast Corp Class A",
+          "weight": 0.0188515
+        },
+        {
+          "symbol": "PFE",
+          "name": "Pfizer Inc",
+          "weight": 0.017373001
+        },
+        {
+          "symbol": "DIS",
+          "name": "The Walt Disney Co",
+          "weight": 0.016354801
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/VLUE/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "VTI": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund manager employs an indexing investment approach designed to track the performance of the CRSP U.S. Total Market Index (the “Target Index”), which represents 100% of the investable U.S. stock market, as determined by the index provider. Under normal circumstances, the fund invests at least 80% of its net assets, plus the amount of any borrowings for investment purposes, in the stocks that make up the target index.",
+      "family": "Vanguard",
+      "category": "Large Blend",
+      "profile_source": "https://finance.yahoo.com/quote/VTI/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.068748295
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.063032
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.0510406
+        },
+        {
+          "symbol": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 0.0340635
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.0269596
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.023749499
+        },
+        {
+          "symbol": "GOOG",
+          "name": "Alphabet Inc Class C",
+          "weight": 0.0212139
+        },
+        {
+          "symbol": "META",
+          "name": "Meta Platforms Inc Class A",
+          "weight": 0.017023899
+        },
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.014644099
+        },
+        {
+          "symbol": "TSLA",
+          "name": "Tesla Inc",
+          "weight": 0.014038
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/VTI/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "VTV": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund manager employs an indexing investment approach designed to track the target index, a broadly diversified index made up of the value stocks of large U.S. companies, as determined by the index provider. Under normal circumstances, it invests at least 80% of its net assets, plus the amount of any borrowings for investment purposes, in the stocks that make up the target index.",
+      "family": "Vanguard",
+      "category": "Large Value",
+      "profile_source": "https://finance.yahoo.com/quote/VTV/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.0393629
+        },
+        {
+          "symbol": "JPM",
+          "name": "JPMorgan Chase & Co",
+          "weight": 0.0347294
+        },
+        {
+          "symbol": "BRK-B",
+          "name": "Berkshire Hathaway Inc Class B",
+          "weight": 0.028812101
+        },
+        {
+          "symbol": "XOM",
+          "name": "ExxonMobil Holdings Corp",
+          "weight": 0.0242865
+        },
+        {
+          "symbol": "JNJ",
+          "name": "Johnson & Johnson",
+          "weight": 0.023297999
+        },
+        {
+          "symbol": "WMT",
+          "name": "Walmart Inc",
+          "weight": 0.0167385
+        },
+        {
+          "symbol": "ABBV",
+          "name": "AbbVie Inc",
+          "weight": 0.0164933
+        },
+        {
+          "symbol": "BAC",
+          "name": "Bank of America Corp",
+          "weight": 0.014402401
+        },
+        {
+          "symbol": "CSCO",
+          "name": "Cisco Systems Inc",
+          "weight": 0.0142695
+        },
+        {
+          "symbol": "CVX",
+          "name": "Chevron Corp",
+          "weight": 0.014198001
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/VTV/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "VUG": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund manager employs an indexing investment approach designed to track the performance of the target index, a broadly diversified index made up of the growth stocks of large U.S. companies, as determined by the index provider. Under normal circumstances, it invests at least 80% of its net assets, plus the amount of any borrowings for investment purposes, in the stocks that make up the target index.",
+      "family": "Vanguard",
+      "category": "Large Growth",
+      "profile_source": "https://finance.yahoo.com/quote/VUG/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.1361934
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.124883
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.1012063
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.053407203
+        },
+        {
+          "symbol": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 0.047627103
+        },
+        {
+          "symbol": "GOOG",
+          "name": "Alphabet Inc Class C",
+          "weight": 0.0420567
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.041043803
+        },
+        {
+          "symbol": "META",
+          "name": "Meta Platforms Inc Class A",
+          "weight": 0.0338522
+        },
+        {
+          "symbol": "TSLA",
+          "name": "Tesla Inc",
+          "weight": 0.0279314
+        },
+        {
+          "symbol": "LLY",
+          "name": "Eli Lilly and Co",
+          "weight": 0.026449298
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/VUG/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XBI": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the S&P Biotechnology Select Industry Index (the \"index\"), the fund employs a sampling strategy. It generally invests substantially all, but at least 80%, of its total assets in the securities comprising the index. The index represents the biotechnology segment of the S&P Total Market Index (\"S&P TMI\").",
+      "family": "State Street Investment Management",
+      "category": "Health",
+      "profile_source": "https://finance.yahoo.com/quote/XBI/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "MRNA",
+          "name": "Moderna Inc",
+          "weight": 0.0280607
+        },
+        {
+          "symbol": "TWST",
+          "name": "Twist Bioscience Corp",
+          "weight": 0.0188601
+        },
+        {
+          "symbol": "APGE",
+          "name": "Apogee Therapeutics Inc",
+          "weight": 0.0150163
+        },
+        {
+          "symbol": "KYMR",
+          "name": "Kymera Therapeutics Inc Ordinary Shares",
+          "weight": 0.0139657
+        },
+        {
+          "symbol": "HALO",
+          "name": "Halozyme Therapeutics Inc",
+          "weight": 0.0138908
+        },
+        {
+          "symbol": "NTRA",
+          "name": "Natera Inc",
+          "weight": 0.0136758005
+        },
+        {
+          "symbol": "PRAX",
+          "name": "Praxis Precision Medicines Inc Ordinary Shares",
+          "weight": 0.0133837
+        },
+        {
+          "symbol": "ORKA",
+          "name": "Oruka Therapeutics Inc",
+          "weight": 0.013300801
+        },
+        {
+          "symbol": "RVMD",
+          "name": "Revolution Medicines Inc Ordinary Shares",
+          "weight": 0.0131095005
+        },
+        {
+          "symbol": "TVTX",
+          "name": "Travere Therapeutics Inc Ordinary Shares",
+          "weight": 0.0130405
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XBI/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLB": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the index, the fund employs a replication strategy. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes securities of companies from the following industries: chemicals; metals and mining; paper and forest products; containers and packaging; and construction materials. The fund is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Natural Resources",
+      "profile_source": "https://finance.yahoo.com/quote/XLB/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "LIN",
+          "name": "Linde PLC",
+          "weight": 0.1313487
+        },
+        {
+          "symbol": "NEM",
+          "name": "Newmont Corp",
+          "weight": 0.0780911
+        },
+        {
+          "symbol": "FCX",
+          "name": "Freeport-McMoRan Inc",
+          "weight": 0.0631812
+        },
+        {
+          "symbol": "CTVA",
+          "name": "Corteva Inc",
+          "weight": 0.049064297
+        },
+        {
+          "symbol": "APD",
+          "name": "Air Products and Chemicals Inc",
+          "weight": 0.048312403
+        },
+        {
+          "symbol": "SHW",
+          "name": "Sherwin-Williams Co",
+          "weight": 0.0481254
+        },
+        {
+          "symbol": "ECL",
+          "name": "Ecolab Inc",
+          "weight": 0.0475711
+        },
+        {
+          "symbol": "NUE",
+          "name": "Nucor Corp",
+          "weight": 0.0430225
+        },
+        {
+          "symbol": "VMC",
+          "name": "Vulcan Materials Co",
+          "weight": 0.0426784
+        },
+        {
+          "symbol": "CRH",
+          "name": "CRH PLC",
+          "weight": 0.040711
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLB/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLC": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "Normally, the fund generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Communication Services companies by the GICS®, including securities of companies from the following industries: diversified telecommunication services; wireless telecommunication services; media; entertainment; and interactive media & services. The fund is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Communications",
+      "profile_source": "https://finance.yahoo.com/quote/XLC/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "META",
+          "name": "Meta Platforms Inc Class A",
+          "weight": 0.1676507
+        },
+        {
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc Class A",
+          "weight": 0.102966994
+        },
+        {
+          "symbol": "GOOG",
+          "name": "Alphabet Inc Class C",
+          "weight": 0.0820329
+        },
+        {
+          "symbol": "T",
+          "name": "AT&T Inc",
+          "weight": 0.052501
+        },
+        {
+          "symbol": "VZ",
+          "name": "Verizon Communications Inc",
+          "weight": 0.050187603
+        },
+        {
+          "symbol": "CMCSA",
+          "name": "Comcast Corp Class A",
+          "weight": 0.0486323
+        },
+        {
+          "symbol": "NFLX",
+          "name": "Netflix Inc",
+          "weight": 0.048607703
+        },
+        {
+          "symbol": "DIS",
+          "name": "The Walt Disney Co",
+          "weight": 0.0482495
+        },
+        {
+          "symbol": "WBD",
+          "name": "Warner Bros. Discovery Inc Ordinary Shares - Class A",
+          "weight": 0.046531
+        },
+        {
+          "symbol": "TMUS",
+          "name": "T-Mobile US Inc",
+          "weight": 0.0458929
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLC/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLE": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the index, the fund employs a replication strategy. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Energy companies by the GICS®, including securities of companies from the following industries: oil, gas and consumable fuels; and energy equipment and services. It is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Equity Energy",
+      "profile_source": "https://finance.yahoo.com/quote/XLE/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "XOM",
+          "name": "ExxonMobil Holdings Corp",
+          "weight": 0.19859721
+        },
+        {
+          "symbol": "CVX",
+          "name": "Chevron Corp",
+          "weight": 0.1488949
+        },
+        {
+          "symbol": "COP",
+          "name": "ConocoPhillips",
+          "weight": 0.0622765
+        },
+        {
+          "symbol": "MPC",
+          "name": "Marathon Petroleum Corp",
+          "weight": 0.0541954
+        },
+        {
+          "symbol": "PSX",
+          "name": "Phillips 66",
+          "weight": 0.0533146
+        },
+        {
+          "symbol": "VLO",
+          "name": "Valero Energy Corp",
+          "weight": 0.050717
+        },
+        {
+          "symbol": "SLB",
+          "name": "SLB Ltd",
+          "weight": 0.0487644
+        },
+        {
+          "symbol": "EOG",
+          "name": "EOG Resources Inc",
+          "weight": 0.0413483
+        },
+        {
+          "symbol": "WMB",
+          "name": "Williams Companies Inc",
+          "weight": 0.0377659
+        },
+        {
+          "symbol": "KMI",
+          "name": "Kinder Morgan Inc Class P",
+          "weight": 0.0364842
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLE/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLF": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The fund generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Financial companies by the Global Industry Classification Standard, including securities of companies from the following industries: financial services; insurance; banks; capital markets; mortgage real estate investment trusts; and consumer finance. The fund is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Financial",
+      "profile_source": "https://finance.yahoo.com/quote/XLF/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "JPM",
+          "name": "JPMorgan Chase & Co",
+          "weight": 0.1168887
+        },
+        {
+          "symbol": "BRK-B",
+          "name": "Berkshire Hathaway Inc Class B",
+          "weight": 0.1132288
+        },
+        {
+          "symbol": "V",
+          "name": "Visa Inc Class A",
+          "weight": 0.0771479
+        },
+        {
+          "symbol": "MA",
+          "name": "Mastercard Inc Class A",
+          "weight": 0.0582669
+        },
+        {
+          "symbol": "BAC",
+          "name": "Bank of America Corp",
+          "weight": 0.049551
+        },
+        {
+          "symbol": "GS",
+          "name": "The Goldman Sachs Group Inc",
+          "weight": 0.0370778
+        },
+        {
+          "symbol": "WFC",
+          "name": "Wells Fargo & Co",
+          "weight": 0.0323927
+        },
+        {
+          "symbol": "MS",
+          "name": "Morgan Stanley",
+          "weight": 0.0313345
+        },
+        {
+          "symbol": "C",
+          "name": "Citigroup Inc",
+          "weight": 0.027506001
+        },
+        {
+          "symbol": "SCHW",
+          "name": "Charles Schwab Corp",
+          "weight": 0.0219974
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLF/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLI": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "Under normal market conditions, the fund generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Industrial companies by the Global Industry Classification Standard, including securities of companies from the following industries: aerospace and defense; industrial conglomerates; marine transportation. It is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Industrials",
+      "profile_source": "https://finance.yahoo.com/quote/XLI/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "CAT",
+          "name": "Caterpillar Inc",
+          "weight": 0.0667426
+        },
+        {
+          "symbol": "GE",
+          "name": "GE Aerospace",
+          "weight": 0.0636446
+        },
+        {
+          "symbol": "RTX",
+          "name": "RTX Corp",
+          "weight": 0.0508326
+        },
+        {
+          "symbol": "GEV",
+          "name": "GE Vernova Inc",
+          "weight": 0.043874998
+        },
+        {
+          "symbol": "UNP",
+          "name": "Union Pacific Corp",
+          "weight": 0.0324388
+        },
+        {
+          "symbol": "DE",
+          "name": "Deere & Co",
+          "weight": 0.0298953
+        },
+        {
+          "symbol": "BA",
+          "name": "Boeing Co",
+          "weight": 0.0297642
+        },
+        {
+          "symbol": "ETN",
+          "name": "Eaton Corp PLC",
+          "weight": 0.0283576
+        },
+        {
+          "symbol": "UBER",
+          "name": "Uber Technologies Inc",
+          "weight": 0.027983898
+        },
+        {
+          "symbol": "PH",
+          "name": "Parker Hannifin Corp",
+          "weight": 0.022441199
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLI/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLK": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the index, the fund employs a replication strategy, which means that the fund typically invests in substantially all of the securities represented in the index in approximately the same proportions as the index. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The fund is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Technology",
+      "profile_source": "https://finance.yahoo.com/quote/XLK/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corp",
+          "weight": 0.14363189
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple Inc",
+          "weight": 0.1249984
+        },
+        {
+          "symbol": "MSFT",
+          "name": "Microsoft Corp",
+          "weight": 0.1012188
+        },
+        {
+          "symbol": "AVGO",
+          "name": "Broadcom Inc",
+          "weight": 0.0470974
+        },
+        {
+          "symbol": "MU",
+          "name": "Micron Technology Inc",
+          "weight": 0.0399906
+        },
+        {
+          "symbol": "AMD",
+          "name": "Advanced Micro Devices Inc",
+          "weight": 0.0392825
+        },
+        {
+          "symbol": "INTC",
+          "name": "Intel Corp",
+          "weight": 0.028994901
+        },
+        {
+          "symbol": "CSCO",
+          "name": "Cisco Systems Inc",
+          "weight": 0.0286219
+        },
+        {
+          "symbol": "PLTR",
+          "name": "Palantir Technologies Inc Ordinary Shares - Class A",
+          "weight": 0.0280656
+        },
+        {
+          "symbol": "LRCX",
+          "name": "Lam Research Corp",
+          "weight": 0.0247268
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLK/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLP": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the index, the fund employs a replication strategy. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Consumer Staples companies by the GICS®. It is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Consumer Defensive",
+      "profile_source": "https://finance.yahoo.com/quote/XLP/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "WMT",
+          "name": "Walmart Inc",
+          "weight": 0.09820639
+        },
+        {
+          "symbol": "COST",
+          "name": "Costco Wholesale Corp",
+          "weight": 0.0894496
+        },
+        {
+          "symbol": "KO",
+          "name": "Coca-Cola Co",
+          "weight": 0.0733419
+        },
+        {
+          "symbol": "PG",
+          "name": "Procter & Gamble Co",
+          "weight": 0.0721831
+        },
+        {
+          "symbol": "PM",
+          "name": "Philip Morris International Inc",
+          "weight": 0.0623555
+        },
+        {
+          "symbol": "TGT",
+          "name": "Target Corp",
+          "weight": 0.0465602
+        },
+        {
+          "symbol": "CL",
+          "name": "Colgate-Palmolive Co",
+          "weight": 0.0451784
+        },
+        {
+          "symbol": "PEP",
+          "name": "PepsiCo Inc",
+          "weight": 0.0439961
+        },
+        {
+          "symbol": "MDLZ",
+          "name": "Mondelez International Inc Class A",
+          "weight": 0.0437564
+        },
+        {
+          "symbol": "MO",
+          "name": "Altria Group Inc",
+          "weight": 0.042367
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLP/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLRE": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "Under normal market conditions, the fund generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Real Estate companies by the Global Industry Classification Standard (GICS®). The fund is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Real Estate",
+      "profile_source": "https://finance.yahoo.com/quote/XLRE/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "WELL",
+          "name": "Welltower Inc",
+          "weight": 0.11425629
+        },
+        {
+          "symbol": "PLD",
+          "name": "Prologis Inc",
+          "weight": 0.0908871
+        },
+        {
+          "symbol": "EQIX",
+          "name": "Equinix Inc",
+          "weight": 0.0707295
+        },
+        {
+          "symbol": "AMT",
+          "name": "American Tower Corp",
+          "weight": 0.056082603
+        },
+        {
+          "symbol": "VMRK",
+          "name": "Vivmark Residential",
+          "weight": 0.0493771
+        },
+        {
+          "symbol": "DLR",
+          "name": "Digital Realty Trust Inc",
+          "weight": 0.0491601
+        },
+        {
+          "symbol": "SPG",
+          "name": "Simon Property Group Inc",
+          "weight": 0.047172297
+        },
+        {
+          "symbol": "VTR",
+          "name": "Ventas Inc",
+          "weight": 0.045786902
+        },
+        {
+          "symbol": "PSA",
+          "name": "Public Storage",
+          "weight": 0.0457651
+        },
+        {
+          "symbol": "O",
+          "name": "Realty Income Corp",
+          "weight": 0.0448745
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLRE/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLU": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the index, the fund employs a replication strategy. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes securities of companies from the following industries: electric utilities; water utilities; multi-utilities; independent power and renewable electricity producers; and gas utilities. The fund is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Utilities",
+      "profile_source": "https://finance.yahoo.com/quote/XLU/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "NEE",
+          "name": "NextEra Energy Inc",
+          "weight": 0.1304942
+        },
+        {
+          "symbol": "SO",
+          "name": "Southern Co",
+          "weight": 0.075392
+        },
+        {
+          "symbol": "DUK",
+          "name": "Duke Energy Corp",
+          "weight": 0.0710444
+        },
+        {
+          "symbol": "CEG",
+          "name": "Constellation Energy Corp",
+          "weight": 0.0667553
+        },
+        {
+          "symbol": "AEP",
+          "name": "American Electric Power Co Inc",
+          "weight": 0.050626103
+        },
+        {
+          "symbol": "D",
+          "name": "Dominion Energy Inc",
+          "weight": 0.0441191
+        },
+        {
+          "symbol": "SRE",
+          "name": "Sempra",
+          "weight": 0.040588196
+        },
+        {
+          "symbol": "ETR",
+          "name": "Entergy Corp",
+          "weight": 0.036994502
+        },
+        {
+          "symbol": "XEL",
+          "name": "Xcel Energy Inc",
+          "weight": 0.0359098
+        },
+        {
+          "symbol": "EXC",
+          "name": "Exelon Corp",
+          "weight": 0.0339976
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLU/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLV": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the index, the fund employs a replication strategy. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies from the following industries: pharmaceuticals; health care equipment & supplies; health care providers & services; biotechnology; life sciences tools & services; and health care technology. The fund is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Health",
+      "profile_source": "https://finance.yahoo.com/quote/XLV/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "LLY",
+          "name": "Eli Lilly and Co",
+          "weight": 0.14867349
+        },
+        {
+          "symbol": "JNJ",
+          "name": "Johnson & Johnson",
+          "weight": 0.1039781
+        },
+        {
+          "symbol": "ABBV",
+          "name": "AbbVie Inc",
+          "weight": 0.0736088
+        },
+        {
+          "symbol": "MRK",
+          "name": "Merck & Co Inc",
+          "weight": 0.0592945
+        },
+        {
+          "symbol": "UNH",
+          "name": "UnitedHealth Group Inc",
+          "weight": 0.0574581
+        },
+        {
+          "symbol": "AMGN",
+          "name": "Amgen Inc",
+          "weight": 0.0376961
+        },
+        {
+          "symbol": "TMO",
+          "name": "Thermo Fisher Scientific Inc",
+          "weight": 0.0372603
+        },
+        {
+          "symbol": "ABT",
+          "name": "Abbott Laboratories",
+          "weight": 0.0312324
+        },
+        {
+          "symbol": "GILD",
+          "name": "Gilead Sciences Inc",
+          "weight": 0.0295206
+        },
+        {
+          "symbol": "PFE",
+          "name": "Pfizer Inc",
+          "weight": 0.026354698
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLV/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XLY": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "The Advisor employs a replication strategy. The fund generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Consumer Discretionary companies by the Global Industry Classification Standard (GICS®). It is non-diversified.",
+      "family": "State Street Investment Management",
+      "category": "Consumer Cyclical",
+      "profile_source": "https://finance.yahoo.com/quote/XLY/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "AMZN",
+          "name": "Amazon.com Inc",
+          "weight": 0.243679
+        },
+        {
+          "symbol": "TSLA",
+          "name": "Tesla Inc",
+          "weight": 0.1728693
+        },
+        {
+          "symbol": "HD",
+          "name": "The Home Depot Inc",
+          "weight": 0.0544912
+        },
+        {
+          "symbol": "MCD",
+          "name": "McDonald's Corp",
+          "weight": 0.0407467
+        },
+        {
+          "symbol": "BKNG",
+          "name": "Booking Holdings Inc",
+          "weight": 0.0386198
+        },
+        {
+          "symbol": "TJX",
+          "name": "TJX Companies Inc",
+          "weight": 0.0348883
+        },
+        {
+          "symbol": "SBUX",
+          "name": "Starbucks Corp",
+          "weight": 0.0303143
+        },
+        {
+          "symbol": "LOW",
+          "name": "Lowe's Companies Inc",
+          "weight": 0.028700098
+        },
+        {
+          "symbol": "DASH",
+          "name": "DoorDash Inc Ordinary Shares - Class A",
+          "weight": 0.021954201
+        },
+        {
+          "symbol": "GM",
+          "name": "General Motors Co",
+          "weight": 0.0194845
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XLY/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    },
+    "XRT": {
+      "last_attempt_at": "2026-09-25T10:49:21.433764+00:00",
+      "refresh_error": null,
+      "description": "In seeking to track the performance of the S&P Retail Select Industry Index (the \"index\"), the fund employs a sampling strategy. It generally invests substantially all, but at least 80%, of its total assets in the securities comprising the index. The index represents the retail segment of the S&P Total Market Index (\"S&P TMI\").",
+      "family": "State Street Investment Management",
+      "category": "Consumer Cyclical",
+      "profile_source": "https://finance.yahoo.com/quote/XRT/profile/",
+      "profile_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings": [
+        {
+          "symbol": "ANF",
+          "name": "Abercrombie & Fitch Co Class A",
+          "weight": 0.0230793
+        },
+        {
+          "symbol": "HZO",
+          "name": "MarineMax Inc",
+          "weight": 0.0220328
+        },
+        {
+          "symbol": "GO",
+          "name": "Grocery Outlet Holding Corp",
+          "weight": 0.0178019
+        },
+        {
+          "symbol": "KMX",
+          "name": "CarMax Inc",
+          "weight": 0.0174042
+        },
+        {
+          "symbol": "FIVE",
+          "name": "Five Below Inc",
+          "weight": 0.0173492
+        },
+        {
+          "symbol": "TGT",
+          "name": "Target Corp",
+          "weight": 0.017308101
+        },
+        {
+          "symbol": "SBH",
+          "name": "Sally Beauty Holdings Inc",
+          "weight": 0.0172375
+        },
+        {
+          "symbol": "CART",
+          "name": "Maplebear Inc",
+          "weight": 0.0168752
+        },
+        {
+          "symbol": "PAG",
+          "name": "Penske Automotive Group Inc",
+          "weight": 0.0167323
+        },
+        {
+          "symbol": "LAD",
+          "name": "Lithia Motors Inc Class A",
+          "weight": 0.016596101
+        }
+      ],
+      "holdings_asof": null,
+      "holdings_retrieved_at": "2026-09-25T10:49:21.433764+00:00",
+      "holdings_source": "https://finance.yahoo.com/quote/XRT/holdings/",
+      "holdings_provider": "Yahoo Finance",
+      "holdings_status": "date_unknown"
+    }
+  }
+}

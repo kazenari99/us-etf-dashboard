@@ -43,7 +43,10 @@ jobs:
       - name: Validate JavaScript and snapshot
         run: |
           node --check dist/app.js
+          node --check dist/fund-context.js
           python scripts/validate_snapshot.py
+      - name: Refresh public fund profiles and holdings
+        run: python scripts/refresh_funds.py
       - uses: actions/upload-artifact@v4
         if: ${{ !inputs.use_committed_snapshot }}
         with:
