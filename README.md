@@ -23,7 +23,7 @@ python scripts/validate_snapshot.py
 
 Yahoo `auto_adjust=True`按分红和拆股调整OHLC。评分代码从原Hermes美股模型中独立提取，通过固定合成行情验证数值一致。由于来源和复权口径变化，数值可能与原OpenD快照不同；历史归档保留各自来源，不能视为同一时点回测。
 
-`scripts/sync_snapshot.py ../etf-dashboard/dist`仅供明确需要时导入本地OpenD快照预览，不覆盖UI。云端发布始终重新获取Yahoo Finance数据。此仓库不包含密钥、OpenD连接配置、持仓或账户信息。
+`scripts/sync_snapshot.py ../etf-dashboard/dist`可导入完整本地OpenD快照，不覆盖UI。提交CSV和元信息后，手动运行工作流并选中 `use_committed_snapshot` 可发布该快照；发布前核验最新完整交易日、71只标的和校验和。页面按元信息显示真实来源。定时及普通推送仍重新获取Yahoo Finance数据，不拼接两种来源。此仓库不包含密钥、OpenD连接配置、持仓或账户信息。
 
 ## 本地查看
 

@@ -3,6 +3,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      use_committed_snapshot:
+        description: 'Publish an explicitly imported, validated local snapshot'
+        type: boolean
+        default: false
   schedule:
     - cron: '37 23 * * 1-5'
 permissions:
@@ -29,12 +34,18 @@ jobs:
       - name: Test calendar and data integrity
         run: python -m unittest discover -s tests -v
       - name: Refresh complete US ETF universe
+        if: ${{ !inputs.use_committed_snapshot }}
         run: python scripts/refresh_snapshot.py
+      - name: Check imported snapshot freshness
+        if: ${{ inputs.use_committed_snapshot }}
+        run: |
+          python -c "import sys,json;sys.path.insert(0,'scripts');from refresh_snapshot import completed_sessions; m=json.load(open('dist/snapshot_meta.json')); assert m['asof']==str(completed_sessions()[-1].date()), 'Imported snapshot is stale'"
       - name: Validate JavaScript and snapshot
         run: |
           node --check dist/app.js
           python scripts/validate_snapshot.py
       - uses: actions/upload-artifact@v4
+        if: ${{ !inputs.use_committed_snapshot }}
         with:
           name: us-etf-research-${{ github.run_id }}
           path: archive/

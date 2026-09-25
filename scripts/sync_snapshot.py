@@ -21,4 +21,4 @@ meta=dict(source='OpenD', adjustment='OpenD QFQ', asof=rows[0]['date'],
           sha256=hashlib.sha256(data).hexdigest(), benchmark='SPY', model='Hermes 20/60/120 v1')
 (root/'dist/snapshot_meta.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2)+'\n')
 subprocess.run([sys.executable,str(root/'scripts/validate_snapshot.py')],check=True)
-print('Local preview imported. Cloud deployment always fetches Yahoo Finance data.')
+print('Snapshot imported. To publish this complete source batch, dispatch with use_committed_snapshot=true.')
