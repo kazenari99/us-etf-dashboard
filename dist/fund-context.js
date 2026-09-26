@@ -15,7 +15,7 @@ function renderFundContext(x){
   return `<section class="fund-section" id="fundContext">
     <div class="fund-heading"><h3>基金介绍</h3><span class="fund-tag">${fundEscape(f.family||'管理机构待补充')}</span></div>
     ${f.summary_zh?`<p>${fundEscape(f.summary_zh)}</p>`:`<p>${fundEscape(etfName(x.ticker))} · ${fundEscape(f.category||groupNames[x.group]||'分类待补充')}</p>`}
-    ${f.description?`<details class="fund-description"><summary>查看基金策略说明（英文原文）</summary><p>${fundEscape(f.description)}</p></details>`:'<p class="fund-note">策略说明暂缺。</p>'}
+    ${f.description?`<details class="fund-description"><summary>查看基金策略说明（英文原文）</summary><p data-source-text lang="en">${fundEscape(f.description)}</p></details>`:'<p class="fund-note">策略说明暂缺。</p>'}
     <p class="fund-note">资料获取 ${fundDate(f.profile_retrieved_at)} · ${fundLink(f.summary_source||f.profile_source,'基金介绍来源')}</p>
     <h3>主要持仓 <small>最多展示10项</small></h3>
     <p class="fund-note ${stale||f.holdings_status==='retained'?'fund-warning':''}">${status}${stale?' · 获取已超过7天':''}<br>获取日期 ${fundDate(f.holdings_retrieved_at)} · ${fundLink(f.holdings_source,f.holdings_provider||'持仓来源')}</p>

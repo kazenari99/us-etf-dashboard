@@ -33,6 +33,13 @@ button, input, select { font: inherit; }
 button { color: inherit; }
 .page-shell { width: min(1560px, calc(100% - 40px)); margin: 0 auto; padding-bottom: 64px; }
 .topbar { min-height: 104px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.header-tools { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; padding: 14px 0; }
+.language-switch { display: flex; gap: 3px; padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+.language-switch button { border: 0; border-radius: 7px; background: transparent; color: var(--muted); padding: 7px 12px; font-size: 14px; cursor: pointer; min-height: 36px; }
+.language-switch button[aria-pressed="true"] { background: #193d35; color: var(--green); }
+.language-switch button:hover { color: var(--text); }
+.language-switch button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+@media (max-width: 760px) { .header-tools { align-items: flex-start; width: 100%; } .header-tools .asof { border-radius: 10px; flex-wrap: wrap; } }
 .brand { display: flex; align-items: center; gap: 15px; }
 .brand-mark { width: 44px; height: 44px; display: flex; gap: 4px; align-items: end; padding: 10px; background: linear-gradient(145deg,#17263a,#0c1420); border: 1px solid #2b3c55; border-radius: 11px; box-shadow: 0 0 30px rgba(103,232,249,.08); }
 .brand-mark span { flex: 1; border-radius: 2px; background: var(--green); }

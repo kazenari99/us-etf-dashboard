@@ -122,7 +122,7 @@ function setupMatch(x){
   return x.setup==='Avoid / broken';
 }
 function applyFilters(){
-  state.filtered=state.data.filter(x=>(state.group==='all'||x.group===state.group)&&setupMatch(x)&&`${x.ticker} ${etfName(x.ticker)}`.toLowerCase().includes(state.query));
+  state.filtered=state.data.filter(x=>(state.group==='all'||x.group===state.group)&&setupMatch(x)&&`${x.ticker} ${orbitI18n.searchNames(etfName(x.ticker))}`.toLowerCase().includes(state.query));
   state.filtered.sort((a,b)=>{const av=a[state.sortKey],bv=b[state.sortKey];return typeof av==='number'?(av-bv)*state.sortDir:String(av).localeCompare(String(bv))*state.sortDir});
   renderTable(); renderScatter(); renderLeaders();
 }

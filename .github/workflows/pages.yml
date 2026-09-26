@@ -43,6 +43,7 @@ jobs:
       - name: Validate JavaScript and snapshot
         run: |
           node --check dist/app.js
+          node --check dist/i18n.js
           node --check dist/fund-context.js
           python scripts/validate_snapshot.py
       - name: Refresh public fund profiles and holdings

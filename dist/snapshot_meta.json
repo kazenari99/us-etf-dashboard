@@ -1,11 +1,11 @@
 {
   "source": "OpenD",
   "adjustment": "OpenD QFQ",
-  "asof": "2026-09-24",
-  "generated_at": "2026-09-25T10:43:17.359325+00:00",
+  "asof": "2026-09-25",
+  "generated_at": "2026-09-26T00:55:23.994301+00:00",
   "count": 71,
   "expected_count": 71,
-  "sha256": "70bdec454c3ef806e967614ee94f4966c2021f2e7f69c8ea993beb6d43af2fcb",
+  "sha256": "141c004181c64a00746c982d9f8bbf5085cf666381fada6d50739b41cdafd640",
   "benchmark": "SPY",
   "model": "Hermes 20/60/120 v1"
 }
