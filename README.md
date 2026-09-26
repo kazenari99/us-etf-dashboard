@@ -4,12 +4,12 @@
 
 已添加独立的 `.github/workflows/cloudflare.yml`，复用成功的 `pages.yml` 构建产物，不重复获取行情。初次配置需要账户范围内的 Cloudflare Pages Edit API Token，存入 Repository secret `CLOUDFLARE_API_TOKEN`。
 
-手动运行 **Publish to Cloudflare**，首次设 `create_project=true`，默认项目名为 `orbit`（可通过 Repository variable `CLOUDFLARE_PROJECT` 设置）。项目已经存在时会停止，避免覆盖其他网站。确认项目归属后后续发布用 `create_project=false`。实际网址以 Cloudflare 返回的域名为准。
+手动运行 **Publish to Cloudflare**，首次设 `create_project=true`，默认项目名为 `orbit-us`（可通过 Repository variable `CLOUDFLARE_PROJECT` 设置）。项目已经存在时会停止，避免覆盖其他网站。确认项目归属后后续发布用 `create_project=false`。实际网址以 Cloudflare 返回的域名为准。
 
-正式网址：[ORBIT PULSE](https://orbit-560.pages.dev)。首次发布与线上核验已完成，Repository variable `CLOUDFLARE_ENABLED=true`，每日快照构建成功后自动发布至 Cloudflare。GitHub Pages 保留为同步镜像。定时任务或上游数据失败时保留最后成功版本，以页面数据日期为准。
+正式网址：[ORBIT PULSE](https://orbit-us.pages.dev)。首次发布与线上核验已完成，Repository variable `CLOUDFLARE_ENABLED=true`，每日快照构建成功后自动发布至 Cloudflare。GitHub Pages 保留为同步镜像。定时任务或上游数据失败时保留最后成功版本，以页面数据日期为准。
 
 
-现有 Hermes 美股 ETF Momentum Radar 的独立发布仓库，由 GitHub Actions 生成快照并发布到 Cloudflare Pages。保留原20/60/120日评分、动量地图、机会卡片、搜索筛选及详情。A股配套：[JADE PULSE · A股ETF](https://jade-90o.pages.dev/)。
+现有 Hermes 美股 ETF Momentum Radar 的独立发布仓库，由 GitHub Actions 生成快照并发布到 Cloudflare Pages。保留原20/60/120日评分、动量地图、机会卡片、搜索筛选及详情。A股配套：[JADE PULSE · A股ETF](https://jade-a.pages.dev/)。
 
 ## 数据更新
 
