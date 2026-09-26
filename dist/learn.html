@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trading Playbook · ORBIT PULSE</title>
+  <meta name="description" content="An independently written study guide to the KovaView trading framework, with a visual process map and risk-sizing example.">
+  <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./learn.css">
+</head>
+<body>
+<div class="page-shell learn-shell">
+  <header class="topbar">
+    <a class="learn-brand" href="./">ORBIT PULSE <span data-key="academy"></span></a>
+    <div class="header-tools">
+      <a class="back-link" href="./" data-key="back"></a>
+      <nav class="language-switch" aria-label="Language / 语言 / 言語">
+        <button data-lang="en" lang="en" type="button">English</button><button data-lang="zh" lang="zh-CN" type="button">中文</button><button data-lang="ja" lang="ja" type="button">日本語</button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="learn-intro"><p class="section-kicker">THE TRADING PLAYBOOK</p><h1 data-key="title"></h1><p data-key="intro"></p>
+      <div class="source-line"><a href="https://kovaview.com/learn" target="_blank" rel="noopener noreferrer" data-key="source"></a><span data-key="sourceDate"></span></div>
+    </section>
+    <section class="process-map" aria-labelledby="mapTitle">
+      <div class="section-title-row"><h2 id="mapTitle" data-key="mapTitle"></h2><span data-key="mapHint"></span></div>
+      <div class="map-root"><span>TECHNICAL FIRST</span><strong data-key="mapRoot"></strong></div>
+      <div class="flow-grid" id="flowGrid"></div>
+      <div class="map-foundation"><b data-key="foundationTitle"></b><p data-key="foundation"></p></div>
+    </section>
+    <section class="learn-grid">
+      <article class="panel chapters-panel"><div class="section-title-row"><h2 data-key="chaptersTitle"></h2><span>01—09</span></div><div id="chapters"></div></article>
+      <aside class="study-sidebar">
+        <section class="panel risk-panel"><p class="section-kicker">RISK LAB</p><h2 data-key="riskTitle"></h2><p class="learn-muted" data-key="riskIntro"></p>
+          <div class="regime-buttons" id="riskRegime"><button type="button" data-regime="green" data-key="green"></button><button type="button" data-regime="yellow" data-key="yellow"></button><button type="button" data-regime="red" data-key="red"></button></div>
+          <form id="riskForm"><label><span data-key="equity"></span><input id="equity" type="number" min="1" step="100" value="20000"></label><div class="risk-inputs"><label><span data-key="entry"></span><input id="entry" type="number" min="0.01" step="0.01" value="100"></label><label><span data-key="stop"></span><input id="stop" type="number" min="0.01" step="0.01" value="95"></label></div></form>
+          <div id="riskResult" aria-live="polite"></div><p class="learn-muted" data-key="riskFormula"></p><p class="learn-muted" data-key="riskLimits"></p>
+        </section>
+        <section class="panel differences"><p class="section-kicker">READ WITH CARE</p><h2 data-key="differencesTitle"></h2><div id="differences"></div></section>
+      </aside>
+    </section>
+    <footer class="learn-footer" data-key="footer"></footer>
+  </main>
+</div>
+<script src="./learn.js"></script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 /* UI translations only. Market values, identifiers and source disclosures stay intact. */
 (() => {
   const entries = [
+    ['学习中心','Learning center','学習センター'],
     ['载入数据中','Loading data','データを読み込み中'],
     ['正在核对快照日期与来源…','Checking snapshot date and source…','日付とデータソースを確認中…'],
     ['筛选工具','Filters','絞り込み'],

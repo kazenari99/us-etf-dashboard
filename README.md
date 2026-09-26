@@ -47,3 +47,9 @@ python -m http.server 8767 --bind 127.0.0.1 --directory dist
 ```
 
 运行 `python scripts/validate_snapshot.py` 检查日期、标的与关键数值完整性。
+
+## 学习中心
+
+`dist/learn.html` 提供英中日交易流程图、九章学习笔记和示例仓位计算器。参考 KovaView 教学页（2026-09-26 阅读），以原创文字整理，区分原文规则、本站说明及原文内部差异；不复制未公开的 Kova 指标公式，ETF 评分也不是 Kova 分。计算器仅用手动输入，未接账户或下单，风险估算不含跳空、滑点与费用。
+
+成功发布后，Cloudflare 将同一份文件同时发布至 `orbit-us.pages.dev` 和原地址 `orbit-560.pages.dev`，两者均提供 `/learn.html`。

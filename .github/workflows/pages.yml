@@ -45,6 +45,7 @@ jobs:
           node --check dist/app.js
           node --check dist/i18n.js
           node --check dist/fund-context.js
+          node --check dist/learn.js
           python scripts/validate_snapshot.py
       - name: Refresh public fund profiles and holdings
         run: python scripts/refresh_funds.py

@@ -209,3 +209,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .fund-risk span { display: block; color: #9aabc0; font-size: 12px; }
 .fund-warning { color: #fbbf24 !important; }
 .fund-empty { padding: 14px; background: #15202e; border-radius: 8px; }
+
+.learning-link { color: var(--accent, #6ee7b7); font-size: 14px; text-decoration: none; padding: 8px 12px; border: 1px solid #26394b; border-radius: 9px; }
+.learning-link:hover { background: #142637; }
