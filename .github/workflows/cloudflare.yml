@@ -54,7 +54,7 @@ jobs:
         env:
           SITE_URL: ${{ steps.prepare.outputs.site_url }}
         run: |
-          curl --fail --silent --show-error --retry 5 --retry-all-errors --retry-delay 10 "$SITE_URL/" -o /tmp/live.html
+          curl --location --fail --silent --show-error --retry 5 --retry-all-errors --retry-delay 10 "$SITE_URL/" -o /tmp/live.html
           python -c "from pathlib import Path; assert 'ORBIT PULSE' in Path('/tmp/live.html').read_text(), 'Unexpected published page'"
 
       - name: Mirror to original ORBIT address
@@ -66,6 +66,6 @@ jobs:
       - name: Verify learning center on both addresses
         run: |
           for site in https://orbit-us.pages.dev https://orbit-560.pages.dev; do
-            curl --fail --silent --show-error --retry 5 --retry-all-errors --retry-delay 10 "$site/learn.html" -o /tmp/learn-live.html
+            curl --location --fail --silent --show-error --retry 5 --retry-all-errors --retry-delay 10 "$site/learn.html" -o /tmp/learn-live.html
             python -c "from pathlib import Path; assert 'Trading Playbook' in Path('/tmp/learn-live.html').read_text(), 'Missing learning center'"
           done
