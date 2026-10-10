@@ -35,3 +35,6 @@
 #stockRows tr[data-ticker]{cursor:pointer}
 .stock-ticker:hover{color:var(--green)}
 .stock-ticker:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+
+#stockTable{min-width:1220px}
+#stockTable .stock-sector{white-space:normal;min-width:120px;max-width:180px;color:var(--muted);font-size:.78rem}

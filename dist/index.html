@@ -120,8 +120,9 @@
           <button id="stockExport" class="stock-button">导出CSV</button>
         </div>
         <div class="stock-summary"><span id="stockCount" aria-live="polite"></span><span>按列标题排序；点击行打开TradingView日线图</span></div>
-        <div class="table-wrap"><table id="stockTable"><thead><tr><th>★</th><th><button data-key="ticker">代码</button></th><th><button data-key="price">收盘价</button></th><th><button data-key="change_pct">日涨跌</button></th><th><button data-key="rs_rating">RS ↓</button></th><th><button data-key="price_to_sma50">对50日均线</button></th><th><button data-key="price_to_sma200">对200日均线</button></th><th><button data-key="below_52w_high_pct">距52周高点</button></th><th><button data-key="volume_ratio">量比</button></th><th>图表</th></tr></thead><tbody id="stockRows"></tbody></table></div>
+        <div class="table-wrap"><table id="stockTable"><thead><tr><th>★</th><th><button data-key="ticker">代码</button></th><th><button data-key="price">收盘价</button></th><th><button data-key="sector">板块</button></th><th><button data-key="change_pct">日涨跌</button></th><th><button data-key="rs_rating">RS ↓</button></th><th><button data-key="price_to_sma50">对50日均线</button></th><th><button data-key="price_to_sma200">对200日均线</button></th><th><button data-key="below_52w_high_pct">距52周高点</button></th><th><button data-key="volume_ratio">量比</button></th><th>图表</th></tr></thead><tbody id="stockRows"></tbody></table></div>
         <p class="refresh-note">来源为VCPScanner公开快照，最多300只预筛选候选，非全市场扫描；RS由源站提供。</p>
+        <p class="refresh-note">Sector来源：Yahoo Finance；缺失显示“—”。</p>
         <a class="stock-link" href="./minervini-LICENSE.txt">数据源与许可</a>
       </section>
     </main>

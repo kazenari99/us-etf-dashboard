@@ -66,6 +66,8 @@ jobs:
           python scripts/validate_snapshot.py
       - name: Refresh public stock candidates with explicit source date
         run: python scripts/refresh_stocks.py
+      - name: Refresh stock sector classifications
+        run: python scripts/refresh_stock_sectors.py
       - name: Refresh public fund profiles and holdings
         run: python scripts/refresh_funds.py
       - uses: actions/upload-artifact@v4

@@ -11,7 +11,7 @@
     ['未通过数据完整性检查','Data integrity check failed','データ整合性チェック失敗'],['没有符合条件的股票','No matching stocks','該当する銘柄なし'],['按列标题排序；点击行打开TradingView日线图','Sort by column; click a row for TradingView daily chart','列で並べ替え・行を選ぶとTradingViewの日足を表示'],
     ['仅在美股交易日次日07:00东京时间启动更新；云端调度可能延迟。','Refresh scheduled at 07:00 Tokyo time after each US trading day; cloud scheduling may be delayed.','米国取引日の翌日07:00（東京）に更新開始予定。クラウド実行は遅延する場合があります。'],
     ['来源为VCPScanner公开快照，最多300只预筛选候选，非全市场扫描；RS由源站提供。','Source: VCPScanner public snapshot, capped at 300 pre-screened candidates; not a full-market scan. RS is provided by the source.','VCPScanner公開データ・事前選別された最大300銘柄。全市場スキャンではなく、RSは配信元の値です。'],
-    ['数据源与许可','Source & license','データソース・ライセンス'],['收盘价','Close','終値'],['待图表核验：150日均线排列、200日均线斜率及VCP形态。','Chart review required: 150-day MA alignment, 200-day MA slope and VCP pattern.','要チャート確認：150日線の配列、200日線の傾き、VCPパターン。'],
+    ['数据源与许可','Source & license','データソース・ライセンス'],['Sector来源：Yahoo Finance；缺失显示“—”。','Sector: Yahoo Finance; unavailable values shown as —.','セクター：Yahoo Finance。未取得は — と表示。'],['板块','Sector','セクター'],['收盘价','Close','終値'],['待图表核验：150日均线排列、200日均线斜率及VCP形态。','Chart review required: 150-day MA alignment, 200-day MA slope and VCP pattern.','要チャート確認：150日線の配列、200日線の傾き、VCPパターン。'],
     ['预筛选条件','Pre-screen checks','事前スクリーニング条件'],['未通过','Fail','不適合'],['通过','Pass','適合'],['未知','Unknown','不明'],
     ['载入数据中','Loading data','データを読み込み中'],
     ['正在核对快照日期与来源…','Checking snapshot date and source…','日付とデータソースを確認中…'],

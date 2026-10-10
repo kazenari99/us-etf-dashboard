@@ -1,0 +1,1724 @@
+{
+  "MESA": {
+    "status": "unavailable"
+  },
+  "LAZR": {
+    "status": "unavailable"
+  },
+  "KOD": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "QMCO": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TXG": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CDTX": {
+    "status": "unavailable"
+  },
+  "FBRX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MRNA": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CDNA": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "IOVA": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "OKTA": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CRWD": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SDGR": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TEAM": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SMTC": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MRVL": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DELL": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "GRAL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PAYS": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HPE": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HOUS": {
+    "status": "unavailable"
+  },
+  "TERN": {
+    "status": "unavailable"
+  },
+  "PENG": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "OABI": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PLSE": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "RNG": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TWLO": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AMD": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HTFL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "COHU": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "INTC": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PGEN": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PRCH": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CRSR": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PUBM": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CORT": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "KRT": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HNGE": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NTRA": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MRVI": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MTW": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MTRN": {
+    "sector": "Basic Materials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CRNX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "RBRK": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PANW": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "LITE": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DAWN": {
+    "status": "unavailable"
+  },
+  "AMPL": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MU": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MPC": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CVI": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NUTX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ATRC": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "LOGC": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PD": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "APLS": {
+    "status": "unavailable"
+  },
+  "ILMN": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AMC": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "OMER": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NTAP": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ZETA": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "GTLB": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CLMT": {
+    "sector": "Basic Materials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PBF": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HZO": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "QLYS": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NSIT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ALNT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FIVN": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FTNT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DK": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ACVA": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TH": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VLO": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "S": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "KALV": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AMRK": {
+    "status": "unavailable"
+  },
+  "VREX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "IBTA": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "XMTR": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TOI": {
+    "status": "unavailable"
+  },
+  "LIND": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ATAI": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CAI": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BE": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DINO": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PKOH": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PSNL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MGNI": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "OSCR": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HALO": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DDOG": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "INSW": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NET": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "LPG": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CBRL": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CAKE": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AVNS": {
+    "status": "unavailable"
+  },
+  "RDVT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FET": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NTSK": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CRCT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NIQ": {
+    "status": "unavailable"
+  },
+  "FRGE": {
+    "status": "unavailable"
+  },
+  "PAYC": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FEIM": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FORM": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AVT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ESTC": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SNOW": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PRLB": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ZBRA": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MTSR": {
+    "status": "unavailable"
+  },
+  "ANF": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FROG": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "RVTY": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SBC": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "LFST": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VRNS": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NTNX": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "APGE": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AVTR": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PSX": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HAE": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CYRX": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CLOV": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CHEF": {
+    "sector": "Consumer Defensive",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TITN": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CRL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AZTA": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "U": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BLFS": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "UTZ": {
+    "sector": "Consumer Defensive",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TENB": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MLAB": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "APPN": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AMN": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "RIGL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VEEV": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ARW": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PARR": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BWMN": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HUM": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CBZ": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "IBRX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "WNC": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VCTR": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "EXAS": {
+    "status": "unavailable"
+  },
+  "IDT": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TER": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SG": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AII": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VSTS": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VSCO": {
+    "status": "unavailable"
+  },
+  "SWKS": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TGTX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CON": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CLDT": {
+    "sector": "Real Estate",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SN": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "WEST": {
+    "sector": "Consumer Defensive",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DAVE": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "OSPN": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AAMI": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ONTO": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PI": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ROG": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ARHS": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ANET": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CVLT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ENTG": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DIOD": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AMRX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SCSC": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MG": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CNXN": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CLMB": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DVAX": {
+    "status": "unavailable"
+  },
+  "PBYI": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CTKB": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SEI": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FTRE": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "OGN": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DGII": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "OLPX": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SNX": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BWIN": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "KEYS": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SRDX": {
+    "status": "unavailable"
+  },
+  "RGEN": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FFIV": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PLTR": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "GIC": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SPT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CSTL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VMEO": {
+    "status": "unavailable"
+  },
+  "IBEX": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "KN": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "XERS": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ATKR": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HRTG": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "VIR": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DOCU": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "RAL": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BHE": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "QRVO": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "THR": {
+    "status": "unavailable"
+  },
+  "SLDE": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PRTH": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "GCT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BZH": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CNC": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "UFCS": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "DV": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ITGR": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "A": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HPK": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ECPG": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "LGND": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SAIL": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "REPX": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "YEXT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CBLL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BOW": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PEB": {
+    "sector": "Real Estate",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NMAX": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "RXO": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MATX": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MSM": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "WST": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HSTM": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SYNA": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FRSH": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "LQDT": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "IQV": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NHC": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BOX": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "GCI": {
+    "status": "unavailable"
+  },
+  "GLDD": {
+    "status": "unavailable"
+  },
+  "CFLT": {
+    "status": "unavailable"
+  },
+  "SAFT": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MTSI": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "META": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SM": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "WEAV": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CBNK": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "KMTS": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AMPH": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SSRM": {
+    "sector": "Basic Materials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BRKR": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "INTA": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ACHC": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TXN": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "APA": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "THC": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "LSCC": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HLX": {
+    "sector": "Energy",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "EHAB": {
+    "status": "unavailable"
+  },
+  "CRVL": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NVAX": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PRSU": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NVEC": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FRHC": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "W": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CRM": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NVDA": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HGTY": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "HRMY": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NHPBP": {
+    "sector": "Real Estate",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SONO": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "CRBG": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "SXC": {
+    "sector": "Basic Materials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PLXS": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FLYW": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ZD": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "EXPD": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "EXEL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "EQH": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BTX": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BSVN": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "GBTG": {
+    "sector": "Consumer Cyclical",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PAYO": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NPK": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ADI": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "TMO": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "UVE": {
+    "sector": "Financial Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "NHPAP": {
+    "sector": "Real Estate",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "PKST": {
+    "status": "unavailable"
+  },
+  "IOT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "FOLD": {
+    "status": "unavailable"
+  },
+  "NUVL": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AVPT": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "WCC": {
+    "sector": "Industrials",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "MSGE": {
+    "sector": "Communication Services",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "BTSG": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "ZEUS": {
+    "status": "unavailable"
+  },
+  "WK": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "WAT": {
+    "sector": "Healthcare",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "AAPL": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  },
+  "RELY": {
+    "sector": "Technology",
+    "retrieved_at": "2026-10-10T14:27:27.514015+00:00",
+    "source": "Yahoo Finance",
+    "status": "ok"
+  }
+}

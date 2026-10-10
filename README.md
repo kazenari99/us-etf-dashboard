@@ -55,3 +55,5 @@ python -m http.server 8767 --bind 127.0.0.1 --directory dist
 ```
 
 运行 `python scripts/validate_snapshot.py` 检查日期、标的与关键数值完整性。
+
+股票 Sector 来自 Yahoo Finance 的公司资料，云端每30天刷新缓存，新标的首次出现时补充；抓取失败保留已有分类，未知显示“—”。分类不参与选股评分，CSV包含Sector。
