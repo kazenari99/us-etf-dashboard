@@ -1,13 +1,14 @@
 /* UI translations only. Market values, identifiers and source disclosures stay intact. */
 (() => {
   const entries = [
+    ['TradingView 日线图 ↗','TradingView daily chart ↗','TradingView 日足チャート ↗'],
     ['ETF 动量','ETF Momentum','ETFモメンタム'],['强势股筛选','Stock Screener','強い銘柄の絞り込み'],
     ['全部候选','All Candidates','すべての候補'],['距高点5%内','Within 5% High','高値から5%以内'],['放量1.5倍','Volume Expansion (1.5×+)','出来高1.5倍以上'],['仅自选','Watchlist Only','ウォッチリスト'],
     ['最低RS','Min RS','最低RS'],['距52周高点','From 52W High','52週高値から'],['最低量比','Min Volume','最低出来高比'],['导出CSV','Export CSV','CSV出力'],
     ['搜索股票代码或公司','Search ticker or company','銘柄コード・会社名で検索'],['量比','Vol Ratio','出来高比'],['日涨跌','Day %','前日比'],['对50日均线','vs 50 SMA','50日線比'],['对200日均线','vs 200 SMA','200日線比'],['图表','Chart','チャート'],
     ['候选数量','Candidates','候補数'],['数据交易日','Data session','データ取引日'],['抓取时间','Retrieved','取得日時'],['暂无数据','No data','データなし'],
     ['源站尚未更新至ETF交易日','Source has not reached the ETF session','配信元はETFの取引日まで未更新'],['源站抓取失败，保留上次快照','Source fetch failed; previous snapshot retained','取得失敗・前回データを保持'],['源站快照已同步','Source snapshot synchronized','配信元と同期済み'],
-    ['未通过数据完整性检查','Data integrity check failed','データ整合性チェック失敗'],['没有符合条件的股票','No matching stocks','該当する銘柄なし'],['按列标题排序；点击代码查看条件','Sort by column; select a ticker for checks','列で並べ替え・銘柄を選ぶと条件を表示'],
+    ['未通过数据完整性检查','Data integrity check failed','データ整合性チェック失敗'],['没有符合条件的股票','No matching stocks','該当する銘柄なし'],['按列标题排序；点击行打开TradingView日线图','Sort by column; click a row for TradingView daily chart','列で並べ替え・行を選ぶとTradingViewの日足を表示'],
     ['仅在美股交易日次日07:00东京时间启动更新；云端调度可能延迟。','Refresh scheduled at 07:00 Tokyo time after each US trading day; cloud scheduling may be delayed.','米国取引日の翌日07:00（東京）に更新開始予定。クラウド実行は遅延する場合があります。'],
     ['来源为VCPScanner公开快照，最多300只预筛选候选，非全市场扫描；RS由源站提供。','Source: VCPScanner public snapshot, capped at 300 pre-screened candidates; not a full-market scan. RS is provided by the source.','VCPScanner公開データ・事前選別された最大300銘柄。全市場スキャンではなく、RSは配信元の値です。'],
     ['数据源与许可','Source & license','データソース・ライセンス'],['收盘价','Close','終値'],['待图表核验：150日均线排列、200日均线斜率及VCP形态。','Chart review required: 150-day MA alignment, 200-day MA slope and VCP pattern.','要チャート確認：150日線の配列、200日線の傾き、VCPパターン。'],
