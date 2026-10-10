@@ -19,7 +19,7 @@ GitHub Actions计划每天22:00 UTC运行，即东京时间次日07:00。先用N
 
 ## 强势股筛选
 
-同一网址的 `/#stocks` 提供Minervini候选列表，与ETF页面共享ORBIT配色、字体和中英日语言切换。默认RS≥90、距52周高点≤25%、量比≥1.0，支持搜索、排序、浏览器本地自选和CSV导出。点击股票行或代码在新标签页打开TradingView日线图，右侧Chart链接保留源站图表入口。
+同一网址的 `/#stocks` 提供Minervini候选列表，与ETF页面共享ORBIT配色、字体和中英日语言切换。默认RS≥90、距52周高点≤25%、量比≥1.0，支持搜索、排序、浏览器本地自选和CSV导出。点击股票行、代码或右侧Chart链接，均在新标签页打开对应标的的TradingView日线图。
 
 `scripts/refresh_stocks.py` 在同一构建中读取VCPScanner公开的 `https://anish1294.github.io/minervini-trend-template-screener/current.json`。它是作者按RS排序后的最多300只预筛选候选，不代表全市场；不调用作者数据库，不重算RS，不与ETF行情混合。保留来源归属及MIT许可。图表链接打开源站。
 
