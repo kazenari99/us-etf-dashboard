@@ -21,8 +21,29 @@ concurrency:
   group: cloudflare-production
   cancel-in-progress: false
 jobs:
-  publish:
+  source:
     if: ${{ github.event_name == 'workflow_dispatch' || (vars.CLOUDFLARE_ENABLED == 'true' && github.event.workflow_run.conclusion == 'success') }}
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.source.outputs.ready }}
+    steps:
+      - name: Skip publication when the market-calendar gate skipped the build
+        id: source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            count=$(gh api "repos/$GH_REPO/actions/runs/$RUN_ID/artifacts" --jq '[.artifacts[] | select(.name == "github-pages" and .expired == false)] | length')
+            if [ "$count" -gt 0 ]; then echo 'ready=true' >> "$GITHUB_OUTPUT"; else echo 'ready=false' >> "$GITHUB_OUTPUT"; fi
+          fi
+  publish:
+    needs: source
+    if: ${{ needs.source.outputs.ready == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:

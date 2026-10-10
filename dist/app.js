@@ -186,7 +186,7 @@ function bind(){
   $('#searchInput').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();applyFilters();});
   $('#groupSelect').addEventListener('change',e=>{state.group=e.target.value;applyFilters();});
   document.querySelectorAll('#setupFilter button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#setupFilter button').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.setup=b.dataset.setup;applyFilters();}));
-  document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.sort;state.sortDir=state.sortKey===key?-state.sortDir:(['ticker','group','setup'].includes(key)?1:-1);state.sortKey=key;applyFilters();}));
+  document.querySelectorAll('#etfView th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.sort;state.sortDir=state.sortKey===key?-state.sortDir:(['ticker','group','setup'].includes(key)?1:-1);state.sortKey=key;applyFilters();}));
   $('#drawerClose').addEventListener('click',closeDrawer);$('#drawerBackdrop').addEventListener('click',closeDrawer);addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
   let timer;addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(renderScatter,120);});
 }
@@ -202,12 +202,12 @@ async function init(){
     state.data=parseCSV(csv); state.filtered=[...state.data];
     if(state.data.length!==meta.count||state.data.some(r=>r.date!==meta.asof))throw new Error('快照日期或数量不一致');
     $('#asOf').textContent=`数据截止 ${meta.asof} · ${meta.source} 日线`;
-    const generated=new Date(meta.generated_at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false});
+    const generated=new Date(meta.generated_at).toLocaleString('zh-CN',{timeZone:'Asia/Tokyo',hour12:false});
     const stale=Date.now()-Date.parse(meta.generated_at)>4*86400000;
-    $('#dataQuality').textContent=`${meta.count}/${meta.expected_count} 只完整 · 更新 ${generated} 北京时间 · ${meta.source==='Yahoo Finance'?'分红/拆股复权 · 云端自动刷新':'本地快照'}${stale?' · 已超过4天未更新，请查看运行记录':''}`;
+    $('#dataQuality').textContent=`${meta.count}/${meta.expected_count} 只完整 · 更新 ${generated} 东京时间 · ${meta.source==='Yahoo Finance'?'分红/拆股复权 · 云端自动刷新':'本地快照'}${stale?' · 已超过4天未更新，请查看运行记录':''}`;
     $('#dataQuality').classList.toggle('stale',stale);
     const groups=[...new Set(state.data.map(x=>x.group))];$('#groupSelect').innerHTML+=[...groups].map(g=>`<option value="${g}">${groupNames[g]||g}</option>`).join('');
     renderKPIs();renderOpportunities();bind();applyFilters();
-  }catch(err){document.querySelector('main').innerHTML=`<div class="error-state"><h2>数据载入失败</h2><p>${err.message}</p></div>`;}
+  }catch(err){document.querySelector('#etfView').innerHTML=`<div class="error-state"><h2>数据载入失败</h2><p>${err.message}</p></div>`;}
 }
 init();

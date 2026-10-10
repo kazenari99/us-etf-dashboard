@@ -1,6 +1,17 @@
 /* UI translations only. Market values, identifiers and source disclosures stay intact. */
 (() => {
   const entries = [
+    ['ETF 动量','ETF Momentum','ETFモメンタム'],['强势股筛选','Stock Screener','強い銘柄の絞り込み'],
+    ['全部候选','All Candidates','すべての候補'],['距高点5%内','Within 5% High','高値から5%以内'],['放量1.5倍','Volume Expansion (1.5×+)','出来高1.5倍以上'],['仅自选','Watchlist Only','ウォッチリスト'],
+    ['最低RS','Min RS','最低RS'],['距52周高点','From 52W High','52週高値から'],['最低量比','Min Volume','最低出来高比'],['导出CSV','Export CSV','CSV出力'],
+    ['搜索股票代码或公司','Search ticker or company','銘柄コード・会社名で検索'],['量比','Vol Ratio','出来高比'],['日涨跌','Day %','前日比'],['对50日均线','vs 50 SMA','50日線比'],['对200日均线','vs 200 SMA','200日線比'],['图表','Chart','チャート'],
+    ['候选数量','Candidates','候補数'],['数据交易日','Data session','データ取引日'],['抓取时间','Retrieved','取得日時'],['暂无数据','No data','データなし'],
+    ['源站尚未更新至ETF交易日','Source has not reached the ETF session','配信元はETFの取引日まで未更新'],['源站抓取失败，保留上次快照','Source fetch failed; previous snapshot retained','取得失敗・前回データを保持'],['源站快照已同步','Source snapshot synchronized','配信元と同期済み'],
+    ['未通过数据完整性检查','Data integrity check failed','データ整合性チェック失敗'],['没有符合条件的股票','No matching stocks','該当する銘柄なし'],['按列标题排序；点击代码查看条件','Sort by column; select a ticker for checks','列で並べ替え・銘柄を選ぶと条件を表示'],
+    ['仅在美股交易日次日07:00东京时间启动更新；云端调度可能延迟。','Refresh scheduled at 07:00 Tokyo time after each US trading day; cloud scheduling may be delayed.','米国取引日の翌日07:00（東京）に更新開始予定。クラウド実行は遅延する場合があります。'],
+    ['来源为VCPScanner公开快照，最多300只预筛选候选，非全市场扫描；RS由源站提供。','Source: VCPScanner public snapshot, capped at 300 pre-screened candidates; not a full-market scan. RS is provided by the source.','VCPScanner公開データ・事前選別された最大300銘柄。全市場スキャンではなく、RSは配信元の値です。'],
+    ['数据源与许可','Source & license','データソース・ライセンス'],['收盘价','Close','終値'],['待图表核验：150日均线排列、200日均线斜率及VCP形态。','Chart review required: 150-day MA alignment, 200-day MA slope and VCP pattern.','要チャート確認：150日線の配列、200日線の傾き、VCPパターン。'],
+    ['预筛选条件','Pre-screen checks','事前スクリーニング条件'],['未通过','Fail','不適合'],['通过','Pass','適合'],['未知','Unknown','不明'],
     ['载入数据中','Loading data','データを読み込み中'],
     ['正在核对快照日期与来源…','Checking snapshot date and source…','日付とデータソースを確認中…'],
     ['筛选工具','Filters','絞り込み'],
@@ -39,7 +50,7 @@
     ['快照信息 HTTP','Snapshot metadata HTTP','スナップショット情報 HTTP'],
     ['页面正在更新，请刷新后重试','The page is updating. Please refresh and try again.','ページを更新中です。再読み込みしてください。'],
     ['快照日期或数量不一致','Snapshot date or record count mismatch','スナップショットの日付または件数が一致しません'],
-    ['数据截止','Data through','データ基準日'],['日线','daily bars','日足'],['只完整','complete','件・完全'],['更新时间','Updated','更新日時'],['更新 ','Updated ','更新 '],['北京时间','China time (UTC+8)','中国時間（UTC+8）'],
+    ['数据截止','Data through','データ基準日'],['日线','daily bars','日足'],['只完整','complete','件・完全'],['更新时间','Updated','更新日時'],['更新 ','Updated ','更新 '],['东京时间','Tokyo time (UTC+9)','東京時間（UTC+9）'],
     ['分红/拆股复权 · 云端自动刷新','Dividend/split adjusted · automatic cloud refresh','配当・株式分割調整済み・クラウド自動更新'],['本地快照','Imported local snapshot','ローカル取込スナップショット'],
     ['已超过4天未更新，请查看运行记录','No update for over 4 days. Check the run history.','4日以上更新されていません。実行履歴を確認してください。'],['数据载入失败','Unable to load data','データを読み込めませんでした'],
     ['基金介绍与持仓','Fund profile and holdings','ファンド概要と保有銘柄'],['暂无可核验资料。','No verifiable information available.','確認可能な情報がありません。'],['正在读取基金资料…','Loading fund information…','ファンド情報を読み込み中…'],

@@ -7,6 +7,7 @@
   <title>ORBIT PULSE</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090f1c'/%3E%3Cpath d='M6 23l6-7 5 3 9-11' fill='none' stroke='%236ee7b7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='26' cy='8' r='2.5' fill='%23fbbf24'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./stocks.css" />
 </head>
 <body>
   <div class="page-shell">
@@ -14,7 +15,7 @@
       <div class="brand">
         <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
         <div>
-          <p class="eyebrow">HERMES / US ETF MOMENTUM</p>
+          <p class="eyebrow">HERMES / US MARKET RADAR</p>
           <h1>ORBIT PULSE</h1>
         </div>
       </div>
@@ -28,7 +29,10 @@
       </div>
     </header>
 
+    <nav class="view-tabs" aria-label="Dashboard"><button type="button" data-view="etf" class="active" aria-pressed="true">ETF 动量</button><button type="button" data-view="stocks" aria-pressed="false">强势股筛选</button></nav>
+    <p class="refresh-note">仅在美股交易日次日07:00东京时间启动更新；云端调度可能延迟。</p>
     <main>
+    <div id="etfView">
       <p id="dataQuality" class="snapshot-status" aria-live="polite">正在核对快照日期与来源…</p>
       <section class="control-row" aria-label="筛选工具">
         <label class="search-box">
@@ -103,6 +107,23 @@
           </table>
         </div>
       </section>
+    </div>
+      <section id="stocksView" hidden aria-label="强势股筛选">
+        <div class="section-title-row"><div><p class="section-kicker">MINERVINI / RELATIVE STRENGTH</p><h2>强势股筛选</h2></div><a class="stock-link" href="https://github.com/Anish1294/minervini-trend-template-screener" target="_blank" rel="noopener">VCPScanner ↗</a></div>
+        <p id="stockStatus" class="snapshot-status" aria-live="polite">载入数据中</p>
+        <div class="stock-lenses segmented" id="stockLenses"><button data-lens="all">全部候选</button><button data-lens="rs" class="active">⚡ RS 90+ Leaders</button><button data-lens="high">距高点5%内</button><button data-lens="volume">放量1.5倍</button><button data-lens="watch">仅自选</button></div>
+        <div class="stock-controls">
+          <label class="search-box"><span>⌕</span><input id="stockSearch" type="search" placeholder="搜索股票代码或公司" aria-label="搜索股票代码或公司"></label>
+          <label class="select-wrap"><span>最低RS</span><select id="stockRS"><option value="70">70+</option><option value="80">80+</option><option value="90" selected>90+</option><option value="95">95+</option></select></label>
+          <label class="select-wrap"><span>距52周高点</span><select id="stockHigh"><option value="25">≤25%</option><option value="15">≤15%</option><option value="10">≤10%</option><option value="5">≤5%</option></select></label>
+          <label class="select-wrap"><span>最低量比</span><select id="stockVol"><option value="0">All</option><option value="1" selected>≥1.0×</option><option value="1.5">≥1.5×</option><option value="2">≥2.0×</option></select></label>
+          <button id="stockExport" class="stock-button">导出CSV</button>
+        </div>
+        <div class="stock-summary"><span id="stockCount" aria-live="polite"></span><span>按列标题排序；点击代码查看条件</span></div>
+        <div class="table-wrap"><table id="stockTable"><thead><tr><th>★</th><th><button data-key="ticker">代码</button></th><th><button data-key="price">收盘价</button></th><th><button data-key="change_pct">日涨跌</button></th><th><button data-key="rs_rating">RS ↓</button></th><th><button data-key="price_to_sma50">对50日均线</button></th><th><button data-key="price_to_sma200">对200日均线</button></th><th><button data-key="below_52w_high_pct">距52周高点</button></th><th><button data-key="volume_ratio">量比</button></th><th>图表</th></tr></thead><tbody id="stockRows"></tbody></table></div>
+        <p class="refresh-note">来源为VCPScanner公开快照，最多300只预筛选候选，非全市场扫描；RS由源站提供。</p>
+        <a class="stock-link" href="./minervini-LICENSE.txt">数据源与许可</a>
+      </section>
     </main>
   </div>
 
@@ -115,5 +136,6 @@
   <script src="./i18n.js"></script>
   <script src="./fund-context.js"></script>
   <script src="./app.js"></script>
+  <script src="./stocks.js"></script>
 </body>
 </html>

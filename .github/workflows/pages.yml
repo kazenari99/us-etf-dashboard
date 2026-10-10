@@ -9,7 +9,8 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: '37 23 * * 1-5'
+    # 07:00 Asia/Tokyo on the next calendar date; NYSE holiday gate below.
+    - cron: '0 22 * * *'
 permissions:
   contents: read
   pages: write
@@ -18,7 +19,23 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
+  calendar:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.calendar.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Check previous Tokyo date against NYSE calendar
+        id: calendar
+        run: python scripts/check_refresh_day.py
   deploy:
+    needs: calendar
+    if: ${{ needs.calendar.outputs.run == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     environment:
@@ -45,7 +62,10 @@ jobs:
           node --check dist/app.js
           node --check dist/i18n.js
           node --check dist/fund-context.js
+          node --check dist/stocks.js
           python scripts/validate_snapshot.py
+      - name: Refresh public stock candidates with explicit source date
+        run: python scripts/refresh_stocks.py
       - name: Refresh public fund profiles and holdings
         run: python scripts/refresh_funds.py
       - uses: actions/upload-artifact@v4
