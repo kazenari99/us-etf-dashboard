@@ -4,6 +4,10 @@ on:
     branches: [main]
   workflow_dispatch:
     inputs:
+      stocks_only:
+        description: 'Refresh stocks independently, preserving the last published ETF snapshot'
+        type: boolean
+        default: false
       use_committed_snapshot:
         description: 'Publish an explicitly imported, validated local snapshot'
         type: boolean
@@ -11,18 +15,25 @@ on:
   schedule:
     # 07:00 Asia/Tokyo on the next calendar date; NYSE holiday gate below.
     - cron: '0 22 * * *'
+    # Thirty minutes after each upstream VCPScanner scheduled refresh.
+    - cron: '47 20 * * 1-5'
+      timezone: America/New_York
+    - cron: '47 22 * * 1-5'
+      timezone: America/New_York
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   calendar:
     runs-on: ubuntu-latest
     outputs:
       run: ${{ steps.calendar.outputs.run }}
+      stocks_only: ${{ steps.calendar.outputs.stocks_only }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,6 +43,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Check previous Tokyo date against NYSE calendar
         id: calendar
+        env:
+          REFRESH_SCHEDULE: ${{ github.event.schedule }}
+          STOCKS_ONLY: ${{ inputs.stocks_only }}
         run: python scripts/check_refresh_day.py
   deploy:
     needs: calendar
@@ -50,11 +64,17 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Test calendar and data integrity
         run: python -m unittest discover -s tests -v
+      - name: Restore latest published data before independent refresh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          STOCKS_ONLY: ${{ needs.calendar.outputs.stocks_only }}
+        run: python scripts/restore_published_data.py
       - name: Refresh complete US ETF universe
-        if: ${{ !inputs.use_committed_snapshot }}
+        if: ${{ needs.calendar.outputs.stocks_only != 'true' && !inputs.use_committed_snapshot }}
         run: python scripts/refresh_snapshot.py
       - name: Check imported snapshot freshness
-        if: ${{ inputs.use_committed_snapshot }}
+        if: ${{ needs.calendar.outputs.stocks_only != 'true' && inputs.use_committed_snapshot }}
         run: |
           python -c "import sys,json;sys.path.insert(0,'scripts');from refresh_snapshot import completed_sessions; m=json.load(open('dist/snapshot_meta.json')); assert m['asof']==str(completed_sessions()[-1].date()), 'Imported snapshot is stale'"
       - name: Validate JavaScript and snapshot
@@ -64,14 +84,19 @@ jobs:
           node --check dist/fund-context.js
           node --check dist/stocks.js
           python scripts/validate_snapshot.py
+      - name: Align stock status with the published ETF session
+        run: python scripts/restore_published_data.py --reconcile-only
       - name: Refresh public stock candidates with explicit source date
+        if: ${{ needs.calendar.outputs.stocks_only == 'true' }}
         run: python scripts/refresh_stocks.py
       - name: Refresh stock sector classifications
+        if: ${{ needs.calendar.outputs.stocks_only == 'true' }}
         run: python scripts/refresh_stock_sectors.py
       - name: Refresh public fund profiles and holdings
+        if: ${{ needs.calendar.outputs.stocks_only != 'true' }}
         run: python scripts/refresh_funds.py
       - uses: actions/upload-artifact@v4
-        if: ${{ !inputs.use_committed_snapshot }}
+        if: ${{ needs.calendar.outputs.stocks_only != 'true' && !inputs.use_committed_snapshot }}
         with:
           name: us-etf-research-${{ github.run_id }}
           path: archive/
