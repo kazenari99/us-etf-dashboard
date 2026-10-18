@@ -7,6 +7,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 ETF_FILES = ('etf_momentum_latest.csv', 'snapshot_meta.json')
@@ -24,7 +25,7 @@ def select_run(repo):
         artifacts = gh(f'repos/{repo}/actions/runs/{run["id"]}/artifacts')['artifacts']
         if any(a['name'] == 'github-pages' and not a['expired'] for a in artifacts):
             return str(run['id'])
-    raise RuntimeError('No successful Pages artifact available; refusing to roll data back to git')
+    return None
 
 def restore(archive, dist, stocks_only):
     wanted = (*ETF_FILES, *AUX_FILES)
@@ -36,6 +37,10 @@ def restore(archive, dist, stocks_only):
                 if not member.isfile() or member.size > 20_000_000 or name in data:
                     raise ValueError('Invalid or duplicate snapshot member')
                 data[name] = tar.extractfile(member).read()
+    return restore_files(data, dist, stocks_only)
+
+def restore_files(data, dist, stocks_only):
+    wanted = (*ETF_FILES, *AUX_FILES)
     if any(name not in data for name in wanted):
         raise ValueError('Published artifact is missing snapshot files')
     meta = json.loads(data['snapshot_meta.json'])
@@ -57,6 +62,19 @@ def reconcile(dist):
 def main():
     repo = os.environ['GH_REPO']
     run_id = select_run(repo)
+    if run_id is None:
+        # Pages artifacts expire quickly; the deployed mirror retains the same data.
+        data = {}
+        for name in (*ETF_FILES, *AUX_FILES):
+            request = Request(f'https://kazenari99.github.io/us-etf-dashboard/{name}',
+                              headers={'Cache-Control': 'no-cache'})
+            with urlopen(request, timeout=30) as response:
+                data[name] = response.read(20_000_001)
+            if len(data[name]) > 20_000_000:
+                raise ValueError('Published snapshot is too large')
+        session = restore_files(data, ROOT / 'dist', os.environ.get('STOCKS_ONLY') == 'true')
+        print(f'Restored verified live Pages mirror; previous ETF session {session}')
+        return
     with tempfile.TemporaryDirectory() as directory:
         subprocess.run(['gh', 'run', 'download', run_id, '--repo', repo, '--name',
                         'github-pages', '--dir', directory], check=True)

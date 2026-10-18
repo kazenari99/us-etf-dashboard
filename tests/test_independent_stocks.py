@@ -71,3 +71,9 @@ class IndependentStocksTests(unittest.TestCase):
             {'workflow_runs':[dict(base,id=2),dict(base,id=1)]},
             {'artifacts':[]}, {'artifacts':[{'name':'github-pages','expired':False}]}]):
             self.assertEqual(restore.select_run('owner/repo'), '1')
+
+    def test_expired_artifacts_allow_verified_live_mirror_fallback(self):
+        base = {'head_branch':'main', 'head_repository':{'full_name':'owner/repo'}, 'path':'.github/workflows/pages.yml', 'id':1}
+        with patch.object(restore, 'gh', side_effect=[{'workflow_runs':[base]},
+                {'artifacts':[{'name':'github-pages','expired':True}]}]):
+            self.assertIsNone(restore.select_run('owner/repo'))
