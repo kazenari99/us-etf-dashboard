@@ -2,7 +2,7 @@
 import os
 from refresh_stocks import previous_tokyo_session
 
-STOCK_SCHEDULES = {'47 20 * * 1-5', '47 22 * * 1-5'}
+STOCK_SCHEDULES = {'17 21 * * 1-5', '17 23 * * 1-5'}
 
 def route(event, schedule, manual_stocks, session):
     stocks_only = (event == 'schedule' and schedule in STOCK_SCHEDULES) or (

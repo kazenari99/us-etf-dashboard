@@ -15,10 +15,10 @@ on:
   schedule:
     # 07:00 Asia/Tokyo on the next calendar date; NYSE holiday gate below.
     - cron: '0 22 * * *'
-    # Thirty minutes after each upstream VCPScanner scheduled refresh.
-    - cron: '47 20 * * 1-5'
+    # One hour after each upstream VCPScanner scheduled refresh.
+    - cron: '17 21 * * 1-5'
       timezone: America/New_York
-    - cron: '47 22 * * 1-5'
+    - cron: '17 23 * * 1-5'
       timezone: America/New_York
 permissions:
   contents: read

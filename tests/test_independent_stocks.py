@@ -14,7 +14,7 @@ import restore_published_data as restore
 
 class IndependentStocksTests(unittest.TestCase):
     def test_stock_schedule_and_manual_do_not_depend_on_etf_calendar(self):
-        for schedule in ('47 20 * * 1-5', '47 22 * * 1-5'):
+        for schedule in ('17 21 * * 1-5', '17 23 * * 1-5'):
             self.assertEqual(route('schedule', schedule, '', None), (True, True))
         self.assertEqual(route('workflow_dispatch', '', 'true', None), (True, True))
         self.assertEqual(route('schedule', '0 22 * * *', '', None), (False, False))
