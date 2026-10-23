@@ -57,6 +57,12 @@ class RefreshTests(unittest.TestCase):
                 refresh.fetch_all(refresh.completed_sessions('2026-09-23T23:37:00Z'))
             self.assertEqual(ticker.return_value.history.call_count, 3)
 
+    def test_invalid_values_report_date_and_field(self):
+        raw = self.raw()
+        raw.iloc[-1, raw.columns.get_loc('Close')] = np.nan
+        with self.assertRaisesRegex(ValueError, '2026-09-23 close=nan'):
+            refresh.normalize(raw, self.sessions, 'SPY')
+
     def test_original_model_parity(self):
         fixture = json.loads((Path(__file__).parent / 'fixtures/us_model_parity.json').read_text())
         names = {'510300':'SPY'}

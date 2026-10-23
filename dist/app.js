@@ -204,7 +204,7 @@ async function init(){
     $('#asOf').textContent=`数据截止 ${meta.asof} · ${meta.source} 日线`;
     const generated=new Date(meta.generated_at).toLocaleString('zh-CN',{timeZone:'Asia/Tokyo',hour12:false});
     const stale=Date.now()-Date.parse(meta.generated_at)>4*86400000;
-    $('#dataQuality').textContent=`${meta.count}/${meta.expected_count} 只完整 · 更新 ${generated} 东京时间 · ${meta.source==='Yahoo Finance'?'分红/拆股复权 · 云端自动刷新':'本地快照'}${stale?' · 已超过4天未更新，请查看运行记录':''}`;
+    $('#dataQuality').textContent=`${meta.count}/${meta.expected_count} 只完整 · 最近成功快照 ${generated} 东京时间 · ${meta.source==='Yahoo Finance'?'分红/拆股复权 · 已安排云端刷新':'本地快照'}${stale?' · 已超过4天未更新，请查看运行记录':''}`;
     $('#dataQuality').classList.toggle('stale',stale);
     const groups=[...new Set(state.data.map(x=>x.group))];$('#groupSelect').innerHTML+=[...groups].map(g=>`<option value="${g}">${groupNames[g]||g}</option>`).join('');
     renderKPIs();renderOpportunities();bind();applyFilters();

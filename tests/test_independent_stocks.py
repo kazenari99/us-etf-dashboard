@@ -17,6 +17,8 @@ class IndependentStocksTests(unittest.TestCase):
         for schedule in ('17 21 * * 1-5', '17 23 * * 1-5'):
             self.assertEqual(route('schedule', schedule, '', None), (True, True))
         self.assertEqual(route('workflow_dispatch', '', 'true', None), (True, True))
+        self.assertEqual(route('schedule', '0 6 * * *', '', None), (False, False))
+        self.assertEqual(route('schedule', '0 6 * * *', '', '2026-10-22'), (True, False))
         self.assertEqual(route('schedule', '0 22 * * *', '', None), (False, False))
         self.assertEqual(route('schedule', '0 22 * * *', '', '2026-10-16'), (True, False))
 

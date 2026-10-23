@@ -51,8 +51,12 @@ def normalize(raw, sessions, ticker):
         raise ValueError(f'{ticker}: incomplete or misaligned sessions')
     fields = ['open', 'high', 'low', 'close', 'volume']
     frame = frame[fields].astype(float)
-    if not np.isfinite(frame.to_numpy()).all():
-        raise ValueError(f'{ticker}: non-finite OHLCV')
+    invalid = ~np.isfinite(frame.to_numpy())
+    if invalid.any():
+        details = [f'{frame.index[row].date()} {fields[col]}={frame.iat[row, col]}'
+                   for row, col in zip(*np.where(invalid))]
+        raise ValueError(f'{ticker}: non-finite OHLCV ({int(invalid.sum())} cells): '
+                         + '; '.join(details[:12]))
     if (frame[['open', 'high', 'low', 'close']] <= 0).any().any() or (frame.volume <= 0).any():
         raise ValueError(f'{ticker}: nonpositive price or volume')
     if ((frame.high < frame[['open', 'close', 'low']].max(axis=1) - 1e-7) |
