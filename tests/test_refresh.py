@@ -101,6 +101,26 @@ class RefreshTests(unittest.TestCase):
         self.assertEqual(len(frames['SPY']), len(self.sessions))
         self.assertEqual(len(calls), 4)
 
+    def test_reference_columns_twelve_one_and_risk_rank(self):
+        rng = np.random.default_rng(3)
+        frames = {}
+        for i, ticker in enumerate(('SPY', 'QQQ', 'TLT', 'GLD')):
+            close = 100 * np.exp(np.cumsum(0.0005 * i + 0.01 * rng.standard_normal(260)))
+            frames[ticker] = pd.DataFrame({'time_key': pd.bdate_range('2025-01-01', periods=260),
+                                           'open': close, 'high': close * 1.01, 'low': close * 0.99,
+                                           'close': close, 'volume': 1e6})
+        result = metrics(frames).set_index('ticker')
+        spy = frames['SPY']['close']
+        self.assertAlmostEqual(result.loc['SPY', 'mom12_1'], spy.iloc[-22] / spy.iloc[-253] - 1)
+        self.assertEqual(sorted(result['rank_risk']), [1, 2, 3, 4])
+        self.assertTrue(np.isfinite(result.select_dtypes(include='number').to_numpy()).all())
+        # Too little history: 12-1 is missing rather than wrong.
+        short = metrics({t: f.iloc[-200:].reset_index(drop=True) for t, f in frames.items()})
+        self.assertTrue(short['mom12_1'].isna().all())
+
+    def test_window_has_a_year_for_twelve_one(self):
+        self.assertGreaterEqual(len(refresh.completed_sessions('2026-09-23T23:37:00Z')), refresh.MIN_SESSIONS)
+
     def test_original_model_parity(self):
         fixture = json.loads((Path(__file__).parent / 'fixtures/us_model_parity.json').read_text())
         names = {'510300':'SPY'}

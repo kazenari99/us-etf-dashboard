@@ -13,11 +13,12 @@ import pandas as pd
 import pandas_market_calendars as mcal
 import yfinance as yf
 
-from momentum import UNIVERSE, metrics
+from momentum import LONG_BARS, UNIVERSE, metrics
 
 ROOT = Path(__file__).resolve().parents[1]
 # Extra rounds, in seconds, when the only problem is Yahoo not having the newest bar yet.
 PENDING_WAITS = (90, 180)
+MIN_SESSIONS = LONG_BARS + 1  # one spare so the newest bar can be pending
 
 
 class LatestBarPending(ValueError):
@@ -35,14 +36,15 @@ def completed_sessions(now=None):
     if now.tzinfo is None:
         raise ValueError('A timezone-aware clock is required')
     calendar = mcal.get_calendar('NYSE')
-    schedule = calendar.schedule(start_date=(now - pd.Timedelta(days=400)).date(),
+    schedule = calendar.schedule(start_date=(now - pd.Timedelta(days=480)).date(),
                                  end_date=now.date())
     # Allow final daily bars to settle; calendar handles holidays, DST and early closes.
     closed = schedule.loc[schedule.market_close + pd.Timedelta(minutes=60) <= now]
     if closed.empty:
         raise ValueError('No completed US trading session')
     cutoff = closed.index[-1]
-    sessions = closed.index[closed.index >= cutoff - pd.Timedelta(days=320)]
+    # ~275 sessions: a full year for 12-1 momentum plus the 120-day model window.
+    sessions = closed.index[closed.index >= cutoff - pd.Timedelta(days=400)]
     return pd.DatetimeIndex(sessions).tz_localize(None)
 
 
@@ -60,9 +62,9 @@ def normalize(raw, sessions, ticker):
     frame = frame.sort_index()
     # Never shrink the universe, splice cached vintages, or score mismatched windows.
     fields = ['open', 'high', 'low', 'close', 'volume']
-    if len(sessions) >= 121 and frame.index.equals(sessions[:-1]):
+    if len(sessions) >= MIN_SESSIONS and frame.index.equals(sessions[:-1]):
         raise LatestBarPending(f'{ticker}: {sessions[-1].date()} bar not published yet')
-    if len(sessions) < 121 or not frame.index.equals(sessions):
+    if len(sessions) < MIN_SESSIONS or not frame.index.equals(sessions):
         raise ValueError(f'{ticker}: incomplete or misaligned sessions')
     frame = frame[fields].astype(float)
     last = frame.iloc[-1][['open', 'high', 'low', 'close']].to_numpy()
