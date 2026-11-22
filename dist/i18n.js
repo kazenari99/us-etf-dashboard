@@ -33,7 +33,7 @@
     ['当前交易机会','Current trade setups','現在の取引候補'],
     ['回踩优先，突破确认；过热品种等待均值回归。','Watch pullbacks and confirm breakouts. Wait for extended ETFs to cool down.','押し目を観察し、ブレイクアウトを確認。過熱したETFは落ち着くまで待ちます。'],
     ['ETF 扫描明细','ETF scan results','ETFスキャン詳細'],
-    ['代码','Ticker','銘柄コード'],['收盘','Close','終値'],['相对SPY','vs. SPY','対SPY'],['评分','Score','スコア'],['12-1动量','12-1M momentum','12-1Mモメンタム'],['波动调整排名','Risk-adj. rank','リスク調整順位'],['状态','Setup','状態'],
+    ['代码','Ticker','銘柄コード'],['收盘','Close','終値'],['相对SPY','vs. SPY','対SPY'],['评分','Score','スコア'],['12-1动量','12-1M momentum','12-1Mモメンタム'],['5日排名变化','5D rank change','5日間の順位変化'],['评分走势','Score trend','スコア推移'],['5日前','5D ago','5日前'],['20日前','20D ago','20日前'],['排名','Rank','順位'],['评分走势（20日）','Score trend (20D)','スコア推移（20日）'],['波动调整排名','Risk-adj. rank','リスク調整順位'],['状态','Setup','状態'],
     ['关闭详情','Close details','詳細を閉じる'],
     ['宽基','Broad market','市場全体'],['行业板块','Sectors','セクター'],['细分行业','Industries','業種'],['实物资产','Real assets','実物資産'],['主题','Thematic','テーマ'],['资源股','Resource equities','資源株'],['商品与另类','Commodities & alternatives','商品・オルタナティブ'],['因子','Factors','ファクター'],['债券','Bonds','債券'],['国际市场','International','海外市場'],
     ['动量成立','Momentum','モメンタム成立'],['强势·等回踩','Strong · wait for pullback','強い・押し目待ち'],

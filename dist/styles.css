@@ -209,3 +209,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .fund-risk span { display: block; color: #9aabc0; font-size: 12px; }
 .fund-warning { color: #fbbf24 !important; }
 .fund-empty { padding: 14px; background: #15202e; border-radius: 8px; }
+
+.history-block{margin:18px 0 6px}
+.history-block h3{margin:0 0 6px;font-size:13px}
+.history-block .spark{display:block;color:var(--green)}
