@@ -66,3 +66,7 @@ python -m http.server 8767 --bind 127.0.0.1 --directory dist
 
 - 每次 ETF 刷新成功发布后，`history` 任务把当日结果写入 `data` 分支：`etf/<交易日>.csv`、`etf/<交易日>.json`，以及按交易日排序的 `etf/index.csv`。同一交易日重跑会覆盖，不会重复。Actions 产物 90 天过期，`data` 分支长期保留，供回测和排名变化使用。
 - `ci.yml` 在每个 PR 上运行单元测试、ruff（只查错误类规则，见 `ruff.toml`）、JS 语法检查、actionlint 和快照校验。
+
+## 回测
+
+在 Actions 里手动运行 **Backtest**（可选起始日期和持仓数量）。脚本 `scripts/backtest.py` 在每周最后一个交易日用当时可得的数据重算生产评分，次日收盘调仓，按 5bp 单边换手计成本，比较：当前评分前 N、仅「动量成立」、波动调整排名、组内排名、SPY 跌破 200 日均线时持有 BIL，以及 SPY 和全池等权基准。报告写在运行页 Summary，并作为产物保存 90 天。ETF 池是今天的名单，存在后视偏差。
