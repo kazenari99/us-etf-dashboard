@@ -110,9 +110,21 @@ def signals(frames: dict[str, pd.DataFrame], dates: pd.DatetimeIndex) -> pd.Data
     return pd.concat(rows, ignore_index=True)
 
 
-def portfolio(weights: pd.DataFrame, returns: pd.DataFrame) -> pd.Series:
-    """Daily net returns for weights decided on rebalance dates (rows) with LAG and costs."""
+def ema_trend(close: pd.DataFrame, fast: int = 5, slow: int = 20) -> pd.DataFrame:
+    """True while EMA(fast) is above EMA(slow): bought on the up-cross, sold on the down-cross."""
+    fast_ema = close.ewm(span=fast, adjust=False, min_periods=slow).mean()
+    slow_ema = close.ewm(span=slow, adjust=False, min_periods=slow).mean()
+    return fast_ema > slow_ema
+
+
+def portfolio(weights: pd.DataFrame, returns: pd.DataFrame, mask: pd.DataFrame | None = None) -> pd.Series:
+    """Daily net returns for weights decided on rebalance dates (rows) with LAG and costs.
+
+    `mask` (daily, by ticker) zeroes a position on days it is False; that slot sits in cash.
+    """
     daily = weights.reindex(returns.index).ffill().fillna(0.0)
+    if mask is not None:
+        daily = daily * mask.reindex(index=daily.index, columns=daily.columns).fillna(False).astype(float)
     held = daily.shift(LAG).fillna(0.0)
     gross = (held * returns.fillna(0.0)).sum(axis=1)
     turnover = held.diff().abs().sum(axis=1).fillna(held.abs().sum(axis=1))
@@ -173,7 +185,10 @@ def report(frames, sig, tops, start) -> str:
     returns = returns.loc[first:]
     universe_w = sig.assign(w=1.0).pivot_table(index='date', columns='ticker', values='w').fillna(0.0)
     universe_w = universe_w.div(universe_w.sum(axis=1), axis=0)
+    trend = ema_trend(close).loc[first:]
+    spy_w = pd.DataFrame({'SPY': [1.0]}, index=[first])
     strategies = {'SPY buy & hold': returns['SPY'].fillna(0.0),
+                  'SPY, EMA5 > EMA20 only': portfolio(spy_w, returns, mask=trend),
                   'Equal-weight universe (weekly)': portfolio(universe_w, returns)}
     for n in tops:
         strategies[f'Current score, top {n}'] = portfolio(top_weights(sig, 'score', n), returns)
@@ -183,6 +198,10 @@ def report(frames, sig, tops, start) -> str:
         strategies[f'Within-group ranks, top {n}'] = portfolio(top_weights(sig, 'score_group', n), returns)
         strategies[f'Current score, top {n}, BIL when SPY < 200d'] = portfolio(
             top_weights(sig, 'score', n, regime=True), returns)
+        strategies[f'Current score, top {n}, EMA5 > EMA20'] = portfolio(
+            top_weights(sig, 'score', n), returns, mask=trend)
+        strategies[f'Risk-adjusted ranks, top {n}, EMA5 > EMA20'] = portfolio(
+            top_weights(sig, 'score_risk', n), returns, mask=trend)
     table = pd.DataFrame({k: stats(v) for k, v in strategies.items()}).T
     yearly = pd.DataFrame({k: (1 + v).groupby(v.index.year).prod() - 1 for k, v in strategies.items()}).T
 
