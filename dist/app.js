@@ -145,18 +145,19 @@ function setupMatch(x){
   if(state.setup==='all') return true;
   if(state.setup==='actionable') return x.setup==='Momentum'||x.setup==='Strong / wait pullback';
   if(state.setup==='watch') return x.setup==='Pullback watch';
+  if(state.setup==='starred') return starred.has(x.ticker);
   return x.setup==='Avoid / broken';
 }
 function applyFilters(){
   state.filtered=state.data.filter(x=>(state.group==='all'||x.group===state.group)&&setupMatch(x)&&`${x.ticker} ${orbitI18n.searchNames(etfName(x.ticker))}`.toLowerCase().includes(state.query));
   state.filtered.sort((a,b)=>{const av=a[state.sortKey],bv=b[state.sortKey];if(typeof av==='number'||typeof bv==='number'){const an=Number.isFinite(av),bn=Number.isFinite(bv);if(!an||!bn)return an===bn?0:(an?-1:1);return (av-bv)*state.sortDir;}return String(av).localeCompare(String(bv))*state.sortDir});
-  renderTable(); renderScatter(); renderLeaders();
+  renderTable(); renderLeaders(); renderScatter();
 }
 
 function renderScatter(){
   const host=$('#scatterChart'); host.innerHTML='';
   const data=state.filtered.length?state.filtered:[];
-  const W=Math.max(620,host.clientWidth||700),H=340,m={l:48,r:22,t:18,b:42};
+  const W=Math.max(620,host.clientWidth||700),H=Math.max(300,Math.min(640,host.clientHeight||340)),m={l:48,r:22,t:18,b:42};
   const svg=document.createElementNS(svgNS,'svg'); svg.setAttribute('viewBox',`0 0 ${W} ${H}`); host.append(svg);
   if(!data.length){svg.innerHTML=`<text x="50%" y="50%" text-anchor="middle" fill="#718096">没有符合条件的 ETF</text>`;return;}
   const xs=data.map(x=>x.r60*100),ys=data.map(x=>x.r20*100);
@@ -170,12 +171,25 @@ function renderScatter(){
     const vt=document.createElementNS(svgNS,'text');vt.setAttribute('x',m.l-9);vt.setAttribute('y',yp(yv)+4);vt.setAttribute('text-anchor','end');vt.setAttribute('class','axis-label');vt.textContent=`${yv.toFixed(0)}%`;svg.append(vt);
   }
   const xlab=document.createElementNS(svgNS,'text');xlab.setAttribute('x',(m.l+W-m.r)/2);xlab.setAttribute('y',H-1);xlab.setAttribute('text-anchor','middle');xlab.setAttribute('class','axis-label');xlab.textContent='60日收益';svg.append(xlab);
+  const candidates=[];
   const sorted=[...data].sort((a,b)=>a.adtv20-b.adtv20), labels=new Set([...data].sort((a,b)=>b.score-a.score).slice(0,12).map(x=>x.ticker));
   sorted.forEach(x=>{
     const t=Math.max(0,Math.min(1,(x.r120+.15)/.7)); const r=5+Math.max(0,Math.min(7,Math.log10(Math.max(x.adtv20,1e6)/1e6)*1.3));
     const dot=document.createElementNS(svgNS,'circle');dot.setAttribute('cx',xp(x.r60*100));dot.setAttribute('cy',yp(x.r20*100));dot.setAttribute('r',r);dot.setAttribute('fill',`hsl(${350+t*150} 70% 57%)`);dot.setAttribute('fill-opacity','.78');dot.setAttribute('stroke','#0d1420');dot.setAttribute('class','dot');dot.setAttribute('tabindex','0');
     dot.addEventListener('click',()=>openDrawer(x)); dot.addEventListener('mouseenter',e=>showTip(e,x));dot.addEventListener('mousemove',moveTip);dot.addEventListener('mouseleave',hideTip);svg.append(dot);
-    if(labels.has(x.ticker)){const lab=document.createElementNS(svgNS,'text');lab.setAttribute('x',xp(x.r60*100)+r+3);lab.setAttribute('y',yp(x.r20*100)-r+2);lab.setAttribute('class','dot-label');lab.textContent=x.ticker;svg.append(lab);}
+    if(labels.has(x.ticker))candidates.push({x,cx:xp(x.r60*100),cy:yp(x.r20*100),r});
+  });
+  // Place labels best-score first; skip any that would overlap a placed label or leave the plot.
+  const placed=[],cw=7.2,lh=12;
+  candidates.sort((a,b)=>b.x.score-a.x.score).forEach(c=>{
+    const w=c.x.ticker.length*cw;
+    for(const [dx,anchor] of [[c.r+3,'start'],[-(c.r+3),'end']]){
+      const x0=anchor==='start'?c.cx+dx:c.cx+dx-w, box={x0,x1:x0+w,y0:c.cy-c.r-8,y1:c.cy-c.r-8+lh};
+      if(box.x0<m.l||box.x1>W-m.r+18||placed.some(p=>box.x0<p.x1&&box.x1>p.x0&&box.y0<p.y1&&box.y1>p.y0))continue;
+      placed.push(box);
+      const lab=document.createElementNS(svgNS,'text');lab.setAttribute('x',c.cx+dx);lab.setAttribute('y',c.cy-c.r+2);lab.setAttribute('text-anchor',anchor);lab.setAttribute('class','dot-label');lab.textContent=c.x.ticker;svg.append(lab);
+      break;
+    }
   });
 }
 
@@ -194,8 +208,8 @@ function renderOpportunities(){
 
 function renderTable(){
   $('#resultCount').textContent=`显示 ${state.filtered.length} / ${state.data.length} 只`;
-  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}"><td class="ticker-cell"><span class="ticker-code">${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td class="num ${x.rank_chg5>0?'positive':x.rank_chg5<0?'negative':''}">${rankChange(x.rank_chg5)}</td><td class="num ${Number.isFinite(x.mom12_1)?cls(x.mom12_1):''}">${Number.isFinite(x.mom12_1)?pct(x.mom12_1):'—'}</td><td class="num">${Number.isFinite(x.rank_risk)?`#${x.rank_risk}`:'—'}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
-  document.querySelectorAll('#tableBody tr').forEach(el=>el.addEventListener('click',()=>openDrawer(state.data.find(x=>x.ticker===el.dataset.code))));
+  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}"><td class="ticker-cell"><span class="ticker-code"><button type="button" class="etf-star${starred.has(x.ticker)?' selected':''}" data-star="${x.ticker}" aria-label="${x.ticker} ★" aria-pressed="${starred.has(x.ticker)}">★</button>${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td class="num ${x.rank_chg5>0?'positive':x.rank_chg5<0?'negative':''}">${rankChange(x.rank_chg5)}</td><td class="num ${Number.isFinite(x.mom12_1)?cls(x.mom12_1):''}">${Number.isFinite(x.mom12_1)?pct(x.mom12_1):'—'}</td><td class="num">${Number.isFinite(x.rank_risk)?`#${x.rank_risk}`:'—'}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
+  document.querySelectorAll('#tableBody tr').forEach(el=>el.addEventListener('click',e=>{const star=e.target.closest('[data-star]');if(star){e.stopPropagation();toggleStar(star.dataset.star);return;}openDrawer(state.data.find(x=>x.ticker===el.dataset.code));}));
 }
 
 function openDrawer(x){
@@ -212,10 +226,13 @@ function hideTip(){$('#tooltip').style.display='none';}
 function bind(){
   $('#searchInput').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();applyFilters();});
   $('#groupSelect').addEventListener('change',e=>{state.group=e.target.value;applyFilters();});
+  $('#colToggle').addEventListener('click',e=>{const on=$('.table-wrap').classList.toggle('all-cols');e.currentTarget.setAttribute('aria-pressed',String(on));e.currentTarget.textContent=on?'只看主要列':'显示全部列';});
   document.querySelectorAll('#setupFilter button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#setupFilter button').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.setup=b.dataset.setup;applyFilters();}));
   document.querySelectorAll('#etfView th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.sort;state.sortDir=state.sortKey===key?-state.sortDir:(['ticker','group','setup','rank_risk'].includes(key)?1:-1);state.sortKey=key;applyFilters();}));
   $('#drawerClose').addEventListener('click',closeDrawer);$('#drawerBackdrop').addEventListener('click',closeDrawer);addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
   let timer;addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(renderScatter,120);});
+  // The chart card stretches to the leaders column; redraw when its box actually changes size.
+  if('ResizeObserver' in window){let last='';new ResizeObserver(([e])=>{const k=`${Math.round(e.contentRect.width)}x${Math.round(e.contentRect.height)}`;if(k!==last){last=k;clearTimeout(timer);timer=setTimeout(renderScatter,60);}}).observe($('#scatterChart'));}
 }
 
 // Optional 20-session score history; the page works without it.
@@ -228,6 +245,9 @@ async function loadHistory(asof){
       x.rank_now=r[n-1]; if(n>=6)x.rank_chg5=r[n-6]-r[n-1]; if(n>=1)x.rank_first=r[0];});
   }catch{}
 }
+let starred;
+try { starred=new Set(JSON.parse(localStorage.getItem('orbit-etf-watchlist')||'[]')); } catch { starred=new Set(); }
+function toggleStar(t){ starred.has(t)?starred.delete(t):starred.add(t); try{localStorage.setItem('orbit-etf-watchlist',JSON.stringify([...starred]));}catch{} applyFilters(); }
 const peersOf = t => (state.history&&state.history.peers&&state.history.peers[t])||[];
 const peerTag = (x,above) => { const p=peersOf(x.ticker).find(([q])=>above.has(q)); return p?`<span class="peer-tag" title="120日相关 ${p[1]}">≈ ${p[0]}</span>`:''; };
 const rankChange = v => !Number.isFinite(v)?'—':v>0?`↑${v}`:v<0?`↓${-v}`:'=';

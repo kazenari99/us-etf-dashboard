@@ -88,6 +88,9 @@ h2 { font-size: 1.1rem; letter-spacing: -.015em; }
 .legend .cool { background: var(--red); }.legend .hot { background: var(--green); }
 .badge { padding: 5px 8px; border: 1px solid #304058; border-radius: 6px; color: var(--cyan); font-size: .68rem; letter-spacing: .08em; }
 .chart-wrap { height: 340px; margin-top: 12px; }
+/* Desktop: the chart fills the card when the leaders column is taller. */
+.scatter-panel { display: flex; flex-direction: column; }
+.scatter-panel .chart-wrap { flex: 1 1 auto; min-height: 340px; height: auto; }
 .chart-wrap svg { width: 100%; height: 100%; overflow: visible; }
 .axis-label { fill: #68778d; font-size: 11px; }
 .grid-line { stroke: #202c3d; stroke-width: 1; }
@@ -214,3 +217,31 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .history-block h3{margin:0 0 6px;font-size:13px}
 .history-block .spark{display:block;color:var(--green)}
 .peer-tag{margin-left:6px;padding:1px 5px;border-radius:4px;background:#1d2a3a;color:#9aabc0;font-size:10px;font-weight:500;vertical-align:middle}
+
+/* Sticky ticker column while scrolling the table sideways. */
+.table-wrap th:first-child, .table-wrap td:first-child { position: sticky; left: 0; z-index: 1; background: #0d1522; box-shadow: 1px 0 0 #1b2738; }
+.table-wrap thead th:first-child { z-index: 3; background: #111b2a; }
+.table-wrap tbody tr:hover td:first-child { background: #121f31; }
+.table-tools { display: flex; align-items: center; gap: 10px; }
+.col-toggle { display: none; padding: 5px 10px; border: 1px solid var(--line); border-radius: 7px; background: #101a29; color: var(--muted); font-size: .72rem; cursor: pointer; }
+.col-toggle[aria-pressed="true"] { color: var(--green); border-color: #285446; }
+.column-help { margin-top: 10px; color: var(--muted); font-size: .74rem; }
+.column-help summary { cursor: pointer; width: fit-content; }
+.column-help dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 10px 0 0; }
+.column-help dt { color: #dde5ef; font-weight: 650; }
+.column-help dd { margin: 0; line-height: 1.5; }
+.etf-star { margin-right: 6px; padding: 0; border: 0; background: none; color: #3b4a60; font-size: .9rem; line-height: 1; cursor: pointer; vertical-align: 1px; }
+.etf-star.selected { color: var(--amber); }
+.etf-star:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 3px; }
+@media (max-width: 720px) {
+  .scatter-panel .chart-wrap { flex: none; height: 300px; min-height: 0; }
+  /* Phone: one swipeable row of setup cards instead of a tall stack. */
+  .opportunity-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 84%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+  .opportunity-grid > * { scroll-snap-align: start; }
+  /* Phone: ticker, score, 5-day rank change and setup unless all columns are requested. */
+  .col-toggle { display: inline-block; }
+  .table-wrap:not(.all-cols) table { min-width: 0; }
+  .table-wrap:not(.all-cols) :is(th,td):is(:nth-child(2),:nth-child(3),:nth-child(4),:nth-child(5),:nth-child(6),:nth-child(7),:nth-child(8),:nth-child(11),:nth-child(12)) { display: none; }
+  .column-help dl { grid-template-columns: 1fr; gap: 2px; }
+  .column-help dd { margin-bottom: 6px; }
+}
