@@ -7,6 +7,7 @@ import csv
 import hashlib
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -55,6 +56,9 @@ def validate(dist: Path) -> str:
     check(meta.get('asof') == rows[0]['date'], 'Metadata date mismatch')
     check(meta.get('count') == meta.get('expected_count') == len(rows), 'Metadata count mismatch')
     check(meta.get('sha256') == hashlib.sha256(csv_path.read_bytes()).hexdigest(), 'Checksum mismatch')
+    floor = os.environ.get('MIN_ASOF', '')
+    check(not floor or meta['asof'] >= floor,
+          f'Snapshot {meta["asof"]} is older than the published {floor}; refusing to roll back')
     if warning:
         print(warning)
     return f'{len(rows)} ETFs / {rows[0]["date"]} / snapshot validated'

@@ -49,13 +49,23 @@ class IndependentStocksTests(unittest.TestCase):
             self.assertIn('2026-10-15', (dist / 'etf_momentum_latest.csv').read_text())
             self.assertEqual(json.loads((dist / 'stocks.json').read_text())['fetched_at'], 'original')
 
-    def test_etf_refresh_retains_stocks_and_reconciles_after_new_etf(self):
+    def test_etf_run_restores_published_etf_so_deferral_cannot_roll_back(self):
+        with tempfile.TemporaryDirectory() as directory:
+            dist = Path(directory) / 'dist'
+            dist.mkdir()
+            (dist / 'snapshot_meta.json').write_text('{"asof":"2026-09-25"}')
+            (dist / 'etf_momentum_latest.csv').write_text('stale committed copy')
+            self.assertEqual(restore.restore(self.artifact(directory), dist, False), '2026-10-15')
+            self.assertIn('2026-10-15', (dist / 'etf_momentum_latest.csv').read_text())
+            self.assertEqual(json.loads((dist / 'snapshot_meta.json').read_text())['asof'], '2026-10-15')
+
+    def test_imported_snapshot_is_kept_and_stocks_reconcile_to_it(self):
         with tempfile.TemporaryDirectory() as directory:
             dist = Path(directory) / 'dist'
             dist.mkdir()
             (dist / 'snapshot_meta.json').write_text('{"asof":"2026-10-16"}')
             (dist / 'etf_momentum_latest.csv').write_text('new ETF')
-            restore.restore(self.artifact(directory), dist, False)
+            restore.restore(self.artifact(directory), dist, False, keep_etf=True)
             self.assertEqual((dist / 'etf_momentum_latest.csv').read_text(), 'new ETF')
             self.assertEqual(json.loads((dist / 'stocks.json').read_text())['expected_session'], '2026-10-16')
 

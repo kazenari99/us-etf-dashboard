@@ -27,7 +27,7 @@ def select_run(repo):
             return str(run['id'])
     return None
 
-def restore(archive, dist, stocks_only):
+def restore(archive, dist, stocks_only, keep_etf=False):
     wanted = (*ETF_FILES, *AUX_FILES)
     data = {}
     with tarfile.open(archive) as tar:
@@ -37,9 +37,15 @@ def restore(archive, dist, stocks_only):
                 if not member.isfile() or member.size > 20_000_000 or name in data:
                     raise ValueError('Invalid or duplicate snapshot member')
                 data[name] = tar.extractfile(member).read()
-    return restore_files(data, dist, stocks_only)
+    return restore_files(data, dist, stocks_only, keep_etf)
 
-def restore_files(data, dist, stocks_only):
+def restore_files(data, dist, stocks_only, keep_etf=False):
+    """Write published files into dist.
+
+    ETF files are restored too, so a deferred or failed ETF refresh republishes the
+    live snapshot rather than the stale copy committed in the repository. Only an
+    explicitly imported snapshot (keep_etf) keeps the committed ETF files.
+    """
     wanted = (*ETF_FILES, *AUX_FILES)
     if any(name not in data for name in wanted):
         raise ValueError('Published artifact is missing snapshot files')
@@ -48,7 +54,7 @@ def restore_files(data, dist, stocks_only):
         raise ValueError('Published ETF checksum mismatch')
     for name in AUX_FILES:
         json.loads(data[name])
-    for name in (wanted if stocks_only else AUX_FILES):
+    for name in (AUX_FILES if keep_etf and not stocks_only else wanted):
         (dist / name).write_bytes(data[name])
     # Reconcile this on every publication, even when only ETF data changes.
     reconcile(dist)
@@ -61,6 +67,7 @@ def reconcile(dist):
 
 def main():
     repo = os.environ['GH_REPO']
+    keep_etf = os.environ.get('KEEP_COMMITTED_ETF') == 'true'
     run_id = select_run(repo)
     if run_id is None:
         # Pages artifacts expire quickly; the deployed mirror retains the same data.
@@ -72,15 +79,22 @@ def main():
                 data[name] = response.read(20_000_001)
             if len(data[name]) > 20_000_000:
                 raise ValueError('Published snapshot is too large')
-        session = restore_files(data, ROOT / 'dist', os.environ.get('STOCKS_ONLY') == 'true')
+        session = restore_files(data, ROOT / 'dist', os.environ.get('STOCKS_ONLY') == 'true', keep_etf)
         print(f'Restored verified live Pages mirror; previous ETF session {session}')
+        write_output(session)
         return
     with tempfile.TemporaryDirectory() as directory:
         subprocess.run(['gh', 'run', 'download', run_id, '--repo', repo, '--name',
                         'github-pages', '--dir', directory], check=True)
         session = restore(Path(directory) / 'artifact.tar', ROOT / 'dist',
-                          os.environ.get('STOCKS_ONLY') == 'true')
+                          os.environ.get('STOCKS_ONLY') == 'true', keep_etf)
     print(f'Restored published data from run {run_id}; previous ETF session {session}')
+    write_output(session)
+
+def write_output(session):
+    if os.environ.get('GITHUB_OUTPUT'):
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+            out.write(f'asof={session}\n')
 
 if __name__ == '__main__':
     if '--reconcile-only' in sys.argv:
