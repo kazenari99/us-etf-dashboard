@@ -1,0 +1,49 @@
+name: Data freshness
+# Opens one `data-stale` issue when a published site lags the NYSE calendar by 2+
+# sessions, keeps its body current while stale, and closes it once data is fresh.
+# Watch that issue instead of individual workflow-failure emails.
+on:
+  schedule:
+    - cron: '23 4 * * *'
+    - cron: '41 12 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Compare live snapshots with the NYSE calendar
+        id: check
+        run: python scripts/check_freshness.py
+      - name: Open or update the stale-data issue
+        if: ${{ steps.check.outputs.stale == 'true' }}
+        run: |
+          gh label create data-stale --color B60205 --description 'Published ETF data is behind the NYSE calendar' --force
+          number=$(gh issue list --label data-stale --state open --json number --jq '.[0].number')
+          if [ -z "$number" ]; then
+            gh issue create --title 'Published ETF data is stale' --label data-stale --body-file freshness.md
+          else
+            # Editing the body keeps it current without a notification on every check.
+            gh issue edit "$number" --body-file freshness.md
+          fi
+      - name: Close the stale-data issue once data is fresh
+        if: ${{ steps.check.outputs.stale == 'false' }}
+        run: |
+          for number in $(gh issue list --label data-stale --state open --json number --jq '.[].number'); do
+            gh issue close "$number" --comment "Data is fresh again. $(tail -n +3 freshness.md | head -n 4 | tr '\n' ' ')"
+          done
