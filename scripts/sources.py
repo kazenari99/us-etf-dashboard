@@ -37,7 +37,7 @@ def fetch_stooq(ticker: str, sessions) -> pd.DataFrame:
                            start=sessions[0].strftime('%Y%m%d'),
                            end=(sessions[-1] + timedelta(days=1)).strftime('%Y%m%d'))
     request = Request(url, headers={'User-Agent': 'us-etf-dashboard'})
-    with urlopen(request, timeout=30) as response:
+    with urlopen(request, timeout=15) as response:
         return parse_stooq(response.read().decode('utf-8', 'replace'), ticker)
 
 
