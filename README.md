@@ -84,3 +84,14 @@ ETF 明细表另有两列，仅供参考，不影响评分和状态：
 ## 排名变化与评分走势
 
 每次 ETF 刷新时，用同一批已校验的日线重算最近 20 个交易日每天的评分和排名，写入 `etf_history.json`（不依赖 `data` 分支，模型或 ETF 池变化后历史自动一致）。明细表的「5日排名变化」显示 5 个交易日前到今天的名次变化（↑ 上升、↓ 下降、= 不变）；详情框显示 20 日评分走势小图和 5 日前、20 日前的名次。文件缺失或日期不一致时页面照常显示，只是这两处为「—」。
+
+## 准点调度（Cloudflare Worker）
+
+GitHub 的 `schedule` 经常晚几个小时。`worker/` 是一个 Cloudflare Worker，用 Cloudflare 的定时触发在准点调用 `pages.yml` 的 `workflow_dispatch`，并把对应的 GitHub cron 作为 `schedule` 输入传过去，因此休市判断、只刷新个股等逻辑和原来的定时任务完全一致。美东时间的两个个股任务按纽约本地时间匹配，冬夏令时自动处理。GitHub 自己的定时任务保留为后备。
+
+启用需要三步（只需做一次）：
+1. 在 GitHub 新建 fine-grained personal access token：只授权本仓库，权限 **Actions: Read and write**，存为仓库 secret `GH_DISPATCH_TOKEN`。
+2. 给现有的 Cloudflare API token（仓库 secret `CLOUDFLARE_API_TOKEN`）增加 **Workers Scripts: Edit** 权限。
+3. 在 Actions 里手动运行一次 **Deploy scheduler Worker**。之后 `worker/` 有改动时会自动重新部署。
+
+secret 缺失时部署任务会跳过并给出提示，不会报错。

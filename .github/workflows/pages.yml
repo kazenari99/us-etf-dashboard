@@ -12,6 +12,12 @@ on:
         description: 'Publish an explicitly imported, validated local snapshot'
         type: boolean
         default: false
+      schedule:
+        description: 'Set by the scheduler Worker: the GitHub cron this on-time run stands in for'
+        type: string
+        default: ''
+  # Primary trigger is the scheduler Worker (worker/), which dispatches on the exact
+  # minute with `schedule` set; these GitHub crons remain as a late fallback.
   schedule:
     # 07:00 Asia/Tokyo on the next calendar date; NYSE holiday gate below.
     - cron: '0 22 * * *'
@@ -46,7 +52,7 @@ jobs:
       - name: Check previous Tokyo date against NYSE calendar
         id: calendar
         env:
-          REFRESH_SCHEDULE: ${{ github.event.schedule }}
+          REFRESH_SCHEDULE: ${{ github.event.schedule || inputs.schedule }}
           STOCKS_ONLY: ${{ inputs.stocks_only }}
         run: python scripts/check_refresh_day.py
   deploy:
