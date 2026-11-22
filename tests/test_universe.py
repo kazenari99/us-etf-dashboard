@@ -45,3 +45,16 @@ class ValidateSnapshotTests(unittest.TestCase):
                 out.write('\n')
             with self.assertRaisesRegex(validate_snapshot.SnapshotError, 'Checksum mismatch'):
                 validate_snapshot.validate(dist)
+
+    def test_older_snapshot_than_published_is_refused(self):
+        import os
+        import validate_snapshot
+        asof = __import__('json').loads((ROOT / 'dist/snapshot_meta.json').read_text())['asof']
+        try:
+            os.environ['MIN_ASOF'] = '2099-01-01'
+            with self.assertRaisesRegex(validate_snapshot.SnapshotError, 'refusing to roll back'):
+                validate_snapshot.validate(ROOT / 'dist')
+            os.environ['MIN_ASOF'] = asof
+            validate_snapshot.validate(ROOT / 'dist')
+        finally:
+            os.environ.pop('MIN_ASOF', None)

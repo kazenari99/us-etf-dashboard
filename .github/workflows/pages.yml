@@ -70,10 +70,12 @@ jobs:
       - name: Test calendar and data integrity
         run: python -m unittest discover -s tests -v
       - name: Restore latest published data before independent refresh
+        id: restore
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           STOCKS_ONLY: ${{ needs.calendar.outputs.stocks_only }}
+          KEEP_COMMITTED_ETF: ${{ inputs.use_committed_snapshot && 'true' || 'false' }}
         run: python scripts/restore_published_data.py
       - name: Refresh complete US ETF universe
         id: etf
@@ -84,6 +86,9 @@ jobs:
         run: |
           python -c "import sys,json;sys.path.insert(0,'scripts');from refresh_snapshot import completed_sessions; a=json.load(open('dist/snapshot_meta.json'))['asof']; latest=str(completed_sessions()[-1].date()); sys.exit(0 if a==latest else 'Imported snapshot is stale: '+a+' < '+latest)"
       - name: Validate JavaScript and snapshot
+        env:
+          # Never publish an ETF session older than the one already live.
+          MIN_ASOF: ${{ steps.restore.outputs.asof }}
         run: |
           node --check dist/app.js
           node --check dist/i18n.js
