@@ -58,3 +58,22 @@ class ValidateSnapshotTests(unittest.TestCase):
             validate_snapshot.validate(ROOT / 'dist')
         finally:
             os.environ.pop('MIN_ASOF', None)
+
+    def test_mismatched_score_history_is_rejected(self):
+        import json
+        import shutil
+        import tempfile
+        import validate_snapshot
+        with tempfile.TemporaryDirectory() as tmp:
+            dist = Path(tmp)
+            for name in ('etf_momentum_latest.csv', 'snapshot_meta.json'):
+                shutil.copy(ROOT / 'dist' / name, dist / name)
+            meta = json.loads((dist / 'snapshot_meta.json').read_text())
+            tickers = {r.split(',')[0] for r in (dist / 'etf_momentum_latest.csv').read_text().splitlines()[1:]}
+            good = {'asof': meta['asof'], 'sessions': ['a', 'b'],
+                    'tickers': {t: {'score': [1, 2], 'rank': [1, 1]} for t in tickers}}
+            (dist / 'etf_history.json').write_text(json.dumps(good))
+            validate_snapshot.validate(dist)
+            (dist / 'etf_history.json').write_text(json.dumps(dict(good, asof='1999-01-01')))
+            with self.assertRaisesRegex(validate_snapshot.SnapshotError, 'history date'):
+                validate_snapshot.validate(dist)

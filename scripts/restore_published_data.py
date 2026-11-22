@@ -12,6 +12,8 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 ETF_FILES = ('etf_momentum_latest.csv', 'snapshot_meta.json')
 AUX_FILES = ('stocks.json', 'stock_sectors.json', 'fund_profiles.json')
+# Published only since score history was added; older artifacts lack it.
+OPTIONAL_ETF_FILES = ('etf_history.json',)
 
 def gh(path):
     return json.loads(subprocess.check_output(['gh', 'api', path], text=True))
@@ -28,7 +30,7 @@ def select_run(repo):
     return None
 
 def restore(archive, dist, stocks_only, keep_etf=False):
-    wanted = (*ETF_FILES, *AUX_FILES)
+    wanted = (*ETF_FILES, *AUX_FILES, *OPTIONAL_ETF_FILES)
     data = {}
     with tarfile.open(archive) as tar:
         for member in tar.getmembers():
@@ -54,8 +56,14 @@ def restore_files(data, dist, stocks_only, keep_etf=False):
         raise ValueError('Published ETF checksum mismatch')
     for name in AUX_FILES:
         json.loads(data[name])
-    for name in (AUX_FILES if keep_etf and not stocks_only else wanted):
+    restore_etf = not (keep_etf and not stocks_only)
+    for name in (wanted if restore_etf else AUX_FILES):
         (dist / name).write_bytes(data[name])
+    for name in OPTIONAL_ETF_FILES:
+        if restore_etf and name in data and json.loads(data[name]).get('asof') == meta['asof']:
+            (dist / name).write_bytes(data[name])
+        elif restore_etf:
+            (dist / name).unlink(missing_ok=True)
     # Reconcile this on every publication, even when only ETF data changes.
     reconcile(dist)
     return meta['asof']
@@ -79,6 +87,13 @@ def main():
                 data[name] = response.read(20_000_001)
             if len(data[name]) > 20_000_000:
                 raise ValueError('Published snapshot is too large')
+        for name in OPTIONAL_ETF_FILES:
+            try:
+                with urlopen(Request(f'https://kazenari99.github.io/us-etf-dashboard/{name}',
+                                     headers={'Cache-Control': 'no-cache'}), timeout=30) as response:
+                    data[name] = response.read(20_000_001)
+            except OSError:
+                pass
         session = restore_files(data, ROOT / 'dist', os.environ.get('STOCKS_ONLY') == 'true', keep_etf)
         print(f'Restored verified live Pages mirror; previous ETF session {session}')
         write_output(session)

@@ -135,12 +135,37 @@ def fetch_history(ticker, sessions):
         actions=False, repair=False, timeout=20, raise_errors=True)
 
 
+HISTORY_SESSIONS = 20
+
+
+def score_history(frames, sessions, n=HISTORY_SESSIONS):
+    """Score and rank of every ETF on each of the last n sessions, oldest first.
+
+    Recomputed from the same validated bars, so history needs no stored snapshots
+    and always uses the current model and universe.
+    """
+    dates, tickers = [], {t: {'score': [], 'rank': []} for t in sorted(frames)}
+    for k in range(n - 1, -1, -1):
+        sub = {t: f.iloc[:len(f) - k].reset_index(drop=True) for t, f in frames.items()}
+        result = metrics(sub).set_index('ticker')
+        rank = result['score'].rank(ascending=False, method='min')
+        dates.append(sessions[len(sessions) - 1 - k].date().isoformat())
+        for t, series in tickers.items():
+            score = float(result.at[t, 'score'])
+            if not np.isfinite(score):
+                raise ValueError(f'{t}: non-finite historical score on {dates[-1]}')
+            series['score'].append(round(score, 2))
+            series['rank'].append(int(rank[t]))
+    return {'asof': dates[-1], 'sessions': dates, 'tickers': tickers}
+
+
 def publish_snapshot(frames, sessions):
     if set(frames) != TICKERS:
         raise ValueError(f'All {len(TICKERS)} ETFs, including SPY, are required')
     result = metrics(frames)
     if not np.isfinite(result.select_dtypes(include='number').to_numpy()).all():
         raise ValueError('Non-finite model results')
+    history = json.dumps(score_history(frames, sessions), separators=(',', ':')) + '\n'
     now = datetime.now(timezone.utc)
     data = result.to_csv(index=False).encode()
     metadata = {
@@ -161,6 +186,7 @@ def publish_snapshot(frames, sessions):
     # Only write public results after the entire fetch and scoring succeeds.
     (ROOT / 'dist/etf_momentum_latest.csv').write_bytes(data)
     (ROOT / 'dist/snapshot_meta.json').write_text(encoded)
+    (ROOT / 'dist/etf_history.json').write_text(history)
     print(f'{len(result)}/{len(TICKERS)} ETFs; market date {metadata["asof"]}; Yahoo Finance')
 
 

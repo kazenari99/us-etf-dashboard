@@ -121,6 +121,24 @@ class RefreshTests(unittest.TestCase):
     def test_window_has_a_year_for_twelve_one(self):
         self.assertGreaterEqual(len(refresh.completed_sessions('2026-09-23T23:37:00Z')), refresh.MIN_SESSIONS)
 
+    def test_score_history_matches_todays_score_and_is_oldest_first(self):
+        rng = np.random.default_rng(5)
+        sessions = pd.bdate_range('2025-01-01', periods=260)
+        frames = {}
+        for i, ticker in enumerate(('SPY', 'QQQ', 'TLT', 'GLD', 'XLE')):
+            close = 100 * np.exp(np.cumsum(0.0004 * i + 0.01 * rng.standard_normal(260)))
+            frames[ticker] = pd.DataFrame({'time_key': sessions, 'open': close, 'high': close * 1.01,
+                                           'low': close * 0.99, 'close': close, 'volume': 1e6})
+        history = refresh.score_history(frames, sessions, n=6)
+        self.assertEqual(history['sessions'][0], str(sessions[-6].date()))
+        self.assertEqual(history['asof'], str(sessions[-1].date()))
+        today = metrics(frames).set_index('ticker')
+        five_ago = metrics({t: f.iloc[:-5].reset_index(drop=True) for t, f in frames.items()}).set_index('ticker')
+        for t in frames:
+            self.assertAlmostEqual(history['tickers'][t]['score'][-1], today.at[t, 'score'], places=2)
+            self.assertAlmostEqual(history['tickers'][t]['score'][0], five_ago.at[t, 'score'], places=2)
+        self.assertEqual(sorted(v['rank'][-1] for v in history['tickers'].values()), [1, 2, 3, 4, 5])
+
     def test_original_model_parity(self):
         fixture = json.loads((Path(__file__).parent / 'fixtures/us_model_parity.json').read_text())
         names = {'510300':'SPY'}

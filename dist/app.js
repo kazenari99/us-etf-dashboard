@@ -1,4 +1,4 @@
-const state = { data: [], filtered: [], sortKey: 'score', sortDir: -1, selected: null, setup: 'all', group: 'all', query: '' };
+const state = { history: null, data: [], filtered: [], sortKey: 'score', sortDir: -1, selected: null, setup: 'all', group: 'all', query: '' };
 const $ = (s) => document.querySelector(s);
 const svgNS = 'http://www.w3.org/2000/svg';
 const groupNames = { Broad:'宽基', Sector:'行业板块', Industry:'细分行业', Thematic:'主题', Resources:'资源股', Commodity:'商品与另类', RealAsset:'实物资产', Factor:'因子', Bond:'债券', International:'国际市场' };
@@ -184,13 +184,13 @@ function renderOpportunities(){
 
 function renderTable(){
   $('#resultCount').textContent=`显示 ${state.filtered.length} / ${state.data.length} 只`;
-  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}"><td class="ticker-cell"><span class="ticker-code">${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td class="num ${Number.isFinite(x.mom12_1)?cls(x.mom12_1):''}">${Number.isFinite(x.mom12_1)?pct(x.mom12_1):'—'}</td><td class="num">${Number.isFinite(x.rank_risk)?`#${x.rank_risk}`:'—'}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
+  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}"><td class="ticker-cell"><span class="ticker-code">${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td class="num ${x.rank_chg5>0?'positive':x.rank_chg5<0?'negative':''}">${rankChange(x.rank_chg5)}</td><td class="num ${Number.isFinite(x.mom12_1)?cls(x.mom12_1):''}">${Number.isFinite(x.mom12_1)?pct(x.mom12_1):'—'}</td><td class="num">${Number.isFinite(x.rank_risk)?`#${x.rank_risk}`:'—'}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
   document.querySelectorAll('#tableBody tr').forEach(el=>el.addEventListener('click',()=>openDrawer(state.data.find(x=>x.ticker===el.dataset.code))));
 }
 
 function openDrawer(x){
   if(!x)return; state.selected=x;
-  $('#drawerContent').innerHTML=`<p class="section-kicker">ETF DETAIL</p><h2 class="detail-code">${x.ticker}</h2><p class="detail-meta">${etfName(x.ticker)}</p><p class="detail-meta">${groupNames[x.group]||x.group} · ${x.date} · 收盘 $${price(x.close)}</p><div class="detail-score"><b>${x.score.toFixed(1)}</b><span>综合动量评分</span></div><div class="detail-grid">${[["20日收益",pct(x.r20),cls(x.r20)],["60日收益",pct(x.r60),cls(x.r60)],["120日收益",pct(x.r120),cls(x.r120)],["60日相对SPY",pct(x.rs60),cls(x.rs60)],["ATR / 价格",`${(x.atr_pct*100).toFixed(2)}%`,''],["距120日高点",pct(x.from_high120),cls(x.from_high120)],["12-1动量",Number.isFinite(x.mom12_1)?pct(x.mom12_1):"—",Number.isFinite(x.mom12_1)?cls(x.mom12_1):""],["波动调整排名",Number.isFinite(x.rank_risk)?`#${x.rank_risk} / ${state.data.length}`:"—",""]].map(v=>`<div class="detail-stat"><span>${v[0]}</span><b class="${v[2]}">${v[1]}</b></div>`).join('')}</div><div class="trade-plan"><h3>${setupNames[x.setup]}</h3><div class="trade-step"><i>01</i><div>等待价格进入回踩观察区 <b>${price(x.pullback_low)}–${price(x.pullback_high)}</b>，观察是否止跌。</div></div><div class="trade-step"><i>02</i><div>趋势延续的突破触发参考为 <b>${price(x.breakout_trigger)}</b>。</div></div><div class="trade-step"><i>03</i><div>结构失效参考 <b>${price(x.stop_ref)}</b>；当前至该位置约 <b>${pct(x.stop_pct)}</b>。</div></div></div>`;
+  $('#drawerContent').innerHTML=`<p class="section-kicker">ETF DETAIL</p><h2 class="detail-code">${x.ticker}</h2><p class="detail-meta">${etfName(x.ticker)}</p><p class="detail-meta">${groupNames[x.group]||x.group} · ${x.date} · 收盘 $${price(x.close)}</p><div class="detail-score"><b>${x.score.toFixed(1)}</b><span>综合动量评分</span></div><div class="detail-grid">${[["20日收益",pct(x.r20),cls(x.r20)],["60日收益",pct(x.r60),cls(x.r60)],["120日收益",pct(x.r120),cls(x.r120)],["60日相对SPY",pct(x.rs60),cls(x.rs60)],["ATR / 价格",`${(x.atr_pct*100).toFixed(2)}%`,''],["距120日高点",pct(x.from_high120),cls(x.from_high120)],["12-1动量",Number.isFinite(x.mom12_1)?pct(x.mom12_1):"—",Number.isFinite(x.mom12_1)?cls(x.mom12_1):""],["波动调整排名",Number.isFinite(x.rank_risk)?`#${x.rank_risk} / ${state.data.length}`:"—",""]].map(v=>`<div class="detail-stat"><span>${v[0]}</span><b class="${v[2]}">${v[1]}</b></div>`).join('')}</div>${historyBlock(x)}<div class="trade-plan"><h3>${setupNames[x.setup]}</h3><div class="trade-step"><i>01</i><div>等待价格进入回踩观察区 <b>${price(x.pullback_low)}–${price(x.pullback_high)}</b>，观察是否止跌。</div></div><div class="trade-step"><i>02</i><div>趋势延续的突破触发参考为 <b>${price(x.breakout_trigger)}</b>。</div></div><div class="trade-step"><i>03</i><div>结构失效参考 <b>${price(x.stop_ref)}</b>；当前至该位置约 <b>${pct(x.stop_pct)}</b>。</div></div></div>`;
   $('#drawerContent').insertAdjacentHTML('beforeend',renderFundContext(x));
   $('#detailDrawer').classList.add('open');$('#drawerBackdrop').classList.add('open');$('#detailDrawer').setAttribute('aria-hidden','false');
 }
@@ -208,6 +208,30 @@ function bind(){
   let timer;addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(renderScatter,120);});
 }
 
+// Optional 20-session score history; the page works without it.
+async function loadHistory(asof){
+  try{
+    const res=await fetch(`./etf_history.json?v=${asof}`,{cache:'no-store'}); if(!res.ok)return;
+    const h=await res.json(); if(h.asof!==asof)return;
+    state.history=h;
+    state.data.forEach(x=>{const t=h.tickers[x.ticker]; if(!t)return; const r=t.rank, n=r.length;
+      x.rank_now=r[n-1]; if(n>=6)x.rank_chg5=r[n-6]-r[n-1]; if(n>=1)x.rank_first=r[0];});
+  }catch{}
+}
+const rankChange = v => !Number.isFinite(v)?'—':v>0?`↑${v}`:v<0?`↓${-v}`:'=';
+function sparkline(values){
+  if(!values||values.length<2)return '';
+  const w=260,h=56,p=4,min=Math.min(...values),max=Math.max(...values),span=max-min||1;
+  const pts=values.map((v,i)=>`${(p+i*(w-2*p)/(values.length-1)).toFixed(1)},${(h-p-(v-min)/span*(h-2*p)).toFixed(1)}`).join(' ');
+  const last=pts.split(' ').pop().split(',');
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" width="100%" height="${h}" role="img" aria-label="评分走势"><polyline points="${pts}" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="${last[0]}" cy="${last[1]}" r="3" fill="currentColor"/></svg>`;
+}
+function historyBlock(x){
+  const t=state.history&&state.history.tickers[x.ticker]; if(!t)return '';
+  const r=t.rank,n=r.length,s=state.history.sessions;
+  return `<div class="history-block"><h3>评分走势（${n}日）</h3>${sparkline(t.score)}<p class="detail-meta">${s[0]} → ${s[n-1]} · 排名 #${r[n-1]}${n>=6?` · 5日前 #${r[n-6]}`:''} · ${n}日前 #${r[0]}</p></div>`;
+}
+
 async function init(){
   try{
     const metaRes=await fetch('./snapshot_meta.json',{cache:'no-store'}); if(!metaRes.ok)throw new Error(`快照信息 HTTP ${metaRes.status}`);
@@ -218,6 +242,7 @@ async function init(){
     if(digest!==meta.sha256)throw new Error('页面正在更新，请刷新后重试');
     state.data=parseCSV(csv); state.filtered=[...state.data];
     if(state.data.length!==meta.count||state.data.some(r=>r.date!==meta.asof))throw new Error('快照日期或数量不一致');
+    await loadHistory(meta.asof);
     $('#asOf').textContent=`数据截止 ${meta.asof} · ${meta.source} 日线`;
     const generated=new Date(meta.generated_at).toLocaleString('zh-CN',{timeZone:'Asia/Tokyo',hour12:false});
     const stale=Date.now()-Date.parse(meta.generated_at)>4*86400000;

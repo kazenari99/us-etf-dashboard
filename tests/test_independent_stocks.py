@@ -22,7 +22,7 @@ class IndependentStocksTests(unittest.TestCase):
         self.assertEqual(route('schedule', '0 22 * * *', '', None), (False, False))
         self.assertEqual(route('schedule', '0 22 * * *', '', '2026-10-16'), (True, False))
 
-    def artifact(self, directory, bad=False):
+    def artifact(self, directory, bad=False, history=None):
         csv = b'ticker,date\nSPY,2026-10-15\n'
         entries = {'etf_momentum_latest.csv':csv,
                    'snapshot_meta.json':json.dumps({'asof':'2026-10-15', 'sha256':hashlib.sha256(csv).hexdigest()}).encode(),
@@ -31,6 +31,8 @@ class IndependentStocksTests(unittest.TestCase):
                    'index.html':b'old UI'}
         if bad:
             entries['etf_momentum_latest.csv'] = b'corrupted'
+        if history is not None:
+            entries['etf_history.json'] = json.dumps(history).encode()
         archive = Path(directory) / 'artifact.tar'
         with tarfile.open(archive, 'w') as tar:
             for name, data in entries.items():
@@ -58,6 +60,22 @@ class IndependentStocksTests(unittest.TestCase):
             self.assertEqual(restore.restore(self.artifact(directory), dist, False), '2026-10-15')
             self.assertIn('2026-10-15', (dist / 'etf_momentum_latest.csv').read_text())
             self.assertEqual(json.loads((dist / 'snapshot_meta.json').read_text())['asof'], '2026-10-15')
+
+    def test_score_history_is_restored_only_when_it_matches_the_snapshot(self):
+        for asof, kept in (('2026-10-15', True), ('2026-10-14', False)):
+            with self.subTest(asof=asof), tempfile.TemporaryDirectory() as directory:
+                dist = Path(directory) / 'dist'
+                dist.mkdir()
+                (dist / 'etf_history.json').write_text('{"asof":"stale"}')
+                restore.restore(self.artifact(directory, history={'asof': asof}), dist, False)
+                self.assertEqual((dist / 'etf_history.json').exists(), kept)
+
+    def test_artifact_without_history_still_restores(self):
+        with tempfile.TemporaryDirectory() as directory:
+            dist = Path(directory) / 'dist'
+            dist.mkdir()
+            self.assertEqual(restore.restore(self.artifact(directory), dist, True), '2026-10-15')
+            self.assertFalse((dist / 'etf_history.json').exists())
 
     def test_imported_snapshot_is_kept_and_stocks_reconcile_to_it(self):
         with tempfile.TemporaryDirectory() as directory:

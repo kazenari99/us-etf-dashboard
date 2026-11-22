@@ -59,6 +59,14 @@ def validate(dist: Path) -> str:
     floor = os.environ.get('MIN_ASOF', '')
     check(not floor or meta['asof'] >= floor,
           f'Snapshot {meta["asof"]} is older than the published {floor}; refusing to roll back')
+    history_path = dist / 'etf_history.json'
+    if history_path.exists():
+        history = json.loads(history_path.read_text())
+        check(history.get('asof') == meta['asof'], 'Score history date does not match the snapshot')
+        check(set(history.get('tickers', {})) == tickers, 'Score history tickers do not match the snapshot')
+        n = len(history.get('sessions', []))
+        check(n > 0 and all(len(v['score']) == len(v['rank']) == n for v in history['tickers'].values()),
+              'Score history series have inconsistent lengths')
     if warning:
         print(warning)
     return f'{len(rows)} ETFs / {rows[0]["date"]} / snapshot validated'
