@@ -1,0 +1,39 @@
+name: Backtest
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: 'First date of price history (YYYY-MM-DD)'
+        type: string
+        default: '2018-01-01'
+      top:
+        description: 'Portfolio sizes to test, space separated'
+        type: string
+        default: '5 10'
+permissions:
+  contents: read
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run walk-forward backtest
+        env:
+          START: ${{ inputs.start }}
+          TOP: ${{ inputs.top }}
+        run: |
+          [[ "$START" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || { echo "::error::start must be YYYY-MM-DD"; exit 1; }
+          [[ "$TOP" =~ ^[0-9]+( [0-9]+)*$ ]] || { echo "::error::top must be numbers separated by spaces"; exit 1; }
+          # shellcheck disable=SC2086
+          python scripts/backtest.py --start "$START" --top $TOP --out backtest
+      - uses: actions/upload-artifact@v6
+        with:
+          name: backtest-${{ github.run_id }}
+          path: backtest/
+          retention-days: 90
