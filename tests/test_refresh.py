@@ -139,6 +139,26 @@ class RefreshTests(unittest.TestCase):
             self.assertAlmostEqual(history['tickers'][t]['score'][0], five_ago.at[t, 'score'], places=2)
         self.assertEqual(sorted(v['rank'][-1] for v in history['tickers'].values()), [1, 2, 3, 4, 5])
 
+    def test_market_context_regime_and_near_duplicate_peers(self):
+        rng = np.random.default_rng(9)
+        n = 260
+        base = rng.standard_normal(n)
+        series = {'SPY': 0.002 + 0.01 * base,                      # trending up
+                  'QQQ': 0.002 + 0.01 * (base + 0.05 * rng.standard_normal(n)),  # near copy of SPY
+                  'TLT': -0.002 + 0.01 * rng.standard_normal(n)}  # independent, trending down
+        frames = {}
+        for t, r in series.items():
+            close = 100 * np.exp(np.cumsum(r))
+            frames[t] = pd.DataFrame({'time_key': pd.bdate_range('2025-01-01', periods=n), 'open': close,
+                                      'high': close, 'low': close, 'close': close, 'volume': 1e6})
+        ctx = refresh.market_context(frames)
+        self.assertGreater(ctx['regime']['spy_vs_sma200'], 0)
+        self.assertEqual(ctx['regime']['total'], 3)
+        self.assertEqual(ctx['regime']['above_sma200'], 2)
+        self.assertEqual(ctx['peers']['SPY'][0][0], 'QQQ')
+        self.assertGreaterEqual(ctx['peers']['SPY'][0][1], refresh.PEER_CORR)
+        self.assertNotIn('TLT', ctx['peers'])
+
     def test_original_model_parity(self):
         fixture = json.loads((Path(__file__).parent / 'fixtures/us_model_parity.json').read_text())
         names = {'510300':'SPY'}
