@@ -71,6 +71,19 @@ class BacktestTests(unittest.TestCase):
         w = backtest.pick_top(scores, [date], 2, absolute=absolute)
         self.assertEqual(w.loc[date].to_dict(), {'A': 0.5, 'BIL': 0.5})
 
+    def test_newey_west_matches_plain_t_without_lags_and_shrinks_with_overlap(self):
+        rng = np.random.default_rng(0)
+        x = 0.1 + rng.standard_normal(500)
+        plain = x.mean() / (x.std() / np.sqrt(len(x)))
+        self.assertAlmostEqual(backtest.nw_tstat(x, 0), plain)
+        # Overlapping sums of iid noise: plain t is inflated, Newey-West corrects it down.
+        overlapped = np.convolve(x, np.ones(4), 'valid')
+        naive = overlapped.mean() / (overlapped.std() / np.sqrt(len(overlapped)))
+        self.assertLess(backtest.nw_tstat(overlapped, 3), naive * 0.7)
+        self.assertEqual(backtest.overlap_lags(20, 5), 3)
+        self.assertEqual(backtest.overlap_lags(5, 5), 0)
+        self.assertEqual(backtest.overlap_lags(21, 21), 0)
+
     def test_end_to_end_report_on_synthetic_prices(self):
         tickers = ['SPY', 'QQQ', 'IWM', 'XLK', 'XLE', 'GLD', 'TLT', 'BIL', 'EEM', 'SMH', 'XBI', 'IBB']
         frames = synthetic(tickers)
@@ -81,6 +94,6 @@ class BacktestTests(unittest.TestCase):
         self.assertTrue(np.isfinite(sig[['score', 'score_risk', 'score_group']].to_numpy()).all())
         text = backtest.report(frames, sig, [3], '2023-01-02')
         for needle in ('Current score, top 3', 'Risk-adjusted ranks, top 3', 'BIL when SPY < 200d', 'Rank IC',
-                       'Current score, top 3, EMA5 > EMA20', 'SPY, EMA5 > EMA20 only'):
+                       'Current score, top 3, EMA5 > EMA20', 'SPY, EMA5 > EMA20 only', 't vs SPY', 'Newey-West'):
             self.assertIn(needle, text)
         self.assertNotIn('nan%', text)
