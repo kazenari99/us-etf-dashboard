@@ -54,6 +54,23 @@ class BacktestTests(unittest.TestCase):
         self.assertTrue(trend['UP'].iloc[-1])
         self.assertFalse(trend['DOWN'].iloc[-1])
 
+    def test_long_momentum_skips_last_month_and_needs_a_year(self):
+        index = pd.bdate_range('2024-01-01', periods=300)
+        prices = np.linspace(100, 200, 300)
+        prices[-21:] = 50  # a crash inside the skipped month must not change 12-1
+        close = pd.DataFrame({'A': prices}, index=index)
+        mom = backtest.long_momentum(close)
+        self.assertTrue(np.isnan(mom['12-1']['A'].iloc[251]))
+        expected = prices[-1 - backtest.SKIP] / prices[-1 - 252] - 1
+        self.assertAlmostEqual(mom['12-1']['A'].iloc[-1], expected)
+
+    def test_absolute_filter_swaps_laggards_for_cash(self):
+        date = pd.Timestamp('2026-01-30')
+        scores = pd.DataFrame({'A': [3.0], 'B': [2.0], 'BIL': [1.0]}, index=[date])
+        absolute = pd.DataFrame({'A': [0.10], 'B': [0.01], 'BIL': [0.04]}, index=[date])
+        w = backtest.pick_top(scores, [date], 2, absolute=absolute)
+        self.assertEqual(w.loc[date].to_dict(), {'A': 0.5, 'BIL': 0.5})
+
     def test_end_to_end_report_on_synthetic_prices(self):
         tickers = ['SPY', 'QQQ', 'IWM', 'XLK', 'XLE', 'GLD', 'TLT', 'BIL', 'EEM', 'SMH', 'XBI', 'IBB']
         frames = synthetic(tickers)
