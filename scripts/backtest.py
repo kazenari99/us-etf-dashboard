@@ -178,6 +178,83 @@ def rank_ic(sig: pd.DataFrame, close: pd.DataFrame, column: str, horizon: int) -
     return float(np.nanmean(ics)), float(np.nanmean(spreads))
 
 
+SKIP = 21               # skip the most recent month in long-lookback momentum
+LONG_BARS = 253         # 12 months of closes plus one
+
+
+def month_ends(index: pd.DatetimeIndex) -> pd.DatetimeIndex:
+    """Last session of each calendar month."""
+    s = pd.Series(index, index=index)
+    return pd.DatetimeIndex(s.groupby(index.to_period('M')).max().to_numpy())
+
+
+def long_momentum(close: pd.DataFrame) -> dict[str, pd.DataFrame]:
+    """Classic cross-asset momentum scores, all skipping the most recent month."""
+    m6 = close.shift(SKIP) / close.shift(126) - 1
+    m12 = close.shift(SKIP) / close.shift(252) - 1
+    vol = close.pct_change(fill_method=None).rolling(252).std() * np.sqrt(252)
+    enough = close.notna().rolling(LONG_BARS).sum() >= LONG_BARS
+    out = {'12-1': m12, '6-1': m6, 'blend': (m6.rank(axis=1, pct=True) + m12.rank(axis=1, pct=True)) / 2,
+           '12-1 / vol': m12 / vol}
+    return {k: v.where(enough) for k, v in out.items()}
+
+
+def pick_top(scores: pd.DataFrame, dates, n: int, absolute: pd.DataFrame | None = None,
+             cash: str = 'BIL') -> pd.DataFrame:
+    """Equal-weight top-n per date; with `absolute`, a pick whose 12-1 return trails
+    the cash ETF's 12-1 return is swapped for the cash ETF."""
+    out = {}
+    for date in dates:
+        row = scores.loc[date].dropna()
+        if len(row) < n:
+            continue
+        weights = {}
+        for ticker in row.nlargest(n).index:
+            fails = absolute is not None and cash in absolute.columns and \
+                absolute.at[date, ticker] <= absolute.at[date, cash]
+            target = cash if fails else ticker
+            weights[target] = weights.get(target, 0.0) + 1.0 / n
+        out[date] = weights
+    return pd.DataFrame.from_dict(out, orient='index').fillna(0.0).sort_index()
+
+
+def monthly_section(close: pd.DataFrame, sig: pd.DataFrame, tops) -> list[str]:
+    returns = close.pct_change(fill_method=None)
+    mom = long_momentum(close)
+    dates = [d for d in month_ends(close['SPY'].dropna().index) if mom['12-1'].loc[d].notna().sum() >= 20]
+    if len(dates) < 12:
+        return ['', '## Monthly rebalance, 6–12 month momentum', '', 'Not enough history; start earlier.']
+    first = dates[0]
+    r = returns.loc[first:]
+    weekly_dates = set(sig['date'])
+    month_sig = sig[sig['date'].isin([max((w for w in weekly_dates if w.to_period('M') == d.to_period('M')),
+                                          default=None) for d in dates])]
+    strategies = {'SPY buy & hold': r['SPY'].fillna(0.0)}
+    for n in tops:
+        strategies[f'Current score, top {n}, monthly'] = portfolio(top_weights(month_sig, 'score', n), r)
+        for key in ('12-1', '6-1', 'blend', '12-1 / vol'):
+            strategies[f'{key} momentum, top {n}'] = portfolio(pick_top(mom[key], dates, n), r)
+        strategies[f'12-1 momentum, top {n}, BIL if not beating BIL'] = portfolio(
+            pick_top(mom['12-1'], dates, n, absolute=mom['12-1']), r)
+        strategies[f'blend momentum, top {n}, BIL if not beating BIL'] = portfolio(
+            pick_top(mom['blend'], dates, n, absolute=mom['12-1']), r)
+    table = pd.DataFrame({k: stats(v) for k, v in strategies.items()}).T
+    lines = ['', '## Monthly rebalance, 6–12 month momentum', '',
+             f'Window: {first.date()} – {r.index[-1].date()}, {len(dates)} month-end rebalances. '
+             'Momentum = return from 12 (or 6) months ago to 1 month ago; blend = average of the two ranks; '
+             '"BIL if not beating BIL" swaps a pick for BIL when its 12-1 return is not above BIL\'s.', '',
+             '| Strategy | CAGR | Vol | Sharpe | Max DD | Total |', '|---|---:|---:|---:|---:|---:|']
+    for name, row in table.iterrows():
+        lines.append(f'| {name} | {row.CAGR:.1%} | {row.Vol:.1%} | {row.Sharpe:.2f} | {row.MaxDD:.1%} | {row.Total:.0%} |')
+    lines += ['', '| Signal | Rank IC 21d | Q5–Q1 21d |', '|---|---:|---:|']
+    for key in ('12-1', '6-1', 'blend', '12-1 / vol'):
+        long = mom[key].loc[dates].stack().rename('score').reset_index()
+        long.columns = ['date', 'ticker', 'score']
+        ic, spread = rank_ic(long, close, 'score', 21)
+        lines.append(f'| {key} | {ic:.3f} | {spread:.2%} |')
+    return lines
+
+
 def report(frames, sig, tops, start) -> str:
     close = pd.DataFrame({t: f['close'] for t, f in frames.items()}).sort_index()
     returns = close.pct_change(fill_method=None)
@@ -227,6 +304,7 @@ def report(frames, sig, tops, start) -> str:
               '|---|' + '---:|' * len(yearly.columns)]
     for name, row in yearly.iterrows():
         lines.append(f'| {name} | ' + ' | '.join(f'{v:.0%}' for v in row) + ' |')
+    lines += monthly_section(close, sig, tops)
     lines += ['', '## Caveats', '',
               '- Universe is today\'s 80 ETFs, chosen with hindsight (survivorship/selection bias).',
               '- ETFs join only after ~130 sessions of history (e.g. IBIT from mid-2024).',
