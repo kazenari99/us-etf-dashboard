@@ -85,6 +85,9 @@ jobs:
         run: python scripts/restore_published_data.py
       - name: Refresh complete US ETF universe
         id: etf
+        env:
+          # Opt-in whole-universe fallback when Yahoo fails; set only after the source parity check.
+          FALLBACK_SOURCE: ${{ vars.FALLBACK_SOURCE }}
         if: ${{ needs.calendar.outputs.stocks_only != 'true' && !inputs.use_committed_snapshot }}
         run: python scripts/refresh_snapshot.py
       - name: Check imported snapshot freshness

@@ -98,3 +98,10 @@ GitHub 的 `schedule` 经常晚几个小时。`worker/` 是一个 Cloudflare Wor
 3. 在 Actions 里手动运行一次 **Deploy scheduler Worker**。之后 `worker/` 有改动时会自动重新部署。
 
 secret 缺失时部署任务会跳过并给出提示，不会报错。
+
+
+## 备用数据源（默认关闭）
+
+Yahoo 仍是唯一的默认数据源。`scripts/sources.py` 提供 Stooq 作为备用：只有当仓库变量 `FALLBACK_SOURCE=stooq` 且 Yahoo 抓取失败（不是「最新日线尚未发布」的推迟情况）时，才会整体改用 Stooq 抓取全部 ETF；同一份快照绝不混用两个数据源。页面会提示正在使用备用源。
+
+启用前先在 Actions 里运行 **Source parity check**：它用生产校验逻辑分别从 Yahoo 和 Stooq 抓取全部 ETF，比较收盘价和 20/60/120 日收益差异，以及评分排名相关性和前 10 名重合度，给出「可以启用 / 不要启用」的结论。只有结论为可以启用时，才在 Settings → Secrets and variables → Actions → Variables 中添加 `FALLBACK_SOURCE=stooq`。
