@@ -162,13 +162,40 @@ def score_history(frames, sessions, n=HISTORY_SESSIONS):
     return {'asof': dates[-1], 'sessions': dates, 'tickers': tickers}
 
 
+PEER_CORR = 0.90       # daily-return correlation that marks two ETFs as near-duplicates
+PEER_WINDOW = 120      # sessions of daily returns used for correlation
+
+
+def market_context(frames):
+    """Market regime (SPY vs its 200-day average, breadth) and highly correlated peers."""
+    close = pd.DataFrame({t: f['close'].astype(float).to_numpy() for t, f in frames.items()})
+    sma200 = close.rolling(200).mean().iloc[-1]
+    sma50 = close.rolling(50).mean().iloc[-1]
+    last = close.iloc[-1]
+    regime = {
+        'spy_vs_sma200': round(float(last['SPY'] / sma200['SPY'] - 1), 4),
+        'above_sma200': int((last > sma200).sum()),
+        'above_sma50': int((last > sma50).sum()),
+        'total': int(len(last)),
+    }
+    corr = close.pct_change().iloc[-PEER_WINDOW:].corr()
+    peers = {}
+    for t in sorted(frames):
+        row = corr[t].drop(t)
+        top = row[row >= PEER_CORR].sort_values(ascending=False).head(3)
+        if len(top):
+            peers[t] = [[p, round(float(c), 2)] for p, c in top.items()]
+    return {'regime': regime, 'peers': peers}
+
+
 def publish_snapshot(frames, sessions, source=None):
     if set(frames) != TICKERS:
         raise ValueError(f'All {len(TICKERS)} ETFs, including SPY, are required')
     result = metrics(frames)
     if not np.isfinite(result.select_dtypes(include='number').to_numpy()).all():
         raise ValueError('Non-finite model results')
-    history = json.dumps(score_history(frames, sessions), separators=(',', ':')) + '\n'
+    history = json.dumps({**score_history(frames, sessions), **market_context(frames)},
+                         separators=(',', ':')) + '\n'
     now = datetime.now(timezone.utc)
     data = result.to_csv(index=False).encode()
     metadata = {
