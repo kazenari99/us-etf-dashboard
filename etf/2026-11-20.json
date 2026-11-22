@@ -3,7 +3,7 @@
   "transport": "yfinance",
   "adjustment": "Yahoo dividend and split adjusted OHLC (auto_adjust=True)",
   "asof": "2026-11-20",
-  "generated_at": "2026-11-22T07:05:55.763750+00:00",
+  "generated_at": "2026-11-22T07:17:14.803966+00:00",
   "count": 80,
   "expected_count": 80,
   "universe": [
@@ -88,7 +88,7 @@
     "XOP",
     "XRT"
   ],
-  "sha256": "1da2ec9782ba48e6b033f2fa5f5ca8ab87812c0d1117fb4bb4cbb23d34e02262",
+  "sha256": "2abc741ee32871989c9e991c44818cadd9f3611c73ceef5b09626d85c58cc711",
   "benchmark": "SPY",
   "model": "Hermes 20/60/120 v1"
 }
