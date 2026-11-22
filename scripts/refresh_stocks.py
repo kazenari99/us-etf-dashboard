@@ -9,6 +9,7 @@ import pandas_market_calendars as mcal
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = 'https://anish1294.github.io/minervini-trend-template-screener/current.json'
+MAX_CANDIDATES = 2000
 
 
 def previous_tokyo_session(now=None):
@@ -22,7 +23,9 @@ def previous_tokyo_session(now=None):
 
 def validate(payload):
     rows = payload.get('stocks')
-    if not isinstance(rows, list) or not rows or len(rows) > 300:
+    # Sanity bound only. Upstream currently publishes exactly 300; a cap at 300 would
+    # silently freeze the list the day it grows.
+    if not isinstance(rows, list) or not rows or len(rows) > MAX_CANDIDATES:
         raise ValueError('Invalid public candidate universe')
     if payload.get('count') != len(rows):
         raise ValueError('Count mismatch')
