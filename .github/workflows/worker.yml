@@ -1,0 +1,48 @@
+name: Deploy scheduler Worker
+on:
+  push:
+    branches: [main]
+    paths: ['worker/**', '.github/workflows/worker.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: worker-deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Test schedule mapping
+        working-directory: worker
+        run: npm test
+      - name: Check required secrets
+        id: secrets
+        env:
+          HAS_GH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN != '' }}
+          HAS_CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+        run: |
+          missing=''
+          [ "$HAS_GH_TOKEN" = 'true' ] || missing="$missing GH_DISPATCH_TOKEN"
+          [ "$HAS_CF_TOKEN" = 'true' ] || missing="$missing CLOUDFLARE_API_TOKEN"
+          if [ -n "$missing" ]; then
+            # Not a failure: until the secrets exist, GitHub's own schedule keeps running.
+            echo "::notice title=Scheduler Worker not deployed::Add repository secret(s):$missing, then run this workflow (see README, 准点调度)"
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy Worker and its dispatch token
+        if: ${{ steps.secrets.outputs.ready == 'true' }}
+        uses: cloudflare/wrangler-action@v4
+        env:
+          GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: d210ce0ca782b8901889a72737771d59
+          workingDirectory: worker
+          command: deploy
+          secrets: |
+            GH_DISPATCH_TOKEN

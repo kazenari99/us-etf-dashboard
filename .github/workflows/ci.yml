@@ -23,7 +23,10 @@ jobs:
       - name: Python lint
         run: ruff check scripts tests .github/scripts
       - name: JavaScript syntax
-        run: for f in dist/*.js; do node --check "$f"; done
+        run: for f in dist/*.js worker/src/*.js; do node --check "$f"; done
+      - name: Scheduler Worker tests
+        working-directory: worker
+        run: npm test
       - name: Workflow lint
         run: actionlint -color
       - name: Committed snapshot is valid

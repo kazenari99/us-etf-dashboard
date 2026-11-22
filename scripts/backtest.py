@@ -144,6 +144,16 @@ def top_weights(sig: pd.DataFrame, column: str, n: int, *, momentum_only=False, 
     return pd.DataFrame.from_dict(out, orient='index').fillna(0.0).sort_index()
 
 
+def excess_t(strategies: dict, name: str) -> str:
+    """Newey-West t-stat of daily returns minus SPY's over the strategy's own window."""
+    if name.startswith('SPY buy'):
+        return '—'
+    r = strategies[name]
+    r = r.loc[r.ne(0).idxmax():] if r.ne(0).any() else r
+    spy = strategies[next(k for k in strategies if k.startswith('SPY buy'))].reindex(r.index)
+    return f'{nw_tstat((r - spy).to_numpy(), 5):+.2f}'
+
+
 def stats(r: pd.Series) -> dict:
     r = r.dropna()
     r = r.loc[r.ne(0).idxmax():] if r.ne(0).any() else r
@@ -158,8 +168,33 @@ def stats(r: pd.Series) -> dict:
     }
 
 
-def rank_ic(sig: pd.DataFrame, close: pd.DataFrame, column: str, horizon: int) -> tuple[float, float]:
-    """Mean Spearman IC and top-minus-bottom quintile forward return, both with LAG."""
+def nw_tstat(values, lags: int) -> float:
+    """t-statistic of the mean with Newey-West (Bartlett) standard errors.
+
+    Overlapping forward windows (e.g. 20-day returns sampled weekly) are
+    autocorrelated; ignoring that overstates significance.
+    """
+    x = np.asarray(values, dtype=float)
+    x = x[np.isfinite(x)]
+    n = len(x)
+    if n < 3:
+        return float('nan')
+    d = x - x.mean()
+    var = d @ d / n
+    for lag in range(1, min(lags, n - 1) + 1):
+        var += 2 * (1 - lag / (lags + 1)) * (d[lag:] @ d[:-lag]) / n
+    return float(x.mean() / np.sqrt(var / n)) if var > 0 else float('nan')
+
+
+def overlap_lags(horizon: int, step: int) -> int:
+    """Newey-West lags for horizon-day forward returns sampled every `step` sessions."""
+    return max(int(np.ceil(horizon / step)) - 1, 0)
+
+
+def rank_ic(sig: pd.DataFrame, close: pd.DataFrame, column: str, horizon: int,
+            step: int = 5) -> tuple[float, float, float]:
+    """Mean Spearman IC, top-minus-bottom quintile forward return, and the IC's
+    Newey-West t-stat, all with LAG. `step` = sessions between signal dates."""
     entry = close.shift(-(LAG - 1))
     forward = close.shift(-(LAG - 1 + horizon)) / entry - 1
     ics, spreads = [], []
@@ -175,7 +210,7 @@ def rank_ic(sig: pd.DataFrame, close: pd.DataFrame, column: str, horizon: int) -
         ics.append(pd.Series(s).rank().corr(pd.Series(f).rank()))
         q = pd.qcut(pd.Series(s).rank(method='first'), 5, labels=False)
         spreads.append(f[q.to_numpy() == 4].mean() - f[q.to_numpy() == 0].mean())
-    return float(np.nanmean(ics)), float(np.nanmean(spreads))
+    return float(np.nanmean(ics)), float(np.nanmean(spreads)), nw_tstat(ics, overlap_lags(horizon, step))
 
 
 SKIP = 21               # skip the most recent month in long-lookback momentum
@@ -243,15 +278,15 @@ def monthly_section(close: pd.DataFrame, sig: pd.DataFrame, tops) -> list[str]:
              f'Window: {first.date()} – {r.index[-1].date()}, {len(dates)} month-end rebalances. '
              'Momentum = return from 12 (or 6) months ago to 1 month ago; blend = average of the two ranks; '
              '"BIL if not beating BIL" swaps a pick for BIL when its 12-1 return is not above BIL\'s.', '',
-             '| Strategy | CAGR | Vol | Sharpe | Max DD | Total |', '|---|---:|---:|---:|---:|---:|']
+             '| Strategy | CAGR | Vol | Sharpe | Max DD | Total | t vs SPY |', '|---|---:|---:|---:|---:|---:|---:|']
     for name, row in table.iterrows():
-        lines.append(f'| {name} | {row.CAGR:.1%} | {row.Vol:.1%} | {row.Sharpe:.2f} | {row.MaxDD:.1%} | {row.Total:.0%} |')
-    lines += ['', '| Signal | Rank IC 21d | Q5–Q1 21d |', '|---|---:|---:|']
+        lines.append(f'| {name} | {row.CAGR:.1%} | {row.Vol:.1%} | {row.Sharpe:.2f} | {row.MaxDD:.1%} | {row.Total:.0%} | {excess_t(strategies, name)} |')
+    lines += ['', '| Signal | Rank IC 21d | t | Q5–Q1 21d |', '|---|---:|---:|---:|']
     for key in ('12-1', '6-1', 'blend', '12-1 / vol'):
         long = mom[key].loc[dates].stack().rename('score').reset_index()
         long.columns = ['date', 'ticker', 'score']
-        ic, spread = rank_ic(long, close, 'score', 21)
-        lines.append(f'| {key} | {ic:.3f} | {spread:.2%} |')
+        ic, spread, t = rank_ic(long, close, 'score', 21, step=21)
+        lines.append(f'| {key} | {ic:.3f} | {t:+.2f} | {spread:.2%} |')
     return lines
 
 
@@ -286,19 +321,21 @@ def report(frames, sig, tops, start) -> str:
              f'Window: {first.date()} – {returns.index[-1].date()} (data from {start}), '
              f'{sig["date"].nunique()} weekly rebalances, {sig["ticker"].nunique()} ETFs, '
              f'trade at next close, {COST * 1e4:.0f} bp per one-way turnover.', '',
-             '## Strategies', '', '| Strategy | CAGR | Vol | Sharpe | Max DD | Total |', '|---|---:|---:|---:|---:|---:|']
+             '## Strategies', '', '| Strategy | CAGR | Vol | Sharpe | Max DD | Total | t vs SPY |', '|---|---:|---:|---:|---:|---:|---:|']
     for name, row in table.iterrows():
-        lines.append(f'| {name} | {row.CAGR:.1%} | {row.Vol:.1%} | {row.Sharpe:.2f} | {row.MaxDD:.1%} | {row.Total:.0%} |')
+        lines.append(f'| {name} | {row.CAGR:.1%} | {row.Vol:.1%} | {row.Sharpe:.2f} | {row.MaxDD:.1%} | {row.Total:.0%} | {excess_t(strategies, name)} |')
     lines += ['', '## Does a higher score predict higher returns?', '',
               'Rank IC = average Spearman correlation between score and forward return across ETFs '
-              '(0 = no signal; 0.05+ is useful for weekly data). Q5–Q1 = top-fifth minus bottom-fifth forward return.', '',
-              '| Score | ' + ' | '.join(f'IC {h}d | Q5–Q1 {h}d' for h in HORIZONS) + ' |',
-              '|---|' + '---:|---:|' * len(HORIZONS)]
+              '(0 = no signal; 0.05+ is useful for weekly data). Q5–Q1 = top-fifth minus bottom-fifth forward return. '
+              't = Newey-West t-statistic (adjusted for overlapping windows); |t| < 2 is not distinguishable from zero. '
+              '"t vs SPY" tests daily returns minus SPY. With this many variants, treat a single |t| near 2 as weak evidence.', '',
+              '| Score | ' + ' | '.join(f'IC {h}d | t | Q5–Q1 {h}d' for h in HORIZONS) + ' |',
+              '|---|' + '---:|---:|---:|' * len(HORIZONS)]
     for col, label in (('score', 'Current'), ('score_risk', 'Risk-adjusted'), ('score_group', 'Within-group')):
         cells = []
         for h in HORIZONS:
-            ic, spread = rank_ic(sig, close, col, h)
-            cells += [f'{ic:.3f}', f'{spread:.2%}']
+            ic, spread, t = rank_ic(sig, close, col, h)
+            cells += [f'{ic:.3f}', f'{t:+.2f}', f'{spread:.2%}']
         lines.append(f'| {label} | ' + ' | '.join(cells) + ' |')
     lines += ['', '## Calendar-year returns', '', '| Strategy | ' + ' | '.join(str(y) for y in yearly.columns) + ' |',
               '|---|' + '---:|' * len(yearly.columns)]
