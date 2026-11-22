@@ -19,6 +19,7 @@ from sources import FETCHERS
 MAX_R120_DIFF = 0.01     # 1 percentage point
 MIN_RANK_CORR = 0.98
 MIN_TOP10_OVERLAP = 8
+PROBE = ('SPY', 'QQQ', 'TLT')
 
 
 def compare(yahoo: dict, other: dict) -> tuple[list[str], bool]:
@@ -53,7 +54,30 @@ def main():
     fetch_other = FETCHERS[name]
     sessions = completed_sessions()
     yahoo, other, errors = {}, {}, []
-    for t in sorted(TICKERS):
+    # Probe first: if the backup source does not answer for a few liquid ETFs,
+    # stop now with a clear verdict instead of waiting out every timeout.
+    probe_errors = []
+    for t in PROBE:
+        started = time.monotonic()
+        try:
+            normalize(fetch_other(t, sessions), sessions, t)
+            print(f'probe {name} {t}: ok in {time.monotonic() - started:.1f}s', flush=True)
+        except Exception as exc:  # noqa: BLE001
+            probe_errors.append(f'- {name} {t}: {type(exc).__name__}: {str(exc)[:160]}')
+            print(f'probe {name} {t}: failed in {time.monotonic() - started:.1f}s: {exc}', flush=True)
+    if len(probe_errors) == len(PROBE):
+        report = '\n'.join([f'# Source parity: {name} vs Yahoo', '',
+                             f'Verdict: **do not enable** — {name} did not return valid data for any probe ETF '
+                             f'({", ".join(PROBE)}) from this runner.', '', *probe_errors]) + '\n'
+        print(report)
+        if os.environ.get('GITHUB_STEP_SUMMARY'):
+            with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+                out.write(report)
+        print(f'::notice title=Source parity::{name} is not reachable or returns no data from GitHub Actions')
+        return
+    for i, t in enumerate(sorted(TICKERS), 1):
+        if i % 10 == 0:
+            print(f'{i}/{len(TICKERS)} ETFs compared', flush=True)
         for label, fetch, store in (('Yahoo', fetch_history, yahoo), (name, fetch_other, other)):
             try:
                 store[t] = normalize(fetch(t, sessions), sessions, t)
