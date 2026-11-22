@@ -29,3 +29,19 @@ class UniverseTests(unittest.TestCase):
             with self.subTest(ticker=ticker):
                 self.assertIn(ticker, names)
                 self.assertIn(f"['{names[ticker]}',", self.i18n)
+
+
+class ValidateSnapshotTests(unittest.TestCase):
+    def test_tampered_csv_fails_checksum_without_assert(self):
+        import shutil
+        import tempfile
+        import validate_snapshot
+        with tempfile.TemporaryDirectory() as tmp:
+            dist = Path(tmp)
+            for name in ('etf_momentum_latest.csv', 'snapshot_meta.json'):
+                shutil.copy(ROOT / 'dist' / name, dist / name)
+            validate_snapshot.validate(dist)
+            with (dist / 'etf_momentum_latest.csv').open('a') as out:
+                out.write('\n')
+            with self.assertRaisesRegex(validate_snapshot.SnapshotError, 'Checksum mismatch'):
+                validate_snapshot.validate(dist)

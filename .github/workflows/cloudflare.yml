@@ -76,7 +76,7 @@ jobs:
           SITE_URL: ${{ steps.prepare.outputs.site_url }}
         run: |
           curl --location --fail --silent --show-error --retry 5 --retry-all-errors --retry-delay 10 "$SITE_URL/" -o /tmp/live.html
-          python -c "from pathlib import Path; assert 'ORBIT PULSE' in Path('/tmp/live.html').read_text(), 'Unexpected published page'"
+          grep -q 'ORBIT PULSE' /tmp/live.html || { echo '::error::Unexpected published page'; exit 1; }
 
       - name: Mirror to original ORBIT address
         uses: cloudflare/wrangler-action@v4
