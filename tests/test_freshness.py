@@ -28,3 +28,13 @@ class FreshnessTests(unittest.TestCase):
         stale, lines = fresh.evaluate({'a': None}, self.sessions)
         self.assertTrue(stale)
         self.assertIn('| a | unreachable | — |', lines)
+
+    def test_stock_list_has_its_own_threshold(self):
+        fresh_sites = {'a': '2026-11-20'}
+        stale, _ = fresh.evaluate(fresh_sites, self.sessions, ('2026-11-18', 'failed'))
+        self.assertFalse(stale)  # 2 behind is tolerated for the third-party list
+        stale, lines = fresh.evaluate(fresh_sites, self.sessions, ('2026-11-17', 'failed'))
+        self.assertTrue(stale)
+        self.assertTrue(any('last fetch failed | 2026-11-17 | 3 |' in line for line in lines))
+        stale, _ = fresh.evaluate(fresh_sites, self.sessions, (None, 'unreachable'))
+        self.assertTrue(stale)

@@ -26,6 +26,16 @@ def sector_record(ticker, previous, now):
     return dict(previous, status='retained' if previous.get('sector') else 'unavailable')
 
 
+def prune(cached, current, now, keep_days=180):
+    """Keep current candidates plus recently classified tickers; the cache otherwise grows forever."""
+    def recent(record):
+        try:
+            return now - datetime.fromisoformat(record.get('retrieved_at', '')) < timedelta(days=keep_days)
+        except (ValueError, TypeError):
+            return False
+    return {t: r for t, r in cached.items() if t in current or recent(r)}
+
+
 def main():
     path = ROOT / 'dist/stock_sectors.json'
     cached = json.loads(path.read_text()) if path.exists() else {}
@@ -45,6 +55,7 @@ def main():
     with ThreadPoolExecutor(max_workers=4) as pool:
         records = dict(pool.map(fetch, tickers))
     cached.update(records)
+    cached = prune(cached, set(tickers), now)
     path.write_text(json.dumps(cached, ensure_ascii=False, indent=2) + '\n')
     print(f'Sectors: {sum(bool(r.get("sector")) for r in records.values())}/{len(tickers)}')
 

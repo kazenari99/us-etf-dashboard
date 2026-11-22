@@ -23,6 +23,9 @@ SITES = {
     'GitHub Pages': 'https://kazenari99.github.io/us-etf-dashboard/snapshot_meta.json',
 }
 STALE_SESSIONS = 2
+# Third-party candidate list: allow an extra session before alerting.
+STOCKS_URL = 'https://orbit-us.pages.dev/stocks.json'
+STALE_STOCK_SESSIONS = 3
 
 
 def lag(asof: str, sessions: pd.DatetimeIndex) -> int:
@@ -36,7 +39,9 @@ def fetch_asof(url: str) -> str:
         return json.load(response)['asof']
 
 
-def evaluate(results: dict[str, str | None], sessions: pd.DatetimeIndex) -> tuple[bool, list[str]]:
+def evaluate(results: dict[str, str | None], sessions: pd.DatetimeIndex,
+             stocks: tuple[str | None, str] | None = None) -> tuple[bool, list[str]]:
+    """`stocks` = (session_date, fetch_status) of the published stock list, if checked."""
     latest = sessions[-1].date()
     lines = [f'Latest completed NYSE session: **{latest}** (stale at {STALE_SESSIONS}+ sessions behind)', '',
              '| Site | Published session | Sessions behind |', '|---|---|---:|']
@@ -49,6 +54,17 @@ def evaluate(results: dict[str, str | None], sessions: pd.DatetimeIndex) -> tupl
         behind = lag(asof, sessions)
         stale |= behind >= STALE_SESSIONS
         lines.append(f'| {site} | {asof} | {behind} |')
+    if stocks is not None:
+        session, status = stocks
+        if session is None:
+            stale = True
+            lines.append('| Stock candidates (orbit-us) | unreachable | — |')
+        else:
+            behind = lag(session, sessions)
+            stale |= behind >= STALE_STOCK_SESSIONS
+            lines.append(f'| Stock candidates (orbit-us), last fetch {status} | {session} | {behind} |')
+        lines.append('')
+        lines.append(f'Stock candidates come from a third-party list; stale at {STALE_STOCK_SESSIONS}+ sessions behind.')
     return stale, lines
 
 
@@ -61,7 +77,15 @@ def main():
         except Exception as exc:  # noqa: BLE001 - report any fetch failure as unreachable
             print(f'{site}: {type(exc).__name__}: {exc}')
             results[site] = None
-    stale, lines = evaluate(results, sessions)
+    try:
+        request = Request(STOCKS_URL, headers={'Cache-Control': 'no-cache', 'User-Agent': 'us-etf-dashboard-freshness'})
+        with urlopen(request, timeout=30) as response:
+            payload = json.load(response)
+        stocks = (payload.get('session_date'), payload.get('fetch_status', 'unknown'))
+    except Exception as exc:  # noqa: BLE001
+        print(f'Stocks: {type(exc).__name__}: {exc}')
+        stocks = (None, 'unreachable')
+    stale, lines = evaluate(results, sessions, stocks)
     lines += ['', f'Checked {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC.']
     report = '\n'.join(lines) + '\n'
     print(report)

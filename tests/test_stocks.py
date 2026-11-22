@@ -51,3 +51,21 @@ class StocksTests(unittest.TestCase):
             self.assertEqual(result['session_date'], '2026-10-09')
             self.assertEqual(result['fetched_at'], deployed['fetched_at'])
             self.assertEqual(result['fetch_status'], 'failed')
+
+
+class StockReviewFixes(unittest.TestCase):
+    def test_candidate_list_larger_than_300_is_accepted(self):
+        import refresh_stocks
+        rows = [{'ticker': f'T{i}'} for i in range(450)]
+        payload = {'stocks': rows, 'count': 450, 'session_date': '2026-11-20'}
+        self.assertEqual(refresh_stocks.validate(payload)['count'], 450)
+
+    def test_sector_cache_keeps_current_and_recent_only(self):
+        from datetime import datetime, timezone, timedelta
+        import refresh_stock_sectors
+        now = datetime(2026, 11, 22, tzinfo=timezone.utc)
+        old = (now - timedelta(days=400)).isoformat()
+        cached = {'NOW': {'retrieved_at': old}, 'RECENT': {'retrieved_at': (now - timedelta(days=10)).isoformat()},
+                  'GONE': {'retrieved_at': old}, 'BAD': {'retrieved_at': 'x'}}
+        kept = refresh_stock_sectors.prune(cached, {'NOW'}, now)
+        self.assertEqual(sorted(kept), ['NOW', 'RECENT'])
