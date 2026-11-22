@@ -1,6 +1,9 @@
 name = "us-etf-scheduler"
 main = "src/index.js"
 compatibility_date = "2025-06-01"
+# Cron-only Worker: no public workers.dev URL (the account has no workers.dev
+# subdomain, and the Worker serves nothing over HTTP).
+workers_dev = false
 
 # Cloudflare cron triggers are UTC and fire on time, unlike GitHub's schedule.
 # 06:00 and 22:00 UTC are the ETF runs; 01:17–04:17 UTC covers 21:17 and 23:17
