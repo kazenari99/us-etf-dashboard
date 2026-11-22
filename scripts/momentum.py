@@ -3,6 +3,9 @@ import math
 import numpy as np
 import pandas as pd
 
+SKIP = 21          # 12-1 momentum skips the most recent month
+LONG_BARS = 253    # closes needed for 12-1 momentum
+
 UNIVERSE = {
     "Broad": "SPY QQQ DIA IWM MDY RSP",
     "Sector": "XLK XLC XLY XLI XLF XLE XLB XLP XLV XLRE XLU",
@@ -50,6 +53,14 @@ def metrics(frames: dict[str, pd.DataFrame]) -> pd.DataFrame:
         adtv20 = float((close * volume).iloc[-20:].mean())
         dist_ema_atr = (last - ema20) / atr if atr else np.nan
         stop = min(ema20, low10) - 0.5 * atr
+        daily = close.pct_change()
+        # Return per unit of realised volatility over the same horizon (backtest: risk-adjusted ranks).
+        ra = {}
+        for n in (20, 60, 120):
+            sd = float(daily.iloc[-n:].std())
+            ra[n] = r[n] / (sd * math.sqrt(n)) if sd > 0 else 0.0
+        mom12_1 = (float(close.iloc[-1 - SKIP]) / float(close.iloc[-LONG_BARS]) - 1
+                   if len(close) >= LONG_BARS else np.nan)
         rows.append(
             {
                 "ticker": ticker,
@@ -78,6 +89,10 @@ def metrics(frames: dict[str, pd.DataFrame]) -> pd.DataFrame:
                 "stop_pct": stop / last - 1,
                 "adtv20": adtv20,
                 "trend_aligned": last > ema20 > sma50 > sma120,
+                "mom12_1": mom12_1,
+                "ra20": ra[20],
+                "ra60": ra[60],
+                "ra120": ra[120],
             }
         )
     result = pd.DataFrame(rows)
@@ -88,6 +103,12 @@ def metrics(frames: dict[str, pd.DataFrame]) -> pd.DataFrame:
     result["score"] += np.where(result["trend_aligned"], 5, 0)
     result["score"] += np.where(result["rs60"] > 0, 3, 0)
     result["score"] -= np.where(result["dist_ema_atr"] > 2.5, 8, 0)
+    # Reference only: same score built from volatility-adjusted returns; rank 1 is best.
+    risk = sum(weight * result[f"ra{n}"].rank(pct=True) for n, weight in ((20, 0.30), (60, 0.40), (120, 0.30)))
+    risk = 100 * risk + np.where(result["trend_aligned"], 5, 0) + np.where(result["rs60"] > 0, 3, 0)
+    risk -= np.where(result["dist_ema_atr"] > 2.5, 8, 0)
+    result["score_risk"] = risk
+    result["rank_risk"] = result["score_risk"].rank(ascending=False, method="min")
     result["setup"] = "Avoid / broken"
     strong = (
         (result[["r20", "r60", "r120"]] > 0).all(axis=1)

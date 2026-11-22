@@ -109,7 +109,7 @@ function parseCSV(text) {
   }
   if(cell||row.length){ row.push(cell); rows.push(row); }
   const headers=rows.shift();
-  const numeric=new Set(['close','r20','r60','r120','rs20','rs60','rs120','atr14','atr_pct','vol20_ann','dist_ema_atr','from_high120','high20_prev','breakout_trigger','pullback_low','pullback_high','stop_ref','stop_pct','adtv20','score','ema20','sma50','sma120']);
+  const numeric=new Set(['close','r20','r60','r120','rs20','rs60','rs120','atr14','atr_pct','vol20_ann','dist_ema_atr','from_high120','high20_prev','breakout_trigger','pullback_low','pullback_high','stop_ref','stop_pct','adtv20','score','ema20','sma50','sma120','mom12_1','score_risk','rank_risk']);
   return rows.map(r=>Object.fromEntries(headers.map((h,i)=>[h,numeric.has(h)?Number(r[i]):r[i]])));
 }
 const pct = v => `${v>=0?'+':''}${(v*100).toFixed(1)}%`;
@@ -140,7 +140,7 @@ function setupMatch(x){
 }
 function applyFilters(){
   state.filtered=state.data.filter(x=>(state.group==='all'||x.group===state.group)&&setupMatch(x)&&`${x.ticker} ${orbitI18n.searchNames(etfName(x.ticker))}`.toLowerCase().includes(state.query));
-  state.filtered.sort((a,b)=>{const av=a[state.sortKey],bv=b[state.sortKey];return typeof av==='number'?(av-bv)*state.sortDir:String(av).localeCompare(String(bv))*state.sortDir});
+  state.filtered.sort((a,b)=>{const av=a[state.sortKey],bv=b[state.sortKey];if(typeof av==='number'||typeof bv==='number'){const an=Number.isFinite(av),bn=Number.isFinite(bv);if(!an||!bn)return an===bn?0:(an?-1:1);return (av-bv)*state.sortDir;}return String(av).localeCompare(String(bv))*state.sortDir});
   renderTable(); renderScatter(); renderLeaders();
 }
 
@@ -184,13 +184,13 @@ function renderOpportunities(){
 
 function renderTable(){
   $('#resultCount').textContent=`显示 ${state.filtered.length} / ${state.data.length} 只`;
-  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}"><td class="ticker-cell"><span class="ticker-code">${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
+  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}"><td class="ticker-cell"><span class="ticker-code">${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td class="num ${Number.isFinite(x.mom12_1)?cls(x.mom12_1):''}">${Number.isFinite(x.mom12_1)?pct(x.mom12_1):'—'}</td><td class="num">${Number.isFinite(x.rank_risk)?`#${x.rank_risk}`:'—'}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
   document.querySelectorAll('#tableBody tr').forEach(el=>el.addEventListener('click',()=>openDrawer(state.data.find(x=>x.ticker===el.dataset.code))));
 }
 
 function openDrawer(x){
   if(!x)return; state.selected=x;
-  $('#drawerContent').innerHTML=`<p class="section-kicker">ETF DETAIL</p><h2 class="detail-code">${x.ticker}</h2><p class="detail-meta">${etfName(x.ticker)}</p><p class="detail-meta">${groupNames[x.group]||x.group} · ${x.date} · 收盘 $${price(x.close)}</p><div class="detail-score"><b>${x.score.toFixed(1)}</b><span>综合动量评分</span></div><div class="detail-grid">${[["20日收益",pct(x.r20),cls(x.r20)],["60日收益",pct(x.r60),cls(x.r60)],["120日收益",pct(x.r120),cls(x.r120)],["60日相对SPY",pct(x.rs60),cls(x.rs60)],["ATR / 价格",`${(x.atr_pct*100).toFixed(2)}%`,''],["距120日高点",pct(x.from_high120),cls(x.from_high120)]].map(v=>`<div class="detail-stat"><span>${v[0]}</span><b class="${v[2]}">${v[1]}</b></div>`).join('')}</div><div class="trade-plan"><h3>${setupNames[x.setup]}</h3><div class="trade-step"><i>01</i><div>等待价格进入回踩观察区 <b>${price(x.pullback_low)}–${price(x.pullback_high)}</b>，观察是否止跌。</div></div><div class="trade-step"><i>02</i><div>趋势延续的突破触发参考为 <b>${price(x.breakout_trigger)}</b>。</div></div><div class="trade-step"><i>03</i><div>结构失效参考 <b>${price(x.stop_ref)}</b>；当前至该位置约 <b>${pct(x.stop_pct)}</b>。</div></div></div>`;
+  $('#drawerContent').innerHTML=`<p class="section-kicker">ETF DETAIL</p><h2 class="detail-code">${x.ticker}</h2><p class="detail-meta">${etfName(x.ticker)}</p><p class="detail-meta">${groupNames[x.group]||x.group} · ${x.date} · 收盘 $${price(x.close)}</p><div class="detail-score"><b>${x.score.toFixed(1)}</b><span>综合动量评分</span></div><div class="detail-grid">${[["20日收益",pct(x.r20),cls(x.r20)],["60日收益",pct(x.r60),cls(x.r60)],["120日收益",pct(x.r120),cls(x.r120)],["60日相对SPY",pct(x.rs60),cls(x.rs60)],["ATR / 价格",`${(x.atr_pct*100).toFixed(2)}%`,''],["距120日高点",pct(x.from_high120),cls(x.from_high120)],["12-1动量",Number.isFinite(x.mom12_1)?pct(x.mom12_1):"—",Number.isFinite(x.mom12_1)?cls(x.mom12_1):""],["波动调整排名",Number.isFinite(x.rank_risk)?`#${x.rank_risk} / ${state.data.length}`:"—",""]].map(v=>`<div class="detail-stat"><span>${v[0]}</span><b class="${v[2]}">${v[1]}</b></div>`).join('')}</div><div class="trade-plan"><h3>${setupNames[x.setup]}</h3><div class="trade-step"><i>01</i><div>等待价格进入回踩观察区 <b>${price(x.pullback_low)}–${price(x.pullback_high)}</b>，观察是否止跌。</div></div><div class="trade-step"><i>02</i><div>趋势延续的突破触发参考为 <b>${price(x.breakout_trigger)}</b>。</div></div><div class="trade-step"><i>03</i><div>结构失效参考 <b>${price(x.stop_ref)}</b>；当前至该位置约 <b>${pct(x.stop_pct)}</b>。</div></div></div>`;
   $('#drawerContent').insertAdjacentHTML('beforeend',renderFundContext(x));
   $('#detailDrawer').classList.add('open');$('#drawerBackdrop').classList.add('open');$('#detailDrawer').setAttribute('aria-hidden','false');
 }
@@ -203,7 +203,7 @@ function bind(){
   $('#searchInput').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();applyFilters();});
   $('#groupSelect').addEventListener('change',e=>{state.group=e.target.value;applyFilters();});
   document.querySelectorAll('#setupFilter button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#setupFilter button').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.setup=b.dataset.setup;applyFilters();}));
-  document.querySelectorAll('#etfView th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.sort;state.sortDir=state.sortKey===key?-state.sortDir:(['ticker','group','setup'].includes(key)?1:-1);state.sortKey=key;applyFilters();}));
+  document.querySelectorAll('#etfView th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.sort;state.sortDir=state.sortKey===key?-state.sortDir:(['ticker','group','setup','rank_risk'].includes(key)?1:-1);state.sortKey=key;applyFilters();}));
   $('#drawerClose').addEventListener('click',closeDrawer);$('#drawerBackdrop').addEventListener('click',closeDrawer);addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
   let timer;addEventListener('resize',()=>{clearTimeout(timer);timer=setTimeout(renderScatter,120);});
 }
