@@ -22,6 +22,17 @@ class IndependentStocksTests(unittest.TestCase):
         self.assertEqual(route('schedule', '0 22 * * *', '', None), (False, False))
         self.assertEqual(route('schedule', '0 22 * * *', '', '2026-10-16'), (True, False))
 
+    def test_worker_dispatch_is_gated_like_the_schedule_it_replaces(self):
+        from check_refresh_day import effective_event
+        self.assertEqual(effective_event('workflow_dispatch', '0 22 * * *'), 'schedule')
+        self.assertEqual(effective_event('workflow_dispatch', ''), 'workflow_dispatch')
+        self.assertEqual(effective_event('push', None), 'push')
+        # A Worker-dispatched ETF run on an NYSE holiday is skipped, like the cron.
+        self.assertEqual(route(effective_event('workflow_dispatch', '0 22 * * *'), '0 22 * * *', '', None),
+                         (False, False))
+        self.assertEqual(route(effective_event('workflow_dispatch', '17 21 * * 1-5'), '17 21 * * 1-5', '', None),
+                         (True, True))
+
     def artifact(self, directory, bad=False, history=None):
         csv = b'ticker,date\nSPY,2026-10-15\n'
         entries = {'etf_momentum_latest.csv':csv,

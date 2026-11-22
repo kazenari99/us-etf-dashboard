@@ -10,9 +10,14 @@ def route(event, schedule, manual_stocks, session):
     run = stocks_only or event != 'schedule' or session is not None
     return run, stocks_only
 
+def effective_event(event, schedule):
+    """The scheduler Worker dispatches with the GitHub cron it replaces; gate it like a schedule."""
+    return 'schedule' if event == 'workflow_dispatch' and schedule else event
+
 if __name__ == '__main__':
     session = previous_tokyo_session()
-    run, stocks = route(os.environ.get('GITHUB_EVENT_NAME'), os.environ.get('REFRESH_SCHEDULE'),
+    event = effective_event(os.environ.get('GITHUB_EVENT_NAME'), os.environ.get('REFRESH_SCHEDULE'))
+    run, stocks = route(event, os.environ.get('REFRESH_SCHEDULE'),
                         os.environ.get('STOCKS_ONLY'), session)
     with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
         output.write(f"run={str(run).lower()}\nstocks_only={str(stocks).lower()}\n")
