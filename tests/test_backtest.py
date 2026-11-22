@@ -32,6 +32,28 @@ class BacktestTests(unittest.TestCase):
         self.assertAlmostEqual(r.iloc[2], 0.10 - backtest.COST)
         self.assertAlmostEqual(r.iloc[3], 0.10)
 
+    def test_trend_mask_moves_slot_to_cash_with_lag(self):
+        index = pd.bdate_range('2026-01-05', periods=6)
+        returns = pd.DataFrame({'A': [0.0, 0.0, 0.10, 0.10, 0.10, 0.10]}, index=index)
+        weights = pd.DataFrame({'A': [1.0]}, index=index[:1])
+        mask = pd.DataFrame({'A': [True, True, False, False, True, True]}, index=index)
+        r = backtest.portfolio(weights, returns, mask=mask)
+        # Bought at close of day 1 (cost booked on day 2, the first day held).
+        self.assertAlmostEqual(r.iloc[2], 0.10 - backtest.COST)
+        # Down-cross seen at close of day 2 -> still held on day 3, sold at its close.
+        self.assertAlmostEqual(r.iloc[3], 0.10)
+        self.assertAlmostEqual(r.iloc[4], -backtest.COST)
+        # Up-cross at close of day 4 -> bought at close of day 5, so day 5 is still flat.
+        self.assertAlmostEqual(r.iloc[5], 0.0)
+
+    def test_ema_trend_flags_uptrend_after_warmup(self):
+        index = pd.bdate_range('2026-01-05', periods=40)
+        close = pd.DataFrame({'UP': np.linspace(100, 140, 40), 'DOWN': np.linspace(140, 100, 40)}, index=index)
+        trend = backtest.ema_trend(close)
+        self.assertFalse(trend.iloc[:19].any().any())
+        self.assertTrue(trend['UP'].iloc[-1])
+        self.assertFalse(trend['DOWN'].iloc[-1])
+
     def test_end_to_end_report_on_synthetic_prices(self):
         tickers = ['SPY', 'QQQ', 'IWM', 'XLK', 'XLE', 'GLD', 'TLT', 'BIL', 'EEM', 'SMH', 'XBI', 'IBB']
         frames = synthetic(tickers)
@@ -41,6 +63,7 @@ class BacktestTests(unittest.TestCase):
         self.assertEqual(sig['date'].nunique(), 20)
         self.assertTrue(np.isfinite(sig[['score', 'score_risk', 'score_group']].to_numpy()).all())
         text = backtest.report(frames, sig, [3], '2023-01-02')
-        for needle in ('Current score, top 3', 'Risk-adjusted ranks, top 3', 'BIL when SPY < 200d', 'Rank IC'):
+        for needle in ('Current score, top 3', 'Risk-adjusted ranks, top 3', 'BIL when SPY < 200d', 'Rank IC',
+                       'Current score, top 3, EMA5 > EMA20', 'SPY, EMA5 > EMA20 only'):
             self.assertIn(needle, text)
         self.assertNotIn('nan%', text)
