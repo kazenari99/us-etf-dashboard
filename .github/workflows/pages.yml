@@ -37,8 +37,8 @@ jobs:
       run: ${{ steps.calendar.outputs.run }}
       stocks_only: ${{ steps.calendar.outputs.stocks_only }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
           cache: pip
@@ -56,10 +56,10 @@ jobs:
     timeout-minutes: 25
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_retry.outputs.page_url || steps.deploy_first.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
           cache: pip
@@ -97,17 +97,29 @@ jobs:
       - name: Refresh public fund profiles and holdings
         if: ${{ needs.calendar.outputs.stocks_only != 'true' }}
         run: python scripts/refresh_funds.py
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: ${{ needs.calendar.outputs.stocks_only != 'true' && !inputs.use_committed_snapshot }}
         with:
           name: us-etf-research-${{ github.run_id }}
           path: archive/
           retention-days: 90
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
           retention-days: 14
+      # The artifact listing API is eventually consistent: deploy-pages can report
+      # "No artifacts named github-pages" seconds after a successful upload.
       - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+        id: deploy_first
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - name: Wait before retrying Pages deployment
+        if: ${{ steps.deploy_first.outcome == 'failure' }}
+        run: |
+          echo "::warning title=Pages deploy retry::First deploy attempt failed; retrying in 60s"
+          sleep 60
+      - name: Retry Pages deployment
+        id: deploy_retry
+        if: ${{ steps.deploy_first.outcome == 'failure' }}
+        uses: actions/deploy-pages@v5

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -15,6 +16,17 @@ import yfinance as yf
 from momentum import UNIVERSE, metrics
 
 ROOT = Path(__file__).resolve().parents[1]
+# Extra rounds, in seconds, when the only problem is Yahoo not having the newest bar yet.
+PENDING_WAITS = (90, 180)
+
+
+class LatestBarPending(ValueError):
+    """Every earlier session is valid; only the newest daily bar is not available yet."""
+
+
+class SnapshotPending(RuntimeError):
+    """The newest session is not published upstream yet; keep the deployed snapshot."""
+
 TICKERS = {ticker for tickers in UNIVERSE.values() for ticker in tickers.split()}
 
 
@@ -47,14 +59,20 @@ def normalize(raw, sessions, ticker):
         raise ValueError(f'{ticker}: duplicate sessions')
     frame = frame.sort_index()
     # Never shrink the universe, splice cached vintages, or score mismatched windows.
+    fields = ['open', 'high', 'low', 'close', 'volume']
+    if len(sessions) >= 121 and frame.index.equals(sessions[:-1]):
+        raise LatestBarPending(f'{ticker}: {sessions[-1].date()} bar not published yet')
     if len(sessions) < 121 or not frame.index.equals(sessions):
         raise ValueError(f'{ticker}: incomplete or misaligned sessions')
-    fields = ['open', 'high', 'low', 'close', 'volume']
     frame = frame[fields].astype(float)
+    last = frame.iloc[-1][['open', 'high', 'low', 'close']].to_numpy()
+    if not np.isfinite(last).any() and np.isfinite(frame.iloc[:-1].to_numpy()).all():
+        # Yahoo lists the new session before its OHLC values are filled in.
+        raise LatestBarPending(f'{ticker}: {sessions[-1].date()} bar not published yet')
     invalid = ~np.isfinite(frame.to_numpy())
     if invalid.any():
         details = [f'{frame.index[row].date()} {fields[col]}={frame.iat[row, col]}'
-                   for row, col in zip(*np.where(invalid))]
+                   for row, col in zip(*np.where(invalid), strict=True)]
         raise ValueError(f'{ticker}: non-finite OHLCV ({int(invalid.sum())} cells): '
                          + '; '.join(details[:12]))
     if (frame[['open', 'high', 'low', 'close']] <= 0).any().any() or (frame.volume <= 0).any():
@@ -66,32 +84,53 @@ def normalize(raw, sessions, ticker):
     return frame.reset_index(drop=True)
 
 
-def fetch_all(sessions):
+def fetch_all(sessions, waits=None, sleep=None, fetch=None):
     yf.set_tz_cache_location(str(ROOT / '.cache' / 'yfinance'))
-    frames, failures = {}, {}
-    for attempt in range(3):
+    fetch = fetch or fetch_history
+    sleep = sleep or time.sleep
+    frames, failures, pending_bar = {}, {}, set()
+    delays = [0, 10, 20]
+    extra = list(PENDING_WAITS if waits is None else waits)
+    attempt = 0
+    while attempt < len(delays) or (extra and failures and set(failures) <= pending_bar):
+        if attempt >= len(delays):
+            delays.append(extra.pop(0))
+            print(f'Only the {sessions[-1].date()} bar is missing for {len(failures)} ETFs; '
+                  f'waiting {delays[attempt]}s for Yahoo', flush=True)
         pending = sorted(TICKERS - frames.keys())
         if not pending:
             break
-        if attempt:
-            time.sleep(10 * 2 ** (attempt - 1))
+        if delays[attempt]:
+            sleep(delays[attempt])
+        attempt += 1
         for ticker in pending:
             try:
-                raw = yf.Ticker(ticker).history(
-                    start=sessions[0].date().isoformat(),
-                    end=(sessions[-1].date() + timedelta(days=1)).isoformat(),
-                    interval='1d', auto_adjust=True, back_adjust=False,
-                    actions=False, repair=False, timeout=20, raise_errors=True)
-                frames[ticker] = normalize(raw, sessions, ticker)
+                frames[ticker] = normalize(fetch(ticker, sessions), sessions, ticker)
                 failures.pop(ticker, None)
+                pending_bar.discard(ticker)
                 print(f'{ticker}: {len(frames[ticker])} sessions', flush=True)
             except Exception as exc:
                 failures[ticker] = f'{type(exc).__name__}: {exc}'
-                print(f'{ticker}: attempt {attempt + 1} failed: {exc}', flush=True)
-            time.sleep(0.4)
+                if isinstance(exc, LatestBarPending):
+                    pending_bar.add(ticker)
+                else:
+                    pending_bar.discard(ticker)
+                print(f'{ticker}: attempt {attempt} failed: {exc}', flush=True)
+            sleep(0.4)
+    if failures and set(failures) <= pending_bar:
+        raise SnapshotPending(f'Yahoo has not published the {sessions[-1].date()} bar for '
+                              f'{len(failures)} ETFs: {", ".join(sorted(failures))}')
     if failures:
         raise RuntimeError(f'Incomplete universe; keeping deployed snapshot: {failures}')
     return frames
+
+
+def fetch_history(ticker, sessions):
+    return yf.Ticker(ticker).history(
+        start=sessions[0].date().isoformat(),
+        end=(sessions[-1].date() + timedelta(days=1)).isoformat(),
+        interval='1d', auto_adjust=True, back_adjust=False,
+        actions=False, repair=False, timeout=20, raise_errors=True)
 
 
 def publish_snapshot(frames, sessions):
@@ -125,7 +164,18 @@ def publish_snapshot(frames, sessions):
 def main():
     sessions = completed_sessions()
     print(f'Target completed session: {sessions[-1].date()}', flush=True)
-    publish_snapshot(fetch_all(sessions), sessions)
+    try:
+        frames = fetch_all(sessions)
+    except SnapshotPending as exc:
+        # Not a failure: the deployed snapshot stays, and the next scheduled run retries.
+        print(f'::warning title=ETF refresh deferred::{exc}. Keeping the published snapshot.')
+        summary = os.environ.get('GITHUB_STEP_SUMMARY')
+        if summary:
+            with open(summary, 'a') as out:
+                out.write(f'### ETF refresh deferred\n\n{exc}.\n\n'
+                          'The published snapshot was kept; the next scheduled run will retry.\n')
+        return
+    publish_snapshot(frames, sessions)
 
 
 if __name__ == '__main__':

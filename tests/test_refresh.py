@@ -63,6 +63,44 @@ class RefreshTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, '2026-09-23 close=nan'):
             refresh.normalize(raw, self.sessions, 'SPY')
 
+    def test_unfilled_latest_bar_is_pending_not_corrupt(self):
+        raw = self.raw()
+        raw.iloc[-1, [raw.columns.get_loc(c) for c in ('Open', 'High', 'Low', 'Close')]] = np.nan
+        with self.assertRaisesRegex(refresh.LatestBarPending, '2026-09-23 bar not published'):
+            refresh.normalize(raw, self.sessions, 'SPY')
+        with self.assertRaises(refresh.LatestBarPending):
+            refresh.normalize(raw.iloc[:-1], self.sessions, 'SPY')
+        # A NaN inside the history is still corruption, not a pending bar.
+        raw.iloc[5, raw.columns.get_loc('Close')] = np.nan
+        with self.assertRaises(ValueError) as caught:
+            refresh.normalize(raw, self.sessions, 'SPY')
+        self.assertNotIsInstance(caught.exception, refresh.LatestBarPending)
+
+    def pending_fetch(self, ready_after):
+        complete = self.raw()
+        calls = []
+        def fetch(ticker, sessions):
+            calls.append(ticker)
+            return complete if len(calls) > ready_after else complete.iloc[:-1]
+        return fetch, calls
+
+    def test_pending_latest_bar_waits_then_defers(self):
+        fetch, calls = self.pending_fetch(ready_after=99)
+        waits = []
+        with patch.object(refresh, 'TICKERS', {'SPY'}), patch.object(refresh.yf, 'set_tz_cache_location'):
+            with self.assertRaisesRegex(refresh.SnapshotPending, 'not published the 2026-09-23 bar'):
+                refresh.fetch_all(self.sessions, waits=(90, 180), sleep=waits.append, fetch=fetch)
+        self.assertEqual(len(calls), 5)
+        self.assertIn(90, waits)
+        self.assertIn(180, waits)
+
+    def test_pending_latest_bar_recovers_on_later_round(self):
+        fetch, calls = self.pending_fetch(ready_after=3)
+        with patch.object(refresh, 'TICKERS', {'SPY'}), patch.object(refresh.yf, 'set_tz_cache_location'):
+            frames = refresh.fetch_all(self.sessions, waits=(90, 180), sleep=lambda _: None, fetch=fetch)
+        self.assertEqual(len(frames['SPY']), len(self.sessions))
+        self.assertEqual(len(calls), 4)
+
     def test_original_model_parity(self):
         fixture = json.loads((Path(__file__).parent / 'fixtures/us_model_parity.json').read_text())
         names = {'510300':'SPY'}
