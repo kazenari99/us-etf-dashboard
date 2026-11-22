@@ -1,0 +1,3 @@
+# Correctness checks only; style is not enforced.
+[lint]
+select = ["E9", "F"]

@@ -61,3 +61,8 @@ python -m http.server 8767 --bind 127.0.0.1 --directory dist
 运行 `python scripts/validate_snapshot.py` 检查日期、标的与关键数值完整性。
 
 股票 Sector 来自 Yahoo Finance 的公司资料，云端每30天刷新缓存，新标的首次出现时补充；抓取失败保留已有分类，未知显示“—”。分类不参与选股评分，CSV包含Sector。
+
+## 历史快照与检查
+
+- 每次 ETF 刷新成功发布后，`history` 任务把当日结果写入 `data` 分支：`etf/<交易日>.csv`、`etf/<交易日>.json`，以及按交易日排序的 `etf/index.csv`。同一交易日重跑会覆盖，不会重复。Actions 产物 90 天过期，`data` 分支长期保留，供回测和排名变化使用。
+- `ci.yml` 在每个 PR 上运行单元测试、ruff（只查错误类规则，见 `ruff.toml`）、JS 语法检查、actionlint 和快照校验。

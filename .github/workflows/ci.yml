@@ -1,0 +1,30 @@
+name: CI
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt ruff==0.17.6 actionlint-py==1.7.12.25
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Python lint
+        run: ruff check scripts tests .github/scripts
+      - name: JavaScript syntax
+        run: for f in dist/*.js; do node --check "$f"; done
+      - name: Workflow lint
+        run: actionlint -color
+      - name: Committed snapshot is valid
+        run: python scripts/validate_snapshot.py
