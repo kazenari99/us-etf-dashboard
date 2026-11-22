@@ -177,6 +177,10 @@ def main():
                           'The published snapshot was kept; the next scheduled run will retry.\n')
         return
     publish_snapshot(frames, sessions)
+    output = os.environ.get('GITHUB_OUTPUT')
+    if output:
+        with open(output, 'a') as out:
+            out.write(f'published=true\nasof={sessions[-1].date()}\n')
 
 
 if __name__ == '__main__':
