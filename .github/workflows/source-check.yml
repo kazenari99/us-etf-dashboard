@@ -1,0 +1,28 @@
+name: Source parity check
+# Run before setting the FALLBACK_SOURCE repository variable: compares the backup
+# source with Yahoo for every ETF and reports whether the ranking would change.
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Backup source to compare with Yahoo'
+        type: choice
+        options: [stooq]
+        default: stooq
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Compare sources
+        env:
+          SOURCE: ${{ inputs.source }}
+        run: python scripts/check_sources.py "$SOURCE"

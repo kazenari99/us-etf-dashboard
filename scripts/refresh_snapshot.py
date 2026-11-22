@@ -14,8 +14,11 @@ import pandas_market_calendars as mcal
 import yfinance as yf
 
 from momentum import LONG_BARS, UNIVERSE, metrics
+from sources import FETCHERS, SOURCES
 
 ROOT = Path(__file__).resolve().parents[1]
+YAHOO = {'source': 'Yahoo Finance', 'transport': 'yfinance',
+         'adjustment': 'Yahoo dividend and split adjusted OHLC (auto_adjust=True)'}
 # Extra rounds, in seconds, when the only problem is Yahoo not having the newest bar yet.
 PENDING_WAITS = (90, 180)
 MIN_SESSIONS = LONG_BARS + 1  # one spare so the newest bar can be pending
@@ -159,7 +162,7 @@ def score_history(frames, sessions, n=HISTORY_SESSIONS):
     return {'asof': dates[-1], 'sessions': dates, 'tickers': tickers}
 
 
-def publish_snapshot(frames, sessions):
+def publish_snapshot(frames, sessions, source=None):
     if set(frames) != TICKERS:
         raise ValueError(f'All {len(TICKERS)} ETFs, including SPY, are required')
     result = metrics(frames)
@@ -169,8 +172,7 @@ def publish_snapshot(frames, sessions):
     now = datetime.now(timezone.utc)
     data = result.to_csv(index=False).encode()
     metadata = {
-        'source': 'Yahoo Finance', 'transport': 'yfinance',
-        'adjustment': 'Yahoo dividend and split adjusted OHLC (auto_adjust=True)',
+        **(source or YAHOO),
         'asof': sessions[-1].date().isoformat(), 'generated_at': now.isoformat(),
         'count': len(result), 'expected_count': len(TICKERS),
         'universe': sorted(TICKERS),
@@ -187,14 +189,26 @@ def publish_snapshot(frames, sessions):
     (ROOT / 'dist/etf_momentum_latest.csv').write_bytes(data)
     (ROOT / 'dist/snapshot_meta.json').write_text(encoded)
     (ROOT / 'dist/etf_history.json').write_text(history)
-    print(f'{len(result)}/{len(TICKERS)} ETFs; market date {metadata["asof"]}; Yahoo Finance')
+    print(f'{len(result)}/{len(TICKERS)} ETFs; market date {metadata["asof"]}; {metadata["source"]}')
 
 
 def main():
     sessions = completed_sessions()
     print(f'Target completed session: {sessions[-1].date()}', flush=True)
+    source = None
     try:
-        frames = fetch_all(sessions)
+        try:
+            frames = fetch_all(sessions)
+        except SnapshotPending:
+            raise
+        except RuntimeError as exc:
+            fallback = os.environ.get('FALLBACK_SOURCE', '').strip().lower()
+            if fallback not in FETCHERS:
+                raise
+            # Whole-universe fallback only; sources are never mixed in one snapshot.
+            print(f'::warning title=Yahoo failed; trying {fallback}::{str(exc)[:300]}', flush=True)
+            frames = fetch_all(sessions, fetch=FETCHERS[fallback])
+            source = SOURCES[fallback]
     except SnapshotPending as exc:
         # Not a failure: the deployed snapshot stays, and the next scheduled run retries.
         print(f'::warning title=ETF refresh deferred::{exc}. Keeping the published snapshot.')
@@ -204,7 +218,7 @@ def main():
                 out.write(f'### ETF refresh deferred\n\n{exc}.\n\n'
                           'The published snapshot was kept; the next scheduled run will retry.\n')
         return
-    publish_snapshot(frames, sessions)
+    publish_snapshot(frames, sessions, source)
     output = os.environ.get('GITHUB_OUTPUT')
     if output:
         with open(output, 'a') as out:
