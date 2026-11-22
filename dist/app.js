@@ -129,7 +129,16 @@ function renderKPIs(){
   const periods=[20,60,120];
   $('#breadthBars').innerHTML=periods.map(p=>{const v=d.filter(x=>x[`r${p}`]>0).length/n*100;return `<div class="breadth-item"><span>${p}D</span><div class="breadth-track"><div class="breadth-fill" style="width:${v}%"></div></div><b>${Math.round(v)}%</b></div>`}).join('');
   const b20=d.filter(x=>x.r20>0).length/n, b120=d.filter(x=>x.r120>0).length/n;
-  $('#regimeCopy').textContent=b120>.65&&b20<.4?'多数资产仍保留120日涨幅，但短线参与度不足，当前更像结构性轮动。':'不同周期宽度较为接近，趋势扩散相对均衡。';
+  const ctx=state.history&&state.history.regime;
+  let title=b120>.65&&b20<.4?'长趋势仍在，短线动量收缩':b20>.6?'短线动量扩散':'轮动为主';
+  let copy=b120>.65&&b20<.4?'多数资产仍保留120日涨幅，但短线参与度不足，当前更像结构性轮动。':'不同周期宽度较为接近，趋势扩散相对均衡。';
+  if(ctx){
+    const up=ctx.spy_vs_sma200>0, wide=ctx.above_sma200/ctx.total;
+    title=up&&wide>=.6?'趋势向上，参与面广':up?'大盘在长期均线上方，但参与面偏窄':wide<.4?'大盘跌破长期均线，防守为主':'多空分歧，趋势不明';
+    copy=`SPY 较200日均线 ${pct(ctx.spy_vs_sma200)} · ${ctx.above_sma200}/${ctx.total} 站上200日均线 · ${ctx.above_sma50}/${ctx.total} 站上50日均线。 `+copy;
+  }
+  $('#regimeTitle').textContent=title;
+  $('#regimeCopy').textContent=copy;
 }
 
 function setupMatch(x){
@@ -172,7 +181,8 @@ function renderScatter(){
 
 function renderLeaders(){
   const top=[...state.filtered].sort((a,b)=>b.score-a.score).slice(0,10),max=Math.max(...top.map(x=>x.score),1);
-  $('#leaderList').innerHTML=top.map(x=>`<div class="leader" data-code="${x.ticker}"><span class="leader-identity"><span class="leader-code">${x.ticker}</span><span class="leader-name">${etfName(x.ticker)}</span></span><div class="leader-track"><div class="leader-fill" style="width:${x.score/max*100}%">${pct(x.r60)}</div></div><span class="leader-score">${x.score.toFixed(1)}</span></div>`).join('');
+  const seen=new Set();
+  $('#leaderList').innerHTML=top.map(x=>{const tag=peerTag(x,seen);seen.add(x.ticker);return `<div class="leader" data-code="${x.ticker}"><span class="leader-identity"><span class="leader-code">${x.ticker}${tag}</span><span class="leader-name">${etfName(x.ticker)}</span></span><div class="leader-track"><div class="leader-fill" style="width:${x.score/max*100}%">${pct(x.r60)}</div></div><span class="leader-score">${x.score.toFixed(1)}</span></div>`;}).join('');
   document.querySelectorAll('.leader').forEach(el=>el.addEventListener('click',()=>openDrawer(state.data.find(x=>x.ticker===el.dataset.code))));
 }
 
@@ -218,6 +228,8 @@ async function loadHistory(asof){
       x.rank_now=r[n-1]; if(n>=6)x.rank_chg5=r[n-6]-r[n-1]; if(n>=1)x.rank_first=r[0];});
   }catch{}
 }
+const peersOf = t => (state.history&&state.history.peers&&state.history.peers[t])||[];
+const peerTag = (x,above) => { const p=peersOf(x.ticker).find(([q])=>above.has(q)); return p?`<span class="peer-tag" title="120日相关 ${p[1]}">≈ ${p[0]}</span>`:''; };
 const rankChange = v => !Number.isFinite(v)?'—':v>0?`↑${v}`:v<0?`↓${-v}`:'=';
 function sparkline(values){
   if(!values||values.length<2)return '';
@@ -229,7 +241,9 @@ function sparkline(values){
 function historyBlock(x){
   const t=state.history&&state.history.tickers[x.ticker]; if(!t)return '';
   const r=t.rank,n=r.length,s=state.history.sessions;
-  return `<div class="history-block"><h3>评分走势（${n}日）</h3>${sparkline(t.score)}<p class="detail-meta">${s[0]} → ${s[n-1]} · 排名 #${r[n-1]}${n>=6?` · 5日前 #${r[n-6]}`:''} · ${n}日前 #${r[0]}</p></div>`;
+  const peers=peersOf(x.ticker);
+  const peerLine=peers.length?`<p class="detail-meta">高度相关：${peers.map(([q,c])=>`${q} ${c.toFixed(2)}`).join(' · ')}</p>`:'';
+  return `<div class="history-block"><h3>评分走势（${n}日）</h3>${sparkline(t.score)}<p class="detail-meta">${s[0]} → ${s[n-1]} · 排名 #${r[n-1]}${n>=6?` · 5日前 #${r[n-6]}`:''} · ${n}日前 #${r[0]}</p>${peerLine}</div>`;
 }
 
 async function init(){
