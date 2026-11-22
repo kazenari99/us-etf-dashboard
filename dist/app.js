@@ -1,7 +1,7 @@
 const state = { data: [], filtered: [], sortKey: 'score', sortDir: -1, selected: null, setup: 'all', group: 'all', query: '' };
 const $ = (s) => document.querySelector(s);
 const svgNS = 'http://www.w3.org/2000/svg';
-const groupNames = { Broad:'宽基', Sector:'行业板块', Industry:'细分行业', RealAsset:'实物资产', Factor:'因子', Bond:'债券', International:'国际市场' };
+const groupNames = { Broad:'宽基', Sector:'行业板块', Industry:'细分行业', Thematic:'主题', Resources:'资源股', Commodity:'商品与另类', RealAsset:'实物资产', Factor:'因子', Bond:'债券', International:'国际市场' };
 const setupNames = { 'Momentum':'动量成立', 'Strong / wait pullback':'强势·等回踩', 'Pullback watch':'等待确认', 'Avoid / broken':'趋势破坏' };
 
 // Chinese display labels describe each fund; not official legal names.
@@ -76,7 +76,24 @@ const etfNames = {
   "MCHI": "中国股票 ETF",
   "FXI": "中国大型股 ETF",
   "VGK": "欧洲股票 ETF",
-  "EWZ": "巴西股票 ETF"
+  "EWZ": "巴西股票 ETF",
+  "FDN": "First Trust 道琼斯互联网 ETF",
+  "IHI": "iShares 美国医疗器械 ETF",
+  "ITB": "iShares 美国住宅建筑 ETF",
+  "XOP": "标普油气开采与生产 ETF",
+  "OIH": "VanEck 油服 ETF",
+  "XME": "标普金属与采矿 ETF",
+  "CPER": "美国铜指数基金",
+  "IBIT": "iShares 比特币信托 ETF",
+  "UUP": "Invesco 美元指数看涨基金",
+  "SCHD": "Schwab 美国红利 ETF",
+  "IWO": "罗素2000成长股 ETF",
+  "IWN": "罗素2000价值股 ETF",
+  "BIL": "1–3个月美国国库券 ETF",
+  "AGG": "iShares 美国综合债券 ETF",
+  "EMB": "美元新兴市场债 ETF",
+  "EWG": "德国股票 ETF",
+  "KWEB": "中国互联网 ETF"
 };
 const etfName = ticker => etfNames[ticker] || "名称待补充";
 

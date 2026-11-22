@@ -96,7 +96,7 @@ def fetch_all(sessions):
 
 def publish_snapshot(frames, sessions):
     if set(frames) != TICKERS:
-        raise ValueError('All 71 ETFs, including SPY, are required')
+        raise ValueError(f'All {len(TICKERS)} ETFs, including SPY, are required')
     result = metrics(frames)
     if not np.isfinite(result.select_dtypes(include='number').to_numpy()).all():
         raise ValueError('Non-finite model results')
@@ -107,6 +107,7 @@ def publish_snapshot(frames, sessions):
         'adjustment': 'Yahoo dividend and split adjusted OHLC (auto_adjust=True)',
         'asof': sessions[-1].date().isoformat(), 'generated_at': now.isoformat(),
         'count': len(result), 'expected_count': len(TICKERS),
+        'universe': sorted(TICKERS),
         'sha256': hashlib.sha256(data).hexdigest(),
         'benchmark': 'SPY', 'model': 'Hermes 20/60/120 v1',
     }
