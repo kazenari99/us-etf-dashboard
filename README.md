@@ -38,7 +38,7 @@ python scripts/refresh_snapshot.py
 python scripts/validate_snapshot.py
 ```
 
-通过NYSE日历处理休市、提前收盘和夏令时，收盘后留出一小时才使用当日日线。全量71只必须具有相同交易日和完整窗口（320自然日、至少121个交易日）。缺失、非数值、异常OHLC或日期不齐时重试，非数值错误记录具体交易日和字段；仍失败则停止部署，线上保留上一份完整快照。不会拼接OpenD与Yahoo行情或不同复权批次。免费数据源可能限流或不可用，不保证每日刷新成功。
+通过NYSE日历处理休市、提前收盘和夏令时，收盘后留出一小时才使用当日日线。全量ETF（数量以 `scripts/momentum.py` 的 `UNIVERSE` 为准，目前80只）必须具有相同交易日和完整窗口（320自然日、至少121个交易日）。缺失、非数值、异常OHLC或日期不齐时重试，非数值错误记录具体交易日和字段；仍失败则停止部署，线上保留上一份完整快照。不会拼接OpenD与Yahoo行情或不同复权批次。免费数据源可能限流或不可用，不保证每日刷新成功。
 
 网页显示真实行情日期、生成时间、来源和完整数量；超过4天未生成新快照会提示。CSV与元信息通过SHA-256核对。运行状态见[Actions](https://github.com/kazenari99/us-etf-dashboard/actions/workflows/pages.yml)。成功运行的复权日线、评分CSV及元信息以Actions artifact保留90天。
 
