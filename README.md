@@ -112,6 +112,15 @@ Yahoo 仍是唯一的默认数据源。`scripts/sources.py` 提供 Stooq 作为�
 - **跳过重复运行**：调度 Worker 触发的运行名为 `On-time <cron>`。GitHub 自己的后备定时任务启动时，如果 20 小时内同一 cron 的准点运行已经成功，就直接跳过。
 - **依赖更新**：Dependabot 每周六为 Python 依赖和 GitHub Actions 版本开 PR（各合并为一个），CI 通过后再合并。
 
+## 浏览器冒烟测试
+
+CI 的 `browser` 任务用 `tests/e2e/build_site.py` 生成两个测试站点（合成的 80 只 ETF 当前格式数据，以及仓库里提交的旧格式快照），再用 Chromium 打开：桌面中/英/日三种语言、iPhone 尺寸、点击行打开详情和走势图、自选筛选、手机列切换、个股页。任何控制台错误或功能失效都会让 CI 变红。本地运行：
+
+```bash
+python tests/e2e/build_site.py /tmp/e2e
+```
+（再分别在 `/tmp/e2e/current` 和 `/tmp/e2e/legacy` 起静态服务器，运行 `node tests/e2e/smoke.cjs <current地址> <legacy地址>`。）
+
 ## 实盘跟踪报告
 
 `live-report.yml` 每月 2 日（也可手动运行）读取 `data` 分支里每天真实发布过的快照：取当天评分前 10 名，用之后第 5、20 个交易日快照里记录的收盘价计算收益，与 SPY 和全池等权对比，并计算评分与之后收益的秩相关（IC）。不重新抓数、不重新打分，衡量的就是看板当时真正显示的内容。报告写在运行页 Summary，并保存为 `data` 分支的 `reports/live.md`。不重叠的周期少于 8 个时只提示「数据还不够」：5 日周期约需 45 个快照（约 2 个月），20 日周期约需 180 个（约 9 个月）。
