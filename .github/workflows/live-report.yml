@@ -35,7 +35,7 @@ jobs:
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
             commit -q -m "Live tracking report ($(date -u +%Y-%m-%d))"
           # The daily snapshot job also pushes to data; rebase and retry on a race.
-          for attempt in 1 2 3; do
+          for _ in 1 2 3; do
             git push origin data && exit 0
             git pull --rebase -q origin data
           done
