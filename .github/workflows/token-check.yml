@@ -1,0 +1,43 @@
+name: Scheduler token check
+# Opens one `token-expiry` issue 14 days before GH_DISPATCH_TOKEN expires (or as soon
+# as GitHub rejects it) and closes it once a valid, longer-lived token is in place.
+on:
+  schedule:
+    - cron: '37 3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Check token expiry
+        id: check
+        env:
+          GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
+        run: python scripts/check_token.py
+      - name: Open or update the token issue
+        if: ${{ steps.check.outputs.alert == 'true' }}
+        run: |
+          gh label create token-expiry --color FBCA04 --description 'Scheduler GitHub token needs renewal' --force
+          number=$(gh issue list --label token-expiry --state open --json number --jq '.[0].number')
+          if [ -z "$number" ]; then
+            gh issue create --title 'Renew GH_DISPATCH_TOKEN for the on-time scheduler' --label token-expiry --body-file token.md
+          else
+            gh issue edit "$number" --body-file token.md
+          fi
+      - name: Close the token issue once renewed
+        if: ${{ steps.check.outputs.alert == 'false' }}
+        run: |
+          for number in $(gh issue list --label token-expiry --state open --json number --jq '.[].number'); do
+            gh issue close "$number" --comment "$(cat token.md)"
+          done
