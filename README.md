@@ -105,3 +105,7 @@ secret 缺失时部署任务会跳过并给出提示，不会报错。
 Yahoo 仍是唯一的默认数据源。`scripts/sources.py` 提供 Stooq 作为备用：只有当仓库变量 `FALLBACK_SOURCE=stooq` 且 Yahoo 抓取失败（不是「最新日线尚未发布」的推迟情况）时，才会整体改用 Stooq 抓取全部 ETF；同一份快照绝不混用两个数据源。页面会提示正在使用备用源。
 
 启用前先在 Actions 里运行 **Source parity check**：它用生产校验逻辑分别从 Yahoo 和 Stooq 抓取全部 ETF，比较收盘价和 20/60/120 日收益差异，以及评分排名相关性和前 10 名重合度，给出「可以启用 / 不要启用」的结论。只有结论为可以启用时，才在 Settings → Secrets and variables → Actions → Variables 中添加 `FALLBACK_SOURCE=stooq`。
+
+## 实盘跟踪报告
+
+`live-report.yml` 每月 2 日（也可手动运行）读取 `data` 分支里每天真实发布过的快照：取当天评分前 10 名，用之后第 5、20 个交易日快照里记录的收盘价计算收益，与 SPY 和全池等权对比，并计算评分与之后收益的秩相关（IC）。不重新抓数、不重新打分，衡量的就是看板当时真正显示的内容。报告写在运行页 Summary，并保存为 `data` 分支的 `reports/live.md`。不重叠的周期少于 8 个时只提示「数据还不够」：5 日周期约需 45 个快照（约 2 个月），20 日周期约需 180 个（约 9 个月）。
