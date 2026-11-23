@@ -31,3 +31,29 @@ jobs:
         run: actionlint -color
       - name: Committed snapshot is valid
         run: python scripts/validate_snapshot.py
+  browser:
+    # Opens the built page in Chromium (desktop + phone, zh/en/ja) and fails on
+    # console errors or broken core interactions; see tests/e2e/smoke.cjs.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Build test sites
+        run: python tests/e2e/build_site.py "$RUNNER_TEMP/e2e"
+      - name: Browser smoke test
+        run: |
+          (cd "$RUNNER_TEMP/e2e/current" && python -m http.server 8801 >/dev/null 2>&1 &)
+          (cd "$RUNNER_TEMP/e2e/legacy" && python -m http.server 8802 >/dev/null 2>&1 &)
+          for port in 8801 8802; do
+            for _ in $(seq 20); do curl -fs "http://localhost:$port/" >/dev/null && break; sleep 0.5; done
+          done
+          node tests/e2e/smoke.cjs http://localhost:8801/ http://localhost:8802/

@@ -105,3 +105,12 @@ secret 缺失时部署任务会跳过并给出提示，不会报错。
 Yahoo 仍是唯一的默认数据源。`scripts/sources.py` 提供 Stooq 作为备用：只有当仓库变量 `FALLBACK_SOURCE=stooq` 且 Yahoo 抓取失败（不是「最新日线尚未发布」的推迟情况）时，才会整体改用 Stooq 抓取全部 ETF；同一份快照绝不混用两个数据源。页面会提示正在使用备用源。
 
 启用前先在 Actions 里运行 **Source parity check**：它用生产校验逻辑分别从 Yahoo 和 Stooq 抓取全部 ETF，比较收盘价和 20/60/120 日收益差异，以及评分排名相关性和前 10 名重合度，给出「可以启用 / 不要启用」的结论。只有结论为可以启用时，才在 Settings → Secrets and variables → Actions → Variables 中添加 `FALLBACK_SOURCE=stooq`。
+
+## 浏览器冒烟测试
+
+CI 的 `browser` 任务用 `tests/e2e/build_site.py` 生成两个测试站点（合成的 80 只 ETF 当前格式数据，以及仓库里提交的旧格式快照），再用 Chromium 打开：桌面中/英/日三种语言、iPhone 尺寸、点击行打开详情和走势图、自选筛选、手机列切换、个股页。任何控制台错误或功能失效都会让 CI 变红。本地运行：
+
+```bash
+python tests/e2e/build_site.py /tmp/e2e
+```
+（再分别在 `/tmp/e2e/current` 和 `/tmp/e2e/legacy` 起静态服务器，运行 `node tests/e2e/smoke.cjs <current地址> <legacy地址>`。）
