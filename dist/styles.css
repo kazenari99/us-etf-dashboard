@@ -245,3 +245,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .column-help dl { grid-template-columns: 1fr; gap: 2px; }
   .column-help dd { margin-bottom: 6px; }
 }
+
+/* Keyboard focus for rows and leaders; share-link button in the drawer. */
+#tableBody tr:focus-visible, .leader:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+.share-link { float: right; margin: 2px 34px 0 0; padding: 4px 10px; border: 1px solid var(--line); border-radius: 7px; background: #101a29; color: var(--muted); font-size: .72rem; cursor: pointer; }
+.share-link:hover { color: var(--green); }

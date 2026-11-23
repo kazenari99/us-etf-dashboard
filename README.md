@@ -114,3 +114,9 @@ CI 的 `browser` 任务用 `tests/e2e/build_site.py` 生成两个测试站点（
 python tests/e2e/build_site.py /tmp/e2e
 ```
 （再分别在 `/tmp/e2e/current` 和 `/tmp/e2e/legacy` 起静态服务器，运行 `node tests/e2e/smoke.cjs <current地址> <legacy地址>`。）
+
+## 分享链接、键盘与安全头
+
+- 打开任意 ETF 详情后，地址变为 `…/#etf=XLK`，复制给别人或存成书签即可直接打开该 ETF；详情框里有「复制链接」按钮。关闭详情会清除这个地址片段。
+- 明细表的行和综合动量排名都可以用 Tab 选中、回车或空格打开；Esc 关闭后焦点回到原来的行。
+- `dist/_headers` 为 Cloudflare Pages 设置安全响应头（CSP 只允许本站脚本与数据、禁止被嵌入框架、nosniff 等）；`index.html` 用 meta 标签带同样的 CSP，GitHub Pages 也生效。浏览器冒烟测试会把 CSP 违规当作错误。

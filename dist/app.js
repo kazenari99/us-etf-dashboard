@@ -196,8 +196,9 @@ function renderScatter(){
 function renderLeaders(){
   const top=[...state.filtered].sort((a,b)=>b.score-a.score).slice(0,10),max=Math.max(...top.map(x=>x.score),1);
   const seen=new Set();
-  $('#leaderList').innerHTML=top.map(x=>{const tag=peerTag(x,seen);seen.add(x.ticker);return `<div class="leader" data-code="${x.ticker}"><span class="leader-identity"><span class="leader-code">${x.ticker}${tag}</span><span class="leader-name">${etfName(x.ticker)}</span></span><div class="leader-track"><div class="leader-fill" style="width:${x.score/max*100}%">${pct(x.r60)}</div></div><span class="leader-score">${x.score.toFixed(1)}</span></div>`;}).join('');
+  $('#leaderList').innerHTML=top.map(x=>{const tag=peerTag(x,seen);seen.add(x.ticker);return `<div class="leader" data-code="${x.ticker}" tabindex="0" role="button"><span class="leader-identity"><span class="leader-code">${x.ticker}${tag}</span><span class="leader-name">${etfName(x.ticker)}</span></span><div class="leader-track"><div class="leader-fill" style="width:${x.score/max*100}%">${pct(x.r60)}</div></div><span class="leader-score">${x.score.toFixed(1)}</span></div>`;}).join('');
   document.querySelectorAll('.leader').forEach(el=>el.addEventListener('click',()=>openDrawer(state.data.find(x=>x.ticker===el.dataset.code))));
+  document.querySelectorAll('.leader').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrawer(state.data.find(x=>x.ticker===el.dataset.code));}}));
 }
 
 function renderOpportunities(){
@@ -208,7 +209,8 @@ function renderOpportunities(){
 
 function renderTable(){
   $('#resultCount').textContent=`显示 ${state.filtered.length} / ${state.data.length} 只`;
-  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}"><td class="ticker-cell"><span class="ticker-code"><button type="button" class="etf-star${starred.has(x.ticker)?' selected':''}" data-star="${x.ticker}" aria-label="${x.ticker} ★" aria-pressed="${starred.has(x.ticker)}">★</button>${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td class="num ${x.rank_chg5>0?'positive':x.rank_chg5<0?'negative':''}">${rankChange(x.rank_chg5)}</td><td class="num ${Number.isFinite(x.mom12_1)?cls(x.mom12_1):''}">${Number.isFinite(x.mom12_1)?pct(x.mom12_1):'—'}</td><td class="num">${Number.isFinite(x.rank_risk)?`#${x.rank_risk}`:'—'}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
+  $('#tableBody').innerHTML=state.filtered.map(x=>`<tr data-code="${x.ticker}" tabindex="0" aria-label="${x.ticker} ${etfName(x.ticker)}"><td class="ticker-cell"><span class="ticker-code"><button type="button" class="etf-star${starred.has(x.ticker)?' selected':''}" data-star="${x.ticker}" aria-label="${x.ticker} ★" aria-pressed="${starred.has(x.ticker)}">★</button>${x.ticker}</span><span class="ticker-name">${etfName(x.ticker)}</span></td><td class="group-label">${groupNames[x.group]||x.group}</td><td class="num">${price(x.close)}</td><td class="num ${cls(x.r20)}">${pct(x.r20)}</td><td class="num ${cls(x.r60)}">${pct(x.r60)}</td><td class="num ${cls(x.r120)}">${pct(x.r120)}</td><td class="num ${cls(x.rs60)}">${pct(x.rs60)}</td><td class="num">${(x.atr_pct*100).toFixed(1)}%</td><td class="num score-cell">${x.score.toFixed(1)}</td><td class="num ${x.rank_chg5>0?'positive':x.rank_chg5<0?'negative':''}">${rankChange(x.rank_chg5)}</td><td class="num ${Number.isFinite(x.mom12_1)?cls(x.mom12_1):''}">${Number.isFinite(x.mom12_1)?pct(x.mom12_1):'—'}</td><td class="num">${Number.isFinite(x.rank_risk)?`#${x.rank_risk}`:'—'}</td><td><span class="table-chip ${statusClass(x.setup)}">${setupNames[x.setup]}</span></td></tr>`).join('');
+  document.querySelectorAll('#tableBody tr').forEach(el=>el.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target===el){e.preventDefault();openDrawer(state.data.find(x=>x.ticker===el.dataset.code));}}));
   document.querySelectorAll('#tableBody tr').forEach(el=>el.addEventListener('click',e=>{const star=e.target.closest('[data-star]');if(star){e.stopPropagation();toggleStar(star.dataset.star);return;}openDrawer(state.data.find(x=>x.ticker===el.dataset.code));}));
 }
 
@@ -216,9 +218,24 @@ function openDrawer(x){
   if(!x)return; state.selected=x;
   $('#drawerContent').innerHTML=`<p class="section-kicker">ETF DETAIL</p><h2 class="detail-code">${x.ticker}</h2><p class="detail-meta">${etfName(x.ticker)}</p><p class="detail-meta">${groupNames[x.group]||x.group} · ${x.date} · 收盘 $${price(x.close)}</p><div class="detail-score"><b>${x.score.toFixed(1)}</b><span>综合动量评分</span></div><div class="detail-grid">${[["20日收益",pct(x.r20),cls(x.r20)],["60日收益",pct(x.r60),cls(x.r60)],["120日收益",pct(x.r120),cls(x.r120)],["60日相对SPY",pct(x.rs60),cls(x.rs60)],["ATR / 价格",`${(x.atr_pct*100).toFixed(2)}%`,''],["距120日高点",pct(x.from_high120),cls(x.from_high120)],["12-1动量",Number.isFinite(x.mom12_1)?pct(x.mom12_1):"—",Number.isFinite(x.mom12_1)?cls(x.mom12_1):""],["波动调整排名",Number.isFinite(x.rank_risk)?`#${x.rank_risk} / ${state.data.length}`:"—",""]].map(v=>`<div class="detail-stat"><span>${v[0]}</span><b class="${v[2]}">${v[1]}</b></div>`).join('')}</div>${historyBlock(x)}<div class="trade-plan"><h3>${setupNames[x.setup]}</h3><div class="trade-step"><i>01</i><div>等待价格进入回踩观察区 <b>${price(x.pullback_low)}–${price(x.pullback_high)}</b>，观察是否止跌。</div></div><div class="trade-step"><i>02</i><div>趋势延续的突破触发参考为 <b>${price(x.breakout_trigger)}</b>。</div></div><div class="trade-step"><i>03</i><div>结构失效参考 <b>${price(x.stop_ref)}</b>；当前至该位置约 <b>${pct(x.stop_pct)}</b>。</div></div></div>`;
   $('#drawerContent').insertAdjacentHTML('beforeend',renderFundContext(x));
+  $('#drawerContent').insertAdjacentHTML('afterbegin',`<button type="button" class="share-link" id="shareLink">复制链接</button>`);
+  $('#shareLink').addEventListener('click',async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText(location.href);b.textContent='已复制';}catch{b.textContent='复制失败，请从地址栏复制';}});
+  if(!$('#detailDrawer').classList.contains('open'))state.returnFocus=document.activeElement;
   $('#detailDrawer').classList.add('open');$('#drawerBackdrop').classList.add('open');$('#detailDrawer').setAttribute('aria-hidden','false');
+  // Shareable link: …/#etf=XLK reopens this ETF.
+  if(location.hash!==`#etf=${x.ticker}`)history.replaceState(null,'',`#etf=${x.ticker}`);
+  $('#drawerClose').focus();
 }
-function closeDrawer(){ $('#detailDrawer').classList.remove('open');$('#drawerBackdrop').classList.remove('open');$('#detailDrawer').setAttribute('aria-hidden','true'); }
+function closeDrawer(){
+  if(!$('#detailDrawer').classList.contains('open'))return;
+  $('#detailDrawer').classList.remove('open');$('#drawerBackdrop').classList.remove('open');$('#detailDrawer').setAttribute('aria-hidden','true');
+  if(location.hash.startsWith('#etf='))history.replaceState(null,'',location.pathname+location.search);
+  if(state.returnFocus&&document.contains(state.returnFocus))state.returnFocus.focus();
+}
+function openFromHash(){
+  const m=location.hash.match(/^#etf=([A-Za-z0-9.\-]{1,10})$/); if(!m)return;
+  const x=state.data.find(r=>r.ticker===m[1].toUpperCase()); if(x)openDrawer(x);
+}
 function showTip(e,x){$('#tooltip').innerHTML=`<b>${x.ticker}</b> · 评分 ${x.score.toFixed(1)}<br>20D ${pct(x.r20)} · 60D ${pct(x.r60)} · 120D ${pct(x.r120)}`;$('#tooltip').style.display='block';moveTip(e);}
 function moveTip(e){$('#tooltip').style.left=`${Math.min(innerWidth-230,e.clientX+13)}px`;$('#tooltip').style.top=`${e.clientY+13}px`;}
 function hideTip(){$('#tooltip').style.display='none';}
@@ -283,7 +300,8 @@ async function init(){
     $('#dataQuality').textContent=`${meta.count}/${meta.expected_count} 只完整 · 最近成功快照 ${generated} 东京时间 · ${meta.source==='Yahoo Finance'?'分红/拆股复权 · 已安排云端刷新':meta.source==='Stooq'?'Yahoo 不可用，已使用备用数据源 Stooq':'本地快照'}${stale?' · 已超过4天未更新，请查看运行记录':''}`;
     $('#dataQuality').classList.toggle('stale',stale);
     const groups=[...new Set(state.data.map(x=>x.group))];$('#groupSelect').innerHTML+=[...groups].map(g=>`<option value="${g}">${groupNames[g]||g}</option>`).join('');
-    renderKPIs();renderOpportunities();bind();applyFilters();
+    renderKPIs();renderOpportunities();bind();applyFilters();openFromHash();
+    addEventListener('hashchange',openFromHash);
   }catch(err){document.querySelector('#etfView').innerHTML=`<div class="error-state"><h2>数据载入失败</h2><p>${err.message}</p></div>`;}
 }
 init();
