@@ -106,6 +106,12 @@ Yahoo 仍是唯一的默认数据源。`scripts/sources.py` 提供 Stooq 作为�
 
 启用前先在 Actions 里运行 **Source parity check**：它用生产校验逻辑分别从 Yahoo 和 Stooq 抓取全部 ETF，比较收盘价和 20/60/120 日收益差异，以及评分排名相关性和前 10 名重合度，给出「可以启用 / 不要启用」的结论。只有结论为可以启用时，才在 Settings → Secrets and variables → Actions → Variables 中添加 `FALLBACK_SOURCE=stooq`。
 
+## 运维保护
+
+- **token 到期提醒**：`token-check.yml` 每天用 `GH_DISPATCH_TOKEN` 调一次 GitHub API，读取响应头里的到期时间。到期前 14 天内，或者 token 已被拒绝时，开一个 `token-expiry` issue；换上新 token 后自动关闭。换 token 后记得重新运行 **Deploy scheduler Worker**。
+- **跳过重复运行**：调度 Worker 触发的运行名为 `On-time <cron>`。GitHub 自己的后备定时任务启动时，如果 20 小时内同一 cron 的准点运行已经成功，就直接跳过。
+- **依赖更新**：Dependabot 每周六为 Python 依赖和 GitHub Actions 版本开 PR（各合并为一个），CI 通过后再合并。
+
 ## 浏览器冒烟测试
 
 CI 的 `browser` 任务用 `tests/e2e/build_site.py` 生成两个测试站点（合成的 80 只 ETF 当前格式数据，以及仓库里提交的旧格式快照），再用 Chromium 打开：桌面中/英/日三种语言、iPhone 尺寸、点击行打开详情和走势图、自选筛选、手机列切换、个股页。任何控制台错误或功能失效都会让 CI 变红。本地运行：
