@@ -1,0 +1,42 @@
+name: Live tracking report
+# Monthly out-of-sample check of the rankings the dashboard actually published.
+# Report: run summary, and reports/live.md on the data branch.
+on:
+  schedule:
+    - cron: '43 4 2 * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: history
+  cancel-in-progress: false
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Check out data branch
+        run: |
+          git fetch --depth=1 origin data
+          git worktree add -B data history FETCH_HEAD
+      - name: Build report
+        run: python scripts/live_report.py history history/reports/live.md
+      - name: Save report to the data branch
+        run: |
+          cd history
+          git add reports/live.md
+          if git diff --cached --quiet; then echo 'Report unchanged'; exit 0; fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -q -m "Live tracking report ($(date -u +%Y-%m-%d))"
+          # The daily snapshot job also pushes to data; rebase and retry on a race.
+          for _ in 1 2 3; do
+            git push origin data && exit 0
+            git pull --rebase -q origin data
+          done
+          exit 1
