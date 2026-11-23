@@ -118,3 +118,18 @@ class IndependentStocksTests(unittest.TestCase):
         with patch.object(restore, 'gh', side_effect=[{'workflow_runs':[base]},
                 {'artifacts':[{'name':'github-pages','expired':True}]}]):
             self.assertIsNone(restore.select_run('owner/repo'))
+
+
+class FallbackDedupeTests(unittest.TestCase):
+    def test_late_github_cron_skips_only_when_its_on_time_run_succeeded(self):
+        from datetime import datetime, timezone
+        from check_refresh_day import covered_by_on_time_run
+        now = datetime(2026, 11, 24, 3, 0, tzinfo=timezone.utc)
+        ok = {'event': 'workflow_dispatch', 'conclusion': 'success', 'display_title': 'On-time 0 22 * * *',
+              'created_at': '2026-11-23T22:00:29Z'}
+        self.assertTrue(covered_by_on_time_run([ok], '0 22 * * *', now))
+        # A different schedule, a failure, a manual dispatch or a stale run does not count.
+        self.assertFalse(covered_by_on_time_run([ok], '0 6 * * *', now))
+        self.assertFalse(covered_by_on_time_run([dict(ok, conclusion='failure')], '0 22 * * *', now))
+        self.assertFalse(covered_by_on_time_run([dict(ok, display_title='Publish US ETF dashboard')], '0 22 * * *', now))
+        self.assertFalse(covered_by_on_time_run([dict(ok, created_at='2026-11-22T22:00:29Z')], '0 22 * * *', now))

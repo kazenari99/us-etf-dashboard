@@ -1,0 +1,19 @@
+# Weekly version bumps arrive as PRs; CI must pass before they are merged.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+      day: saturday
+    groups:
+      python:
+        patterns: ['*']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: saturday
+    groups:
+      actions:
+        patterns: ['*']
