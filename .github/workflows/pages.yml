@@ -1,4 +1,7 @@
 name: Publish US ETF dashboard
+# On-time runs from the scheduler Worker get a fixed name so the late GitHub
+# fallback for the same schedule can recognise them and skip.
+run-name: ${{ inputs.schedule && format('On-time {0}', inputs.schedule) || github.event.head_commit.message || github.workflow }}
 on:
   push:
     branches: [main]
@@ -53,6 +56,8 @@ jobs:
         id: calendar
         env:
           REFRESH_SCHEDULE: ${{ github.event.schedule || inputs.schedule }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
           STOCKS_ONLY: ${{ inputs.stocks_only }}
         run: python scripts/check_refresh_day.py
   deploy:
