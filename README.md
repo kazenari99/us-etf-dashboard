@@ -121,6 +121,10 @@ python tests/e2e/build_site.py /tmp/e2e
 ```
 （再分别在 `/tmp/e2e/current` 和 `/tmp/e2e/legacy` 起静态服务器，运行 `node tests/e2e/smoke.cjs <current地址> <legacy地址>`。）
 
+## 实盘跟踪报告
+
+`live-report.yml` 每月 2 日（也可手动运行）读取 `data` 分支里每天真实发布过的快照：取当天评分前 10 名，用之后第 5、20 个交易日快照里记录的收盘价计算收益，与 SPY 和全池等权对比，并计算评分与之后收益的秩相关（IC）。不重新抓数、不重新打分，衡量的就是看板当时真正显示的内容。报告写在运行页 Summary，并保存为 `data` 分支的 `reports/live.md`。不重叠的周期少于 8 个时只提示「数据还不够」：5 日周期约需 45 个快照（约 2 个月），20 日周期约需 180 个（约 9 个月）。
+
 
 
 ## 分享链接、键盘与安全头
