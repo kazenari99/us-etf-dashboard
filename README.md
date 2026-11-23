@@ -121,6 +121,8 @@ python tests/e2e/build_site.py /tmp/e2e
 ```
 （再分别在 `/tmp/e2e/current` 和 `/tmp/e2e/legacy` 起静态服务器，运行 `node tests/e2e/smoke.cjs <current地址> <legacy地址>`。）
 
+
+
 ## 分享链接、键盘与安全头
 
 - 打开任意 ETF 详情后，地址变为 `…/#etf=XLK`，复制给别人或存成书签即可直接打开该 ETF；详情框里有「复制链接」按钮。关闭详情会清除这个地址片段。
