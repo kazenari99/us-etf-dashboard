@@ -1,5 +1,6 @@
 // Browser smoke test: open the built sites on desktop and phone, in zh/en/ja,
-// and fail on any console error or broken core interaction.
+// and fail on any console error (including Content-Security-Policy violations)
+// or broken core interaction.
 // Usage: node tests/e2e/smoke.cjs <base-url-of-current> <base-url-of-legacy>
 const { chromium, devices } = require('playwright');
 const assert = require('node:assert/strict');
@@ -55,6 +56,24 @@ await step('desktop: row opens drawer with sparkline; star filter keeps only sta
   await page.click('#tableBody tr:first-child .etf-star');
   await page.click('#setupFilter [data-setup="starred"]');
   assert.equal(await page.$$eval('#tableBody tr', r => r.length), 1);
+  assert.deepEqual(errors, []);
+  await close();
+});
+
+await step('share link #etf=XXX opens that ETF; closing clears it; keyboard opens rows', async () => {
+  const { page, errors, close } = await open(browser, current.replace(/\/?$/, '/') + '#etf=XLK');
+  await page.waitForSelector('#detailDrawer.open', { timeout: 5000 });
+  assert.match(await page.textContent('#drawerContent .detail-code'), /XLK/);
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'drawerClose');
+  await page.keyboard.press('Escape');
+  assert.equal(await page.evaluate(() => location.hash), '');
+  await page.focus('#tableBody tr:nth-child(3)');
+  const ticker = await page.getAttribute('#tableBody tr:nth-child(3)', 'data-code');
+  await page.keyboard.press('Enter');
+  await page.waitForSelector('#detailDrawer.open', { timeout: 5000 });
+  assert.equal(await page.evaluate(() => location.hash), `#etf=${ticker}`);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.evaluate(() => document.activeElement.dataset.code), ticker, 'focus returns to the row');
   assert.deepEqual(errors, []);
   await close();
 });
