@@ -46,8 +46,8 @@ jobs:
       run: ${{ steps.calendar.outputs.run }}
       stocks_only: ${{ steps.calendar.outputs.stocks_only }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
           cache: pip
@@ -72,8 +72,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy_retry.outputs.page_url || steps.deploy_first.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
           cache: pip
@@ -120,7 +120,7 @@ jobs:
       - name: Refresh public fund profiles and holdings
         if: ${{ needs.calendar.outputs.stocks_only != 'true' }}
         run: python scripts/refresh_funds.py
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: ${{ needs.calendar.outputs.stocks_only != 'true' && !inputs.use_committed_snapshot }}
         with:
           name: us-etf-research-${{ github.run_id }}
@@ -156,7 +156,7 @@ jobs:
       contents: write
       actions: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Download this run's ETF snapshot
         env:
           GH_TOKEN: ${{ github.token }}
